@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.activities.AddAddressActivity">
+
+    <LinearLayout
+        android:padding="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:padding="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textSize="@dimen/size_xMini"
+            />
+
+        <LinearLayout
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/et_border"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <EditText
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:id="@+id/addAddressAct_et_address"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="textMultiLine"
+                android:textColor="@color/colorBlack"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/size_xMini"
+                tools:targetApi="m" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_marginTop="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="City"
+            android:textSize="@dimen/size_xMini"
+            />
+
+
+        <LinearLayout
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/et_border"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <EditText
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:id="@+id/addAddressAct_et_city"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
+                android:imeOptions="actionNext"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/size_xMini"
+                tools:targetApi="m" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="State"
+            android:textSize="@dimen/size_xMini"
+            />
+
+        <LinearLayout
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/et_border"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <EditText
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:id="@+id/addAddressAct_et_State"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
+                android:imeOptions="actionNext"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/size_xMini"
+                tools:targetApi="m" />
+
+        </LinearLayout>
+
+        <TextView
+            android:padding="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PIN"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/size_xMini"
+            />
+
+        <LinearLayout
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/et_border"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <EditText
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:id="@+id/addAddressAct_et_pin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="number"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
+                android:imeOptions="actionNext"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/size_xMini"
+                tools:targetApi="m" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address Type"
+            android:textSize="@dimen/size_xMini"
+            />
+
+        <LinearLayout
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/et_border"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:id="@+id/addAddressAct_sp_type"
+                android:backgroundTint="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:padding="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alt Mobile"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/size_xMini"
+            />
+
+        <LinearLayout
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/et_border"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <EditText
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:id="@+id/addAddressAct_et_altMobile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="number"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
+                android:imeOptions="actionNext"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/size_xMini"
+                tools:targetApi="m" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_marginTop="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GSTNo"
+            android:textSize="@dimen/size_xMini"
+            />
+
+        <LinearLayout
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/et_border"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <EditText
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:id="@+id/addAddressAct_et_GSTNo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
+                android:imeOptions="actionNext"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/size_xMini"
+                tools:targetApi="m" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AadharNo"
+            android:textSize="@dimen/size_xMini"
+            />
+
+        <LinearLayout
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/et_border"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <EditText
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:id="@+id/addAddressAct_et_aadharNo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:inputType="number"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
+                android:imeOptions="actionNext"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/size_xMini"
+                tools:targetApi="m" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/addAddressAct_cb_isDefault"
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:textSize="@dimen/size_xMini"
+                android:layout_height="wrap_content"
+                android:text="Is Default"/>
+
+        </LinearLayout>
+
+
+
+
+
+        <Button
+            style="@style/RippleEffect"
+            android:padding="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/bg_btn_enabled"
+            android:id="@+id/addAddressAct_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/size_xMini"
+            android:text="ADD"
+            android:textColor="@color/colorWhite"
+            />
+    </LinearLayout>
+</ScrollView>

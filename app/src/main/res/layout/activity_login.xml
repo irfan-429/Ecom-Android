@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".views.activities.LoginActivity">
+
+    <LinearLayout
+        android:padding="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:background="@drawable/logo"
+            android:layout_marginBottom="@dimen/_30sdp"
+            />
+
+
+        <LinearLayout
+            android:layout_margin="@dimen/_10sdp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+<!--                <TextView-->
+<!--                    android:layout_weight="1.5"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Username"-->
+<!--                    android:textColor="@color/colorPrimary"-->
+<!--                    android:textSize="@dimen/size_large"-->
+<!--                   />-->
+
+                <EditText
+                    android:id="@+id/et_username"
+                    android:hint="Username"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_weight="3"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:imeOptions="actionNext"
+                    android:background="@null"
+                    android:textSize="@dimen/size_large"
+                    />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/colorDefault"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="@dimen/_10sdp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+<!--                <TextView-->
+<!--                    android:layout_weight="1.5"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Password"-->
+<!--                    android:textColor="@color/colorPrimary"-->
+<!--                    android:textSize="@dimen/size_large"-->
+<!--                    />-->
+
+                <EditText
+                    android:hint="Password"
+                    android:textColor="@color/colorPrimary"
+                    android:id="@+id/et_password"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_weight="3"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"
+                    android:background="@null"
+                    android:textSize="@dimen/size_large"
+                    />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/colorDefault"/>
+        </LinearLayout>
+
+<!--        <CheckBox-->
+<!--            android:textSize="@dimen/size_xMini"-->
+<!--            android:layout_marginStart="@dimen/_5sdp"-->
+<!--            android:layout_gravity="left"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Remember Me"/>-->
+
+
+        <RadioGroup
+            android:id="@+id/radio_grp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:weightSum="2.5"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_admin"
+                android:layout_gravity="center"
+                android:buttonTint="@color/colorPrimary"
+                android:textSize="@dimen/size_xMini"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Admin"
+                />
+
+            <RadioButton
+                android:id="@+id/radio_customer"
+                android:checked="true"
+                android:layout_marginStart="@dimen/_50sdp"
+                android:buttonTint="@color/colorPrimary"
+                android:textSize="@dimen/size_xMini"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Customer"
+                />
+
+        </RadioGroup>
+
+        <Button
+            android:layout_margin="@dimen/_20sdp"
+            android:background="@drawable/bg_btn_enabled"
+            android:id="@+id/btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/size_xMini"
+            android:paddingLeft="@dimen/_50sdp"
+            android:paddingRight="@dimen/_50sdp"
+            android:text="LOGIN"
+            android:textColor="@color/colorWhite"
+            />
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forgot your password? "
+                android:textSize="@dimen/size_xMini"
+                />
+
+            <TextView
+                android:id="@+id/tv_resetHere"
+                android:textStyle="italic"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset Here"
+                android:textSize="@dimen/size_xMini"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OR "
+            android:textSize="@dimen/size_xMini"
+            />
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_registerHere"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register new account"
+                android:textSize="@dimen/size_xMini"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

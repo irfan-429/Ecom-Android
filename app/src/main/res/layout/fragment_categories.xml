@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:gravity="center"
+        android:id="@+id/catFrag_tv"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <View
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/colorBlack"/>
+
+        <TextView
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Shop by Category"
+            android:textSize="@dimen/size_large"
+            />
+
+        <View
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/colorBlack"/>
+
+    </LinearLayout>
+
+
+    <GridView
+        android:padding="@dimen/_5sdp"
+        android:layout_below="@+id/catFrag_tv"
+        android:id="@+id/catFrag_gv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnWidth="0dp"
+        android:horizontalSpacing="@dimen/_5sdp"
+        android:verticalSpacing="@dimen/_5sdp"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        tools:listitem="@layout/item_grid_category">
+    </GridView>
+
+
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You've no categories"
+            android:textSize="@dimen/size_xMini"
+            android:id="@+id/catFrag_tv_notFound"/>
+
+
+
+</RelativeLayout>

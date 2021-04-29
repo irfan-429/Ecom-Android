@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.activities.CreateBannerActivity">
+
+    <LinearLayout
+        android:padding="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:padding="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Banner Name"
+            android:textSize="@dimen/size_xMini"
+            />
+
+        <EditText
+            android:layout_margin="@dimen/_3sdp"
+            android:padding="@dimen/_15sdp"
+            android:id="@+id/createBannerAct_et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1"
+            android:imeOptions="actionDone"
+            android:background="@drawable/et_border"
+            android:backgroundTint="@color/colorPrimary"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/size_xMini"
+            tools:targetApi="m" />
+
+        <TextView
+            android:layout_marginTop="@dimen/_20sdp"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Banner Link"
+            android:textSize="@dimen/size_xMini"
+            />
+
+        <EditText
+            android:layout_margin="@dimen/_3sdp"
+            android:padding="@dimen/_15sdp"
+            android:id="@+id/createBannerAct_et_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1"
+            android:imeOptions="actionDone"
+            android:background="@drawable/et_border"
+            android:backgroundTint="@color/colorPrimary"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/size_xMini"
+            tools:targetApi="m" />
+
+
+        <TextView
+            android:layout_marginTop="@dimen/_20sdp"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Banner Image"
+            android:textSize="@dimen/size_xMini"
+            />
+
+        <RelativeLayout
+            android:layout_margin="@dimen/_3sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_140sdp"
+            android:background="@drawable/bg_dotted_rec">
+
+            <androidx.cardview.widget.CardView
+                android:visibility="visible"
+                android:layout_margin="@dimen/_1sdp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="0dp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="0dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:scaleType="centerCrop"
+                    android:id="@+id/createBannerAct_iv_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true" />
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/createBannerAct_layout_banner"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:tint="@color/colorPrimary"
+                    app:srcCompat="@drawable/ic_camera" />
+
+                <TextView
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tap to upload image"
+                    android:textSize="@dimen/size_xMini"
+                    />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_marginTop="@dimen/_20sdp"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:textSize="@dimen/size_xMini"
+            />
+
+        <androidx.cardview.widget.CardView
+            android:layout_margin="@dimen/_3sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/elevation"
+            app:cardCornerRadius="@dimen/cardview_default_radius">
+
+            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:id="@+id/createBannerAct_sp_status"
+                android:backgroundTint="@color/colorPrimary"/>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            style="@style/RippleEffect"
+            android:padding="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/bg_btn_enabled"
+            android:id="@+id/createBannerAct_btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/size_xMini"
+            android:text="SUBMIT"
+            android:textColor="@color/colorWhite"
+            />
+    </LinearLayout>
+</ScrollView>

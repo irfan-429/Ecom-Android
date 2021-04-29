@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".views.activities.CartActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_addTo"
+        android:orientation="vertical">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cartAct_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:focusableInTouchMode="true"
+            tools:listitem="@layout/item_cart"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/cartAct_tv_noCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="Cart is empty"
+        android:textSize="@dimen/size_xMini" />
+
+
+    <RelativeLayout
+        android:id="@+id/layout_addTo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorGreen"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/cartAct_tv_cartItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:text="0 Item(s)"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/size_xMini" />
+
+            <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@color/colorWhite" />
+
+            <TextView
+                android:id="@+id/cartAct_tv_cartAmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:text="₹0"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/size_xMini" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/cartAct_layout_confirmOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:drawableEnd="@drawable/ic_baseline_arrow_forward"
+                android:id="@+id/text_home"
+                android:drawableTint="@color/colorWhite"
+                android:drawablePadding="@dimen/_5sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:text="Confirm Order"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/size_large"
+                android:fontFamily="@font/open_sans_bold" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

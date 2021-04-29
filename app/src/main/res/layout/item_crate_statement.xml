@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/statementItem_layout"
+    android:layout_width="match_parent"
+    style="@style/RippleEffect"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:paddingTop="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_15sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/crateStItem_tv_srNo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="SrNo"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/size_xxMini" />
+
+
+
+
+        <TextView
+            android:id="@+id/crateStItem_tv_date"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/colorBlack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="@dimen/size_xMini"
+            />
+
+
+        <TextView
+            android:id="@+id/crateStItem_tv_bill"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/colorBlack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Bill"
+            android:textSize="@dimen/size_xMini"
+            />
+
+        <TextView
+            android:id="@+id/crateStItem_tv_sendCrate"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/colorBlack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Send Crate"
+            android:textSize="@dimen/size_xMini"
+            />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/colorDefault"/>
+
+</LinearLayout>

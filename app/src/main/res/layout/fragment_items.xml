@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/colorWhite"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".views.fragments.ItemsFragment">
+
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <TextView-->
+<!--                android:visibility="gone"-->
+<!--                android:id="@+id/sendReceiptAct_selectedCustomer"-->
+<!--                android:padding="@dimen/_5sdp"-->
+<!--                android:background="@color/colorWhite"-->
+<!--                android:textColor="@color/colorBlack"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:fontFamily="@font/open_sans_bold"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="@dimen/size_xMini" />-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <LinearLayout-->
+<!--            android:background="@color/colorWhite"-->
+<!--            android:padding="@dimen/_5sdp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:text="Deposit Date:"-->
+<!--                android:textColor="@color/colorBlack"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="@dimen/size_xMini" />-->
+
+<!--            <TextView-->
+<!--                android:layout_marginStart="@dimen/_10sdp"-->
+<!--                android:text="y-m-d"-->
+<!--                android:textColor="@color/colorBlack"-->
+<!--                android:id="@+id/sendReceiptAct_depositDate"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="@dimen/size_xMini" />-->
+
+<!--            <TextView-->
+<!--                android:layout_marginStart="@dimen/_10sdp"-->
+<!--                android:text="HH:mm"-->
+<!--                android:textColor="@color/colorBlack"-->
+<!--                android:id="@+id/sendReceiptAct_depositTime"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="@dimen/size_xMini" />-->
+
+<!--        </LinearLayout>-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:padding="@dimen/_5sdp"-->
+<!--            android:layout_marginTop="@dimen/_5sdp"-->
+<!--            android:id="@+id/sendReceiptAct_rv"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
+
+<!--        <TextView-->
+<!--            android:layout_margin="@dimen/_10sdp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:visibility="visible"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="No bank found"-->
+<!--            android:textSize="@dimen/size_xMini"-->
+<!--            android:id="@+id/sendReceiptAct_tv_noBAnk"/>-->
+
+
+<!--    </LinearLayout>-->
+
+
+
+
+
+<!--    <RelativeLayout-->
+<!--        android:layout_margin="@dimen/_5sdp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_140sdp"-->
+<!--        android:background="@drawable/bg_dotted_rec">-->
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:visibility="visible"-->
+<!--            android:layout_margin="@dimen/_1sdp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:elevation="0dp"-->
+<!--            app:cardCornerRadius="@dimen/_10sdp"-->
+<!--            app:cardElevation="0dp">-->
+
+<!--            <androidx.appcompat.widget.AppCompatImageView-->
+<!--                android:scaleType="fitXY"-->
+<!--                android:id="@+id/sendReceiptAct_iv_slip"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_centerInParent="true" />-->
+
+<!--        </androidx.cardview.widget.CardView>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/sendReceiptAct_layout_depSlip"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical">-->
+
+
+<!--            <androidx.appcompat.widget.AppCompatImageView-->
+<!--                android:layout_width="@dimen/_40sdp"-->
+<!--                android:layout_height="@dimen/_40sdp"-->
+<!--                app:srcCompat="@drawable/ic_camera" />-->
+
+<!--            <TextView-->
+<!--                android:layout_marginTop="@dimen/_5sdp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Tap to upload picture"-->
+<!--                android:textSize="@dimen/size_xMini" />-->
+
+
+<!--        </LinearLayout>-->
+
+
+
+<!--    </RelativeLayout>-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/sendReceiptAct_et_amt"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="@dimen/_5sdp"-->
+<!--        android:backgroundTint="@color/colorBlack"-->
+<!--        android:background="@drawable/et_border"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:hint="Deposit amount"-->
+<!--        android:imeOptions="actionNext"-->
+<!--        android:inputType="number"-->
+<!--        android:maxLines="1"-->
+<!--        android:padding="@dimen/_10sdp"-->
+<!--        android:textSize="@dimen/size_xMini"-->
+<!--        tools:targetApi="m" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/sendReceiptAct_et_remark"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="@dimen/_5sdp"-->
+<!--        android:minHeight="@dimen/_100sdp"-->
+<!--        android:backgroundTint="@color/colorBlack"-->
+<!--        android:background="@drawable/et_border"-->
+<!--        android:gravity="start"-->
+<!--        android:hint="Remarks"-->
+<!--        android:inputType="textMultiLine"-->
+<!--        android:maxLines="1"-->
+<!--        android:padding="@dimen/_10sdp"-->
+<!--        android:textSize="@dimen/size_xMini"-->
+<!--        tools:targetApi="m" />-->
+
+<!--            <Button-->
+<!--                android:layout_margin="@dimen/_10sdp"-->
+<!--                android:id="@+id/sendReceiptAct_btn_submit"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/bg_btn_enabled"-->
+<!--                android:padding="@dimen/_16sdp"-->
+<!--                android:text="SUBMIT"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="@color/colorWhite"-->
+<!--                android:textSize="@dimen/size_text_btn" />-->
+
+<!--        </LinearLayout>-->
+<!--    </ScrollView>-->
+</LinearLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="elevation">8dp</dimen>
+    <dimen name="elevation_field">1dp</dimen>
+    <dimen name="card_corner_radius">@dimen/_10sdp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">@dimen/_120sdp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+
+
+    <dimen name="size_xxLarge">@dimen/_20sdp</dimen>
+    <dimen name="size_xLarge">@dimen/_18sdp</dimen>
+    <dimen name="size_large">@dimen/_14sdp</dimen>
+    <dimen name="size_normal">@dimen/_12sdp</dimen>
+    <dimen name="size_mini">@dimen/_11sdp</dimen>
+    <dimen name="size_xMini">@dimen/_10sdp</dimen>
+    <dimen name="size_xxMini">@dimen/_8sdp</dimen>
+
+    <dimen name="size_text_btn">@dimen/_16sdp</dimen>
+    <dimen name="size_text_field">@dimen/_14sdp</dimen>
+    <dimen name="size_text_padding">@dimen/_15sdp</dimen>
+
+    <dimen name="toolbar_height">50sp</dimen>
+
+</resources>

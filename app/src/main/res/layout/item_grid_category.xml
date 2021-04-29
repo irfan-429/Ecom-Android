@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/RippleEffect"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="1dp"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:elevation="@dimen/elevation"
+    android:layout_height="wrap_content"
+    android:id="@+id/catItem_layout"
+    >
+
+    <LinearLayout
+        android:gravity="center"
+        android:id="@+id/layout_item"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:scaleType="centerCrop"
+            android:id="@+id/catItem_img"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_80sdp"
+            app:srcCompat="@drawable/no_image_available"/>
+
+        <TextView
+            android:layout_margin="@dimen/_10sdp"
+            android:id="@+id/catItem_name"
+            android:textColor="@color/colorBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item Name"
+            android:textSize="@dimen/size_xMini"
+            android:fontFamily="@font/balsamiq_sans_regular"
+            />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

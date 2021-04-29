@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.activities.PlaceOrderActivity">
+
+    <LinearLayout
+        android:layout_above="@+id/layout_view_cart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <devs.mulham.horizontalcalendar.HorizontalCalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:textColorNormal="@color/colorBlack"
+        app:sizeMiddleText="@dimen/_14sdp"
+        app:selectorColor="@color/colorPrimary"
+        android:background="@color/colorWhite"
+        app:selectedDateBackground="@color/colorPrimary"
+        app:textColorSelected="#FFFF"/>
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/placeOrderAct_selectedCustomer"
+            android:padding="@dimen/_5sdp"
+            android:background="@color/colorWhite"
+            android:textColor="@color/colorBlack"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/open_sans_bold"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_xMini" />
+
+    <LinearLayout
+        android:background="@color/colorWhite"
+        android:padding="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="Delivery Date:"
+            android:textColor="@color/colorBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_xMini" />
+
+        <TextView
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="y-m-d"
+            android:textColor="@color/colorBlack"
+            android:id="@+id/placeOrderAct_deliveryDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_xMini" />
+
+    </LinearLayout>
+
+        <ExpandableListView
+            android:id="@+id/expandableListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="0.5dp"
+            android:focusable="false"
+            android:nestedScrollingEnabled="true"
+            android:groupIndicator="@null"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_view_cart"
+        android:id="@+id/placeOrderAct_container"
+/>
+
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/layout_view_cart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_margin="@dimen/_10sdp"
+                android:text="0 Item(s)"
+                android:textColor="@color/colorWhite"
+                android:id="@+id/placeOrderAct_tv_cartItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_xMini" />
+
+            <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="match_parent"
+                android:background="@color/colorWhite"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
+            <TextView
+                android:layout_margin="@dimen/_10sdp"
+                android:text="₹0"
+                android:textColor="@color/colorWhite"
+                android:id="@+id/placeOrderAct_tv_cartAmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_xMini" />
+
+        </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/placeOrderAct_viewCart"
+        android:paddingEnd="@dimen/_10sdp"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_margin="@dimen/_10sdp"
+            android:text="VIEW CART"
+            android:fontFamily="@font/open_sans_bold"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/text_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_xMini" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:tint="@color/colorWhite"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            app:srcCompat="@drawable/ic_order"/>
+    </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

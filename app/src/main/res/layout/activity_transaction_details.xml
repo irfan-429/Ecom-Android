@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.activities.TransactionDetailsActivity">
+
+
+    <LinearLayout
+        android:padding="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:id="@+id/transDetail_tv_date"
+                android:layout_alignParentStart="true"
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textSize="@dimen/size_xMini"/>
+
+            <TextView
+                android:id="@+id/transDetail_tv_time"
+                android:textColor="@color/colorBlack"
+                android:layout_centerInParent="true"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:textSize="@dimen/size_xMini"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:background="@color/colorDefault"/>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/transDetail_ll_crate"
+            android:orientation="horizontal"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Crates"
+                android:textSize="@dimen/size_xMini"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:fontFamily="@font/open_sans_bold"
+                android:textSize="@dimen/size_xMini"/>
+
+            <TextView
+                android:paddingStart="@dimen/_10sdp"
+                android:id="@+id/transDetail_tv_crate"
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="@dimen/size_xMini"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/transDetail_ll_amt"
+            android:orientation="horizontal"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Amount"
+                android:textSize="@dimen/size_xMini"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:fontFamily="@font/open_sans_bold"
+                android:textSize="@dimen/size_xMini"/>
+
+            <TextView
+                android:paddingStart="@dimen/_10sdp"
+                android:id="@+id/transDetail_tv_amt"
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="@dimen/size_xMini"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/transDetail_ll_bank"
+            android:orientation="horizontal"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Bank Name"
+                android:textSize="@dimen/size_xMini"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:fontFamily="@font/open_sans_bold"
+                android:textSize="@dimen/size_xMini"/>
+
+            <TextView
+                android:paddingStart="@dimen/_10sdp"
+                android:id="@+id/transDetail_tv_bank"
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/size_xMini"/>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Remarks"
+                android:textSize="@dimen/size_xMini"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:fontFamily="@font/open_sans_bold"
+                android:textSize="@dimen/size_xMini"/>
+
+            <TextView
+                android:paddingStart="@dimen/_10sdp"
+                android:id="@+id/transDetail_tv_remarks"
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/size_xMini"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:fontFamily="@font/open_sans_bold"
+                android:layout_weight="1"
+                android:textColor="@color/colorBlack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textSize="@dimen/size_xMini"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:fontFamily="@font/open_sans_bold"
+                android:textSize="@dimen/size_xMini"/>
+
+            <TextView
+                android:fontFamily="@font/open_sans_bold"
+                android:paddingStart="@dimen/_10sdp"
+                android:id="@+id/transDetail_tv_status"
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textSize="@dimen/size_xMini"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/colorPrimary"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:onClick="actionLargeImgView"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:scaleType="centerCrop"
+            android:id="@+id/transDetail_iv_slip"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
+            app:srcCompat="@drawable/no_image_available"
+            />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

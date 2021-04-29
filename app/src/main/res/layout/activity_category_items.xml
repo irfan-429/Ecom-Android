@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <GridView
+        android:padding="@dimen/_5sdp"
+        android:id="@+id/catItemAct_gv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="0dp"
+        android:horizontalSpacing="@dimen/_5sdp"
+        android:verticalSpacing="@dimen/_5sdp"
+        android:numColumns="2"
+        android:stretchMode="columnWidth"
+        tools:listitem="@layout/item_grid_category_item">
+    </GridView>
+
+    <TextView
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category has no items"
+        android:textSize="@dimen/size_xMini"
+        android:id="@+id/catItemAct_tv_notFound"/>
+
+</RelativeLayout>

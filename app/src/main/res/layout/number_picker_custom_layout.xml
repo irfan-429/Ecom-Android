@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:gravity="center"
+    android:background="@drawable/shape_bg_num_picker"
+    android:layout_height="@dimen/_32sdp"
+    android:orientation="horizontal"
+
+    >
+
+    <Button
+        android:gravity="center"
+        android:background="@drawable/shape_circle_hollow"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:padding="0dp"
+        android:layout_height="@dimen/_24sdp"
+        android:textSize="@dimen/_14sdp"
+        android:textColor="@android:color/white"
+        android:id="@+id/decrement"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="—"/>
+
+    <EditText
+        android:layout_width="@dimen/_24sdp"
+        android:background="@null"
+        android:layout_height="match_parent"
+        android:text="1"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@android:color/black"
+        android:inputType="number"
+        android:id="@+id/display"
+        android:gravity="center"
+        />
+    <Button
+        android:background="@drawable/shape_circle_hollow"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:gravity="center"
+        android:padding="0dp"
+        android:textSize="@dimen/_14sdp"
+        android:textColor="@android:color/white"
+        android:id="@+id/increment"
+        android:text="+"/>
+</LinearLayout>

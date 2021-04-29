@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            >
+
+            <RelativeLayout
+                android:id="@+id/profileAct_rl_changePhoto"
+                android:layout_centerInParent="true"
+                android:layout_width="@dimen/_110sdp"
+                android:layout_height="@dimen/_110sdp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_margin="@dimen/_1sdp"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/profileAct_civ_photo"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:src="@drawable/no_image_available"
+                    android:elevation="@dimen/elevation"
+                    app:civ_border_color="@color/colorPrimary"
+                    app:civ_border_width="@dimen/_1sdp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:padding="@dimen/_7sdp"
+                    android:background="@drawable/shape_circle"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerInParent="true"
+                    android:elevation="@dimen/elevation"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/ic_edit" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:padding="@dimen/_10sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:tint="@color/colorPrimary"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_user" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/size_xMini"
+                    android:fontFamily="@font/open_sans_bold"
+                    />
+
+                <TextView
+                    android:id="@+id/profileAct_tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="user"
+                    android:textSize="@dimen/size_xMini"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:background="@android:color/white" />
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:padding="@dimen/_10sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_24sdp"
+                android:tint="@color/colorPrimary"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_phone" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/size_xMini"
+                    android:fontFamily="@font/open_sans_bold"                    />
+
+                <TextView
+                    android:id="@+id/profileAct_tv_mobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+1234567890"
+                    android:textSize="@dimen/size_xMini"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:background="@android:color/white" />
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:padding="@dimen/_10sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:tint="@color/colorPrimary"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_email" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/size_xMini"
+                    android:fontFamily="@font/open_sans_bold"                    />
+
+                <TextView
+                    android:id="@+id/profileAct_tv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="email"
+                    android:textSize="@dimen/size_xMini"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:background="@android:color/white" />
+
+        <LinearLayout
+            style="@style/RippleEffect"
+            android:gravity="center_vertical"
+            android:id="@+id/profileAct_ll_changePwd"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/_10sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:tint="@color/colorPrimary"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_key" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:gravity="center_vertical"
+                android:text="Change Password"
+                android:textSize="@dimen/size_xMini"
+                android:fontFamily="@font/open_sans_bold"                />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            >
+
+            <ProgressBar
+                android:id="@+id/profileAct_pb"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_centerInParent="true"
+                android:elevation="@dimen/elevation"
+                android:indeterminateTint="@color/colorAccent"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/profileAct_btn_logout"
+                android:layout_width="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_btn_enabled"
+                android:padding="@dimen/_16sdp"
+                android:text="Logout"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/size_text_btn" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

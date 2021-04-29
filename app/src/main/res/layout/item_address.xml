@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:numberpicker="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/_2sdp"
+    app:cardCornerRadius="@dimen/_5sdp"
+    android:elevation="@dimen/elevation"
+    app:cardElevation="@dimen/elevation"
+    android:gravity="center"
+    android:layout_height="wrap_content"
+    >
+
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+  <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+      <com.google.android.material.radiobutton.MaterialRadioButton
+          android:paddingTop="@dimen/_30sdp"
+          android:layout_width="wrap_content"
+          android:buttonTint="@color/colorPrimary"
+          android:layout_height="wrap_content"
+          android:id="@+id/addrItem_radio"
+          android:enabled="false"
+          />
+
+        <LinearLayout
+            android:padding="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="@dimen/_5sdp"
+                android:id="@+id/addrItem_tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="address"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/size_xMini" />
+
+            <TextView
+                android:id="@+id/addrItem_tv_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/catItem_iv_itemImg"
+                android:text="city, state, pin"
+                android:textSize="@dimen/size_xMini" />
+
+            <TextView
+                android:id="@+id/addrItem_tv_gst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/catItem_iv_itemImg"
+                android:text="GST"
+                android:textSize="@dimen/size_xMini" />
+
+            <TextView
+                android:id="@+id/addrItem_tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/catItem_iv_itemImg"
+                android:text="phone"
+                android:textSize="@dimen/size_xMini" />
+
+
+
+
+        </LinearLayout>
+
+  </LinearLayout>
+        <View
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDefault"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/addrItem_btn_select"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deliver this address"
+                android:textAllCaps="false"/>
+            <Button
+                android:layout_toStartOf="@+id/addrItem_btn_del"
+                android:id="@+id/addrItem_btn_edit"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/addrItem_btn_del"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remove"
+                android:textAllCaps="false"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>

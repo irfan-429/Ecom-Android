@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:background="@color/colorWhite"
+        android:padding="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/cratesAct_iv_userImg"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_50sdp"
+            android:src="@drawable/ic_person"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="@dimen/_2sdp"/>
+
+        <LinearLayout
+            android:paddingStart="@dimen/_5sdp"
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/cratesAct_iv_userName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/size_large" />
+
+            <TextView
+                android:id="@+id/cratesAct_iv_userMob"
+                android:text="MOB"
+                android:textColor="@color/colorBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_xMini" />
+
+            <TextView
+                android:id="@+id/cratesAct_tv_currentDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10-Sep-2020"
+                android:textSize="@dimen/size_xMini" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/colorDefault"/>
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            style="@style/RippleEffect"
+            android:id="@+id/cratesAct_layout_fromDate"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/elevation"
+            app:cardCornerRadius="@dimen/cardview_default_radius">
+            <LinearLayout
+                android:padding="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:gravity="center"
+                    android:text="FROM"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/size_xMini" />
+                <TextView
+                    android:textColor="@color/colorBlack"
+                    android:gravity="center"
+                    android:id="@+id/cratesAct_tv_fromDate"
+                    android:text=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/size_xMini" />
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            style="@style/RippleEffect"
+            android:id="@+id/cratesAct_layout_toDate"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/elevation"
+            app:cardCornerRadius="@dimen/cardview_default_radius">
+            <LinearLayout
+                android:padding="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:gravity="center"
+                    android:text="TO"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/size_xMini" />
+                <TextView
+                    android:textColor="@color/colorBlack"
+                    android:gravity="center"
+                    android:id="@+id/cratesAct_tv_toDate"
+                    android:text=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/size_xMini" />
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            style="@style/RippleEffect"
+            android:id="@+id/cratesAct_iv_run"
+            android:layout_weight="0.3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_play"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            style="@style/RippleEffect"
+            android:id="@+id/cratesAct_iv_exportPdf"
+            android:layout_weight="0.5"
+            android:padding="@dimen/_10sdp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_pdf"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/stFrag_selectedCustomer"
+        android:padding="@dimen/_5sdp"
+        android:background="@color/colorWhite"
+        android:textColor="@color/colorBlack"
+        android:layout_width="wrap_content"
+        android:fontFamily="@font/open_sans_bold"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/size_xMini" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/colorPrimary"/>
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:textColor="@color/colorBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Opening"
+                android:textSize="@dimen/size_xMini"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="@dimen/size_xMini"
+                android:id="@+id/cratesAct_tv_opening"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:background="@color/colorDefault"/>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:textColor="@color/colorBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crate Bill"
+                android:textSize="@dimen/size_xMini"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="@dimen/size_xMini"
+                android:id="@+id/cratesAct_tv_crateBill"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:background="@color/colorDefault"/>
+
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:textColor="@color/colorBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send Crate"
+                android:textSize="@dimen/size_xMini"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="@dimen/size_xMini"
+                android:id="@+id/cratesAct_tv_sendCrate"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:background="@color/colorDefault"/>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:textColor="@color/colorBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Balance"
+                android:textSize="@dimen/size_xMini"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="@dimen/size_xMini"
+                android:id="@+id/cratesAct_tv_totalBalance"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/colorPrimary"/>
+
+    <LinearLayout
+        android:background="@color/colorGreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:fontFamily="@font/open_sans_bold"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="SrNo"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/size_xMini" />
+
+
+
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:background="@color/colorDefault"/>
+
+        <TextView
+            android:fontFamily="@font/open_sans_bold"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:textColor="@color/colorWhite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="@dimen/size_xMini"
+            />
+
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:background="@color/colorDefault"/>
+
+
+        <TextView
+            android:fontFamily="@font/open_sans_bold"
+            android:padding="@dimen/_5sdp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/colorWhite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Bill"
+            android:textSize="@dimen/size_xMini"
+            />
+
+        <TextView
+            android:fontFamily="@font/open_sans_bold"
+            android:padding="@dimen/_5sdp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/colorWhite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Send Crate"
+            android:textSize="@dimen/size_xMini"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/colorDefault"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cratesAct_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <TextView
+            android:visibility="visible"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You've no crates"
+            android:textSize="@dimen/size_xMini"
+            android:id="@+id/cratesAct_tv_noCrate"/>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

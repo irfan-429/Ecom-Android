@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/transAdminItem_layout"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_5sdp"
+    >
+
+    <RelativeLayout
+        android:padding="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:id="@+id/transAdminItem_img"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            app:srcCompat="@drawable/no_image_available"/>
+
+        <LinearLayout
+            android:layout_toStartOf="@+id/end"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_centerInParent="true"
+            android:layout_toEndOf="@+id/transAdminItem_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:maxLines="1"
+                android:id="@+id/transAdminItem_custName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cust Name"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/size_xMini" />
+
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:id="@+id/transAdminItem_bank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="bank name"
+                android:textSize="@dimen/size_xMini"
+            />
+
+
+
+
+            <TextView
+                android:textSize="@dimen/_10sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:background="@drawable/shape_bg_filled"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:id="@+id/transAdminItem_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/end"
+            android:gravity="end"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/transAdminItem_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="y-m-d"
+                android:textSize="@dimen/size_xMini" />
+
+            <TextView
+                android:id="@+id/transAdminItem_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HH:mm"
+                android:textSize="@dimen/size_xMini" />
+
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:id="@+id/transAdminItem_amt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/INR_symbol"
+                android:textSize="@dimen/size_xMini"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/colorDefault"/>
+
+</LinearLayout>
