@@ -3,26 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/_3sdp"
+    android:layout_margin="@dimen/_2sdp"
     android:gravity="center"
     android:id="@+id/catItemRounded_parent"
     android:orientation="vertical"
     style="@style/RippleEffect"
     android:padding="@dimen/_5sdp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/catItemRounded_img"
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"
-        android:src="@drawable/no_image_available"
-        android:elevation="0dp"
-        app:civ_border_color="@color/colorLightGray"
-        app:civ_border_width="1dp" />
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/img_not_found"
+       />
 
     <TextView
         android:id="@+id/catItemRounded_name"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/_90sdp"
         android:layout_height="wrap_content"
         android:text="Category 1"
+        android:gravity="center"
+        android:textColor="@color/colorBlack"
         android:textSize="@dimen/size_xMini" />
 </LinearLayout>

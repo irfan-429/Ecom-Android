@@ -3,6 +3,7 @@ package com.maq.ecom.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +15,8 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import com.maq.ecom.R;
 import com.maq.ecom.helper.Utils;
-import com.maq.ecom.model.Category;
 import com.maq.ecom.model.CategoryItem;
 import com.maq.ecom.views.activities.CategoryItemDetailsActivity;
-import com.maq.ecom.views.activities.CategoryItemsActivity;
 
 import java.util.List;
 
@@ -64,9 +63,10 @@ public class CategoryItemGridAdapter extends BaseAdapter {
             viewHolder.imageView = gridView.findViewById(R.id.catItem_img);
             viewHolder.catItem_name = gridView.findViewById(R.id.catItem_name);
             viewHolder.code = gridView.findViewById(R.id.catItem_code);
-            viewHolder.size = gridView.findViewById(R.id.catItem_size);
+            viewHolder.desc = gridView.findViewById(R.id.catItem_desc);
             viewHolder.qty = gridView.findViewById(R.id.catItem_qty);
-            viewHolder.cost = gridView.findViewById(R.id.catItem_cost);
+            viewHolder.sellingPrice = gridView.findViewById(R.id.catItem_selling_price);
+            viewHolder.price = gridView.findViewById(R.id.catItem_cost);
 
             // store the holder with the view.
 //            convertView.setTag(viewHolder);
@@ -75,9 +75,14 @@ public class CategoryItemGridAdapter extends BaseAdapter {
                 Utils.loadImage(context, arrayList.get(position).getProductCover(), viewHolder.imageView);
                 viewHolder.catItem_name.setText(arrayList.get(position).getCategoryName());
                 viewHolder.code.setText(arrayList.get(position).getProductCode());
-                viewHolder.size.setText(arrayList.get(position).getIsSize());
-                viewHolder.qty.setText("QTY "+arrayList.get(position).getStock());
-                viewHolder.cost.setText(context.getResources().getString(R.string.INR_symbol) +arrayList.get(position).getSellingPrice());
+                viewHolder.desc.setText(arrayList.get(position).getShortDesc());
+                viewHolder.qty.setText("QTY\n"+arrayList.get(position).getStock());
+                viewHolder.sellingPrice.setText(context.getResources().getString(R.string.INR_symbol) +arrayList.get(position).getSellingPrice());
+
+                if (arrayList.get(position).getPrice() != null && !arrayList.get(position).getPrice().isEmpty() && !arrayList.get(position).getPrice().equals("0.00") && !arrayList.get(position).getPrice().equals(arrayList.get(position).getSellingPrice())) {
+                    viewHolder.price.setText(context.getResources().getString(R.string.INR_symbol) +arrayList.get(position).getPrice());
+                    viewHolder.price.setPaintFlags(viewHolder.price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                }
             }
 
 
@@ -95,7 +100,7 @@ public class CategoryItemGridAdapter extends BaseAdapter {
 
     public static class ViewHolderItem {
         AppCompatImageView imageView;
-        TextView catItem_name, code, size, qty, cost;
+        TextView catItem_name, code, desc, qty, sellingPrice, price;
         RelativeLayout layout;
     }
 

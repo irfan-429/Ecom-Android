@@ -6,8 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="@dimen/_120sdp"
+        android:id="@+id/catItemAct_top_img"
+        android:scaleType="centerCrop"
+        android:src="@drawable/no_image_available"/>
+
+    <TextView
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_below="@+id/catItemAct_top_img"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/colorBlack"
+        android:fontFamily="@font/open_sans_bold"
+        android:textSize="@dimen/size_mini"
+        android:id="@+id/catItemAct_top_name"/>
 
     <GridView
+        android:layout_below="@+id/catItemAct_top_name"
         android:padding="@dimen/_5sdp"
         android:id="@+id/catItemAct_gv"
         android:layout_width="match_parent"

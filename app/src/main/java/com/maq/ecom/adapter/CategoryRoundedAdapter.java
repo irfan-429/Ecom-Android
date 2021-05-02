@@ -58,7 +58,7 @@ public class CategoryRoundedAdapter extends RecyclerView.Adapter<CategoryRounded
         Category model = arrayList.get(position);
 
         //bind data
-        Utils.loadProfileImage(context, model.getCategoryImage(), holder.iv_catImg);
+        Utils.loadImage(context, model.getCategoryImage(), holder.iv_catImg);
         holder.tv_name.setText(model.getCategoryName());
 
         holder.layout.setOnClickListener(v ->
@@ -120,7 +120,7 @@ public class CategoryRoundedAdapter extends RecyclerView.Adapter<CategoryRounded
         TextView tv_name;
 
         @BindView(R.id.catItemRounded_img)
-        CircleImageView iv_catImg;
+        AppCompatImageView iv_catImg;
 
         @BindView(R.id.catItemRounded_parent)
         LinearLayout layout;

@@ -55,7 +55,7 @@ public class TopSellingFragment extends Fragment {
 
         List<CategoryItem> arrayListFiltered = new ArrayList<>();
         for (CategoryItem item : arrayList) {
-            if (item.getType().equals("TopSelleing")) {
+            if (item.getType().equals("TopSelling")) {
                 arrayListFiltered.add(item);
             }
         }

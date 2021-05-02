@@ -27,8 +27,9 @@
         android:layout_gravity="center"
         android:id="@+id/catItem_iv_itemImg"
         android:layout_marginStart="@dimen/_5sdp"
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"
+        android:layout_width="@dimen/_90sdp"
+        android:scaleType="centerCrop"
+        android:layout_height="@dimen/_60sdp"
         app:srcCompat="@drawable/no_image_available" />
 
 
@@ -90,9 +91,6 @@
 
         </LinearLayout>
 
-    </LinearLayout>
-    </LinearLayout>
-
         <TextView
             android:layout_alignTop="@+id/catItem_number_picker"
             android:layout_toStartOf="@+id/catItem_number_picker"
@@ -105,6 +103,8 @@
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/size_xMini" />
 
+    </LinearLayout>
+    </LinearLayout>
 
         <com.travijuu.numberpicker.library.NumberPicker
             android:layout_margin="@dimen/_5sdp"

@@ -79,7 +79,7 @@ public class CategoryItemsAdminActivity extends BaseActivity implements Retrofit
     private void fetchCatItems() {
         loadingDialog.show();
         Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(context).create(ApiConfig.class)
-                .API_getCategoryItems(sessionManager.getFirmId(), category.getCategoryId());
+                .API_getCategoryItems("1", category.getCategoryId());
         RetrofitClient.callRetrofit(apiCall, "ITEMS", this);
     }
 
@@ -201,7 +201,7 @@ public class CategoryItemsAdminActivity extends BaseActivity implements Retrofit
 
                             arrayList.add(new CategoryItem(productId, firmId, productCode, productName, categoryId, categoryName,
                                     price, discount, sellingPrice, shortDesc, description, status, isFeatured, isNew, isPopular,
-                                    productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock));
+                                    productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock, null));
                         }
                         adapter = new CategoryItemsAdapter(context, arrayList);
                         recyclerView.setAdapter(adapter);

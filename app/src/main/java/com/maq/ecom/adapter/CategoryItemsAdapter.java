@@ -32,7 +32,7 @@ import butterknife.ButterKnife;
  * developed by irfan A.
  */
 
-public class CategoryItemsAdapter extends RecyclerView.Adapter<CategoryItemsAdapter.MyViewHolder>  implements Filterable {
+public class CategoryItemsAdapter extends RecyclerView.Adapter<CategoryItemsAdapter.MyViewHolder> implements Filterable {
 
     Context context;
     List<CategoryItem> arrayList;
@@ -61,14 +61,13 @@ public class CategoryItemsAdapter extends RecyclerView.Adapter<CategoryItemsAdap
         holder.tv_itemName.setText(model.getProductName());
         holder.tv_product.setText(model.getProductCode());
         holder.tv_desc.setText(model.getShortDesc());
-        holder.tv_sellingPrice.setText(context.getResources().getString(R.string.INR_symbol) +model.getSellingPrice());
-        holder.tv_qty.setText("Qty "+(int)Double.parseDouble(model.getStock()));
+        holder.tv_sellingPrice.setText(context.getResources().getString(R.string.INR_symbol) + model.getSellingPrice());
+        holder.tv_qty.setText("Qty " + (int) Double.parseDouble(model.getStock()));
 
-        if (model.getPrice()!=null && !model.getPrice().isEmpty() && !model.getPrice().equals(model.getSellingPrice())){
-            holder.tv_price.setText(context.getResources().getString(R.string.INR_symbol) +model.getPrice());
-            holder.tv_price.setPaintFlags( holder.tv_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        if (model.getPrice() != null && !model.getPrice().isEmpty() && !model.getPrice().equals("0.00") && !model.getPrice().equals(model.getSellingPrice())) {
+            holder.tv_price.setText(context.getResources().getString(R.string.INR_symbol) + model.getPrice());
+            holder.tv_price.setPaintFlags(holder.tv_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
-
 
         holder.catItem_layout.setOnClickListener(v -> {
             context.startActivity(new Intent(context, CategoryItemDetailsActivity.class)
@@ -78,10 +77,11 @@ public class CategoryItemsAdapter extends RecyclerView.Adapter<CategoryItemsAdap
 
 
         holder.numberPicker.setMin(0);
-        holder.numberPicker.setMax((int)Double.parseDouble(model.getStock()));
+        holder.numberPicker.setMax((int) Double.parseDouble(model.getStock()));
         holder.numberPicker.setFocusable(true);
-        holder.numberPicker.setValue(model.getQty());
-//
+//        holder.numberPicker.setValue(model.getQty());
+        holder.numberPicker.setValue(0);
+
     }
 
 

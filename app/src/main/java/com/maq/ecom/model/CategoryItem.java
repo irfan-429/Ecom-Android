@@ -7,10 +7,10 @@ public class CategoryItem implements Serializable {
     private String type;
     private String productId, firmId, productCode, productName, categoryId, categoryName,
             price, discount, sellingPrice, shortDesc, description, status, isFeatured, isNew, isPopular,
-            productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock;
+            productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock , categoryBanner;
     int qty = 1;
 
-    public CategoryItem(String type, String productId, String productCode, String productName, String price, String discount, String sellingPrice, String shortDesc, String stock) {
+    public CategoryItem(String type, String productId, String productCode, String productName, String price, String discount, String sellingPrice, String shortDesc, String stock, String  productCover) {
         this.type = type;
         this.productId = productId;
         this.productCode = productCode;
@@ -20,9 +20,10 @@ public class CategoryItem implements Serializable {
         this.sellingPrice = sellingPrice;
         this.shortDesc = shortDesc;
         this.stock = stock;
+        this.productCover = productCover;
     }
 
-    public CategoryItem(String productId, String firmId, String productCode, String productName, String categoryId, String categoryName, String price, String discount, String sellingPrice, String shortDesc, String description, String status, String isFeatured, String isNew, String isPopular, String productCover, String image1, String image2, String image3, String image4, String image5, String image6, String keyFeatures, String isSize, String stock) {
+    public CategoryItem(String productId, String firmId, String productCode, String productName, String categoryId, String categoryName, String price, String discount, String sellingPrice, String shortDesc, String description, String status, String isFeatured, String isNew, String isPopular, String productCover, String image1, String image2, String image3, String image4, String image5, String image6, String keyFeatures, String isSize, String stock, String categoryBanner) {
         this.productId = productId;
         this.firmId = firmId;
         this.productCode = productCode;
@@ -48,6 +49,7 @@ public class CategoryItem implements Serializable {
         this.keyFeatures = keyFeatures;
         this.isSize = isSize;
         this.stock = stock;
+        this.categoryBanner = categoryBanner;
     }
 
 
@@ -257,6 +259,10 @@ public class CategoryItem implements Serializable {
 
     public void setStock(String stock) {
         this.stock = stock;
+    }
+
+    public String getCategoryBanner() {
+        return categoryBanner;
     }
 
     public int getQty() {

@@ -229,8 +229,9 @@ public class HomeFragment extends Fragment implements RetrofitRespondListener {
                             String sellingPrice = object.getString("SellingPrice");
                             String shortDesc = object.getString("ShortDesc");
                             String stock = object.getString("Stock");
+                            String ProductCover = object.getString("ProductCover");
 
-                            arrayListTabItem.add(new CategoryItem(type, productId, productCode, productName, price, discount, sellingPrice, shortDesc, stock));
+                            arrayListTabItem.add(new CategoryItem(type, productId, productCode, productName, price, discount, sellingPrice, shortDesc, stock, ProductCover));
                         }
 
                         initTabs(arrayListTabItem);

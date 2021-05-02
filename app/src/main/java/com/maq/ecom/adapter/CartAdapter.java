@@ -51,10 +51,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
         //bind data
         Utils.loadImage(context, model.getProductCover(), holder.iv_catImg);
-        holder.tv_name.setText(model.getCategoryName());
+        holder.tv_name.setText(model.getProductName());
         holder.tv_products.setText(model.getProductCode());
-        holder.tv_qty.setText("QTY " + (int)Double.parseDouble(model.getStock()));
-        holder.tv_price.setText(model.getPrice());
+        holder.tv_qty.setText("QTY " + (int) Double.parseDouble(model.getStock()));
+        holder.tv_price.setText(context.getResources().getString(R.string.INR_symbol) + model.getSellingPrice());
 
         holder.iv_del.setOnClickListener(v -> {
             arrayList.remove(position);
@@ -63,7 +63,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
 
         holder.numberPicker.setMin(1);
-        holder.numberPicker.setMax((int)Double.parseDouble(model.getStock()));
+        holder.numberPicker.setMax((int) Double.parseDouble(model.getStock()));
         holder.numberPicker.setFocusable(true);
         holder.numberPicker.setValue(model.getQty());
 //

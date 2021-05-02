@@ -3,6 +3,7 @@ package com.maq.ecom.views.activities;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -10,6 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatImageView;
 
 import com.google.gson.JsonObject;
 import com.maq.ecom.R;
@@ -55,6 +58,11 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
 
     @BindView(R.id.catItemAct_tv_notFound)
     TextView tv_notFound;
+    @BindView(R.id.catItemAct_top_name)
+    TextView catItemAct_top_name;
+
+    @BindView(R.id.catItemAct_top_img)
+    AppCompatImageView catItemAct_top_img;
 
 
     @Override
@@ -86,7 +94,7 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
     private void fetchCatItems() {
         loadingDialog.show();
         Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(context).create(ApiConfig.class)
-                .API_getCategoryItems(sessionManager.getFirmId(), category.getCategoryId());
+                .API_getCategoryItems("1", category.getCategoryId());
         RetrofitClient.callRetrofit(apiCall, "ITEMS", this);
     }
 
@@ -147,6 +155,7 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
     private void callback(Response<?> response) throws JSONException {
         int responseCode = response.code();
         if (responseCode == Utils.HTTP_OK) {
+            String categoryBanner = null, categoryName = "";
             JSONObject jsonObject = new JSONObject(response.body().toString());
             if (jsonObject.getString("error").equals("false")) {
                 if (jsonObject.has("allitems")) {
@@ -161,7 +170,7 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
                             String productCode = object.getString("ProductCode");
                             String productName = object.getString("ProductName");
                             String categoryId = object.getString("CategoryId");
-                            String categoryName = object.getString("CategoryName");
+                            categoryName = object.getString("CategoryName");
                             String price = object.getString("Price");
                             String discount = object.getString("Discount");
                             String sellingPrice = object.getString("SellingPrice");
@@ -181,12 +190,22 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
                             String keyFeatures = object.getString("KeyFeatures");
                             String isSize = object.getString("isSize");
                             String stock = object.getString("Stock");
+                            categoryBanner = object.getString("CategoryBanner");
 
                             arrayList.add(new CategoryItem(productId, firmId, productCode, productName, categoryId, categoryName,
                                     price, discount, sellingPrice, shortDesc, description, status, isFeatured, isNew, isPopular,
-                                    productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock));
+                                    productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock, categoryBanner));
                         }
                         gridView.setAdapter(new CategoryItemGridAdapter(context, arrayList));
+
+                        if (categoryBanner != null && !categoryBanner.isEmpty()) {
+                            catItemAct_top_img.setVisibility(View.VISIBLE);
+                            Utils.loadImage(context, categoryBanner, catItemAct_top_img);
+                        }
+
+                        catItemAct_top_name.setText(categoryName);
+                        Utils.underlineTextView(catItemAct_top_name);
+
 
                     } else tv_notFound.setVisibility(View.VISIBLE);
                 }
