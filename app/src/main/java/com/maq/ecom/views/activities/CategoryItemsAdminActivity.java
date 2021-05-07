@@ -79,7 +79,7 @@ public class CategoryItemsAdminActivity extends BaseActivity implements Retrofit
     private void fetchCatItems() {
         loadingDialog.show();
         Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(context).create(ApiConfig.class)
-                .API_getCategoryItems("1", category.getCategoryId());
+                .API_getCategoryItems(sessionManager.getFirmId(), category.getCategoryId());
         RetrofitClient.callRetrofit(apiCall, "ITEMS", this);
     }
 

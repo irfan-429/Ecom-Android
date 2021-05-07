@@ -20,6 +20,9 @@ import com.maq.ecom.R;
 import com.maq.ecom.helper.Utils;
 import com.maq.ecom.model.CategoryItem;
 import com.maq.ecom.views.activities.CategoryItemDetailsActivity;
+import com.maq.ecom.views.activities.MainActivity;
+import com.travijuu.numberpicker.library.Enums.ActionEnum;
+import com.travijuu.numberpicker.library.Interface.ValueChangedListener;
 import com.travijuu.numberpicker.library.NumberPicker;
 
 import java.util.ArrayList;
@@ -37,6 +40,8 @@ public class CategoryItemsAdapter extends RecyclerView.Adapter<CategoryItemsAdap
     Context context;
     List<CategoryItem> arrayList;
     List<CategoryItem> arrayListFull;
+    boolean isFound = false;
+    int foundIndex;
 
     public CategoryItemsAdapter(Context context, List<CategoryItem> arrayList) {
         this.context = context;
@@ -79,8 +84,36 @@ public class CategoryItemsAdapter extends RecyclerView.Adapter<CategoryItemsAdap
         holder.numberPicker.setMin(0);
         holder.numberPicker.setMax((int) Double.parseDouble(model.getStock()));
         holder.numberPicker.setFocusable(true);
-//        holder.numberPicker.setValue(model.getQty());
+
         holder.numberPicker.setValue(0);
+        if (MainActivity.mCartList.size() > 0)
+            for (CategoryItem item : MainActivity.mCartList)
+                if (item.getProductId().equals(model.getProductId()))
+                    holder.numberPicker.setValue(item.getQty());
+
+        holder.numberPicker.setValueChangedListener(new ValueChangedListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void valueChanged(int value, ActionEnum action) {
+
+                model.setQty(value);
+
+                if (MainActivity.mCartList.size() > 0)
+                    for (int i = 0; i < MainActivity.mCartList.size(); i++) {
+                        if (MainActivity.mCartList.get(i).getProductId().equals(model.getProductId())) {
+                              isFound = true;
+                            foundIndex = i;
+                            break;
+                        } else isFound = false;
+                    }
+
+                if (isFound) MainActivity.mCartList.set(foundIndex, model);
+                else MainActivity.mCartList.add(model);
+
+                notifyDataSetChanged();
+            }
+        });
+
 
     }
 

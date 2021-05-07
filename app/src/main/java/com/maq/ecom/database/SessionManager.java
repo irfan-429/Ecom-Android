@@ -23,30 +23,30 @@ public class SessionManager {
     final String CRATE = "CRATE";
     final String DEMAND = "DEMAND";
     final String PAYMENT = "PAYMENT";
-    final String FIRM_ID= "FIRM_ID";
-    final String ADMIN= "ADMIN";
-    final String OUTSTANDING= "OUTSTANDING";
-    final String DUES= "DUES";
-    final String CUSTOMER_TABLE= "CUSTOMER_TABLE";
-    final String BANK_TABLE= "BANK_TABLE";
-    final String ORDER_HIST_TABLE= "ORDER_HIST_TABLE";
-    final String ORDER_HIST_ADMIN_TABLE= "ORDER_HIST_ADMIN_TABLE";
-    final String ROUTE= "ROUTE";
-    final String STATEMENT= "STATEMENT";
-    final String ITEM= "ITEM";
-    final String ITEM_ADMIN= "ITEM_ADMIN";
-    final String TRANS= "TRANS";
-    final String TRANS_ADMIN= "TRANS_ADMIN";
-    final String CRATE_HIST= "CRATE_HIST";
-    final String CRATE_HIST_ADMIN= "CRATE_HIST_ADMIN";
-    final String ORDER_ITEM= "ORDER_ITEM";
-    final String LEDGER= "LEDGER";
-    final String LEDGER_CRT= "LEDGER_CRT";
-    final String FIRM_NAME= "FIRM_NAME";
-    final String FIRM_ADDRESS= "FIRM_ADDRESS";
-    final String USER_ADDRESS= "USER_ADDRESS";
-    final String USER_ID= "USER_ID";
-    final String EMAIL_ID= "EMAIL_ID";
+    final String FIRM_ID = "FIRM_ID";
+    final String ADMIN = "ADMIN";
+    final String OUTSTANDING = "OUTSTANDING";
+    final String DUES = "DUES";
+    final String CUSTOMER_TABLE = "CUSTOMER_TABLE";
+    final String BANK_TABLE = "BANK_TABLE";
+    final String ORDER_HIST_TABLE = "ORDER_HIST_TABLE";
+    final String ORDER_HIST_ADMIN_TABLE = "ORDER_HIST_ADMIN_TABLE";
+    final String ROUTE = "ROUTE";
+    final String STATEMENT = "STATEMENT";
+    final String ITEM = "ITEM";
+    final String ITEM_ADMIN = "ITEM_ADMIN";
+    final String TRANS = "TRANS";
+    final String TRANS_ADMIN = "TRANS_ADMIN";
+    final String CRATE_HIST = "CRATE_HIST";
+    final String CRATE_HIST_ADMIN = "CRATE_HIST_ADMIN";
+    final String ORDER_ITEM = "ORDER_ITEM";
+    final String LEDGER = "LEDGER";
+    final String LEDGER_CRT = "LEDGER_CRT";
+    final String FIRM_NAME = "FIRM_NAME";
+    final String FIRM_ADDRESS = "FIRM_ADDRESS";
+    final String USER_ADDRESS = "USER_ADDRESS";
+    final String USER_ID = "USER_ID";
+    final String EMAIL_ID = "EMAIL_ID";
 //    final String LEDGER_CRT= "LEDGER_CRT";
 
 
@@ -194,7 +194,7 @@ public class SessionManager {
     }
 
     public String getFirmId() {
-        return getSharedPreferences().getString(FIRM_ID, null);
+        return getSharedPreferences().getString(FIRM_ID, "1");
     }
 
 
@@ -241,7 +241,7 @@ public class SessionManager {
     }
 
 
-    public void setCustomerLastFetched(String  date) {
+    public void setCustomerLastFetched(String date) {
         getPreferencesEditor().putString(CUSTOMER_TABLE, date).commit();
     }
 
@@ -270,6 +270,7 @@ public class SessionManager {
     public void setOrderHistAdminLastFetched(String date) {
         getPreferencesEditor().putString(ORDER_HIST_ADMIN_TABLE, date).commit();
     }
+
     public String getOrderHistAdminLastFetched() {
         return getSharedPreferences().getString(ORDER_HIST_ADMIN_TABLE, null);
     }

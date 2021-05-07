@@ -46,7 +46,7 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
     SessionManager sessionManager;
     LoadingDialog loadingDialog;
     List<CategoryItem> arrayList = new ArrayList<>();
-    CategoryItemsAdapter adapter;
+    CategoryItemGridAdapter adapter;
     MenuItem sortItem;
     boolean sortByAsc = false;
     Category category;
@@ -70,6 +70,11 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
         super.onResume();
         if (menu_tv_cartCount != null)
             setCartCounter();
+
+        if (adapter!=null) {
+            adapter =new CategoryItemGridAdapter(context, arrayList);
+            gridView.setAdapter(adapter);
+        }
     }
 
 
@@ -94,7 +99,7 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
     private void fetchCatItems() {
         loadingDialog.show();
         Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(context).create(ApiConfig.class)
-                .API_getCategoryItems("1", category.getCategoryId());
+                .API_getCategoryItems(sessionManager.getFirmId(), category.getCategoryId());
         RetrofitClient.callRetrofit(apiCall, "ITEMS", this);
     }
 
@@ -196,7 +201,9 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
                                     price, discount, sellingPrice, shortDesc, description, status, isFeatured, isNew, isPopular,
                                     productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock, categoryBanner));
                         }
-                        gridView.setAdapter(new CategoryItemGridAdapter(context, arrayList));
+
+                        adapter =new CategoryItemGridAdapter(context, arrayList);
+                        gridView.setAdapter(adapter);
 
                         if (categoryBanner != null && !categoryBanner.isEmpty()) {
                             catItemAct_top_img.setVisibility(View.VISIBLE);

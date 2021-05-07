@@ -30,6 +30,7 @@ public class TopSellingFragment extends Fragment {
     String imgFileName;
     LoadingDialog loadingDialog;
     List<CategoryItem> arrayList;
+    CategoryItemsAdapter adapter;
 
     @BindView(R.id.frag_rv)
     RecyclerView recyclerView;
@@ -49,6 +50,14 @@ public class TopSellingFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (adapter != null)
+            adapter.notifyDataSetChanged();
+    }
+
     private void init() {
         loadingDialog = new LoadingDialog(getActivity());
         sessionManager = new SessionManager(getActivity());
@@ -60,8 +69,9 @@ public class TopSellingFragment extends Fragment {
             }
         }
 
-        if (arrayListFiltered.size() > 0)
-            recyclerView.setAdapter(new CategoryItemsAdapter(getContext(), arrayListFiltered));
-        else tv_notFound.setVisibility(View.VISIBLE);
+        if (arrayListFiltered.size() > 0) {
+            adapter = new CategoryItemsAdapter(getContext(), arrayListFiltered);
+            recyclerView.setAdapter(adapter);
+        } else tv_notFound.setVisibility(View.VISIBLE);
     }
 }

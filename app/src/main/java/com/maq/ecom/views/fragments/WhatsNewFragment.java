@@ -31,6 +31,7 @@ public class WhatsNewFragment extends Fragment {
     String imgFileName;
     LoadingDialog loadingDialog;
     List<CategoryItem> arrayList;
+    CategoryItemsAdapter adapter;
 
     @BindView(R.id.frag_rv)
     RecyclerView recyclerView;
@@ -41,6 +42,15 @@ public class WhatsNewFragment extends Fragment {
     public WhatsNewFragment(List<CategoryItem> arrayList) {
         this.arrayList = arrayList;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (adapter != null)
+            adapter.notifyDataSetChanged();
+    }
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -61,8 +71,10 @@ public class WhatsNewFragment extends Fragment {
             }
         }
 
-        if (arrayListFiltered.size() > 0)
-            recyclerView.setAdapter(new CategoryItemsAdapter(getContext(), arrayListFiltered));
-        else tv_notFound.setVisibility(View.VISIBLE);
+
+        if (arrayListFiltered.size() > 0) {
+            adapter = new CategoryItemsAdapter(getContext(), arrayListFiltered);
+            recyclerView.setAdapter(adapter);
+        }        else tv_notFound.setVisibility(View.VISIBLE);
     }
 }

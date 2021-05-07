@@ -85,6 +85,11 @@ public class CategoryItemDetailsActivity extends BaseActivity {
         super.onResume();
         if (menu_tv_cartCount != null)
             setCartCounter();
+
+        if (MainActivity.mCartList.size() > 0)
+            for (CategoryItem item : MainActivity.mCartList)
+                if (item.getProductId().equals(categoryItem.getProductId()))
+                    numberPicker.setValue(item.getQty());
     }
 
     @Override
@@ -118,9 +123,9 @@ public class CategoryItemDetailsActivity extends BaseActivity {
         }
 
         numberPicker.setFocusable(true);
-        numberPicker.setMin(1);
+        numberPicker.setMin(0);
         numberPicker.setMax((int) Double.parseDouble(categoryItem.getStock()));
-        numberPicker.setValue(1); //default val
+        numberPicker.setValue(0); //default val
         if (MainActivity.mCartList.size() > 0)
             for (CategoryItem item : MainActivity.mCartList)
                 if (item.getProductId().equals(categoryItem.getProductId()))

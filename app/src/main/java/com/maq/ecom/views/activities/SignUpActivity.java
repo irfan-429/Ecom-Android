@@ -85,7 +85,7 @@ public class SignUpActivity extends AppCompatActivity implements RetrofitRespond
     private void requestSignUp(String str_fullname, String str_username, String str_phone, String str_password, String str_cPassword) {
         loadingDialog.show(); //show loader
         Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(context).create(ApiConfig.class)
-                .API_registerNewUser("1", str_fullname, str_username, str_phone, str_password);
+                .API_registerNewUser(sessionManager.getFirmId(), str_fullname, str_username, str_phone, str_password);
         RetrofitClient.callRetrofit(apiCall, "SIGN_UP", this);
     }
 

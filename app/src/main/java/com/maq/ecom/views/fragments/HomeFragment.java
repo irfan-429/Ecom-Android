@@ -107,27 +107,27 @@ public class HomeFragment extends Fragment implements RetrofitRespondListener {
     private void fetchBanners() {
         loadingDialog.show();
         Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(getContext()).create(ApiConfig.class)
-                .API_getUserBannerList("1");
+                .API_getUserBannerList(sessionManager.getFirmId());
         RetrofitClient.callRetrofit(apiCall, "BANNERS", this);
     }
 
     private void fetchCategories() {
         loadingDialog.show();
         Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(getContext()).create(ApiConfig.class)
-                .API_getCategoryList("1");
+                .API_getCategoryList(sessionManager.getFirmId());
         RetrofitClient.callRetrofit(apiCall, "CATEGORIES", this);
     }
 
     private void fetchTabItems() {
         loadingDialog.show();
         Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(getContext()).create(ApiConfig.class)
-                .API_getTabItems("1");
+                .API_getTabItems(sessionManager.getFirmId());
         RetrofitClient.callRetrofit(apiCall, "TAB_ITEMS", this);
     }
 
     private void fetchMarque() {
         Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(getContext()).create(ApiConfig.class)
-                .API_fetchMarque("1");
+                .API_fetchMarque(sessionManager.getFirmId());
         RetrofitClient.callRetrofit(apiCall, "MARQUE", this);
     }
 

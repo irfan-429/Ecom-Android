@@ -207,25 +207,24 @@ public interface ApiConfig {
     @POST("user.php?action=msglist")
     Call<JsonObject> API_fetchMarque(@Query("FirmId") String firmId);
 
-    @POST("user.php?action=updatepayment")
-    Call<JsonObject> API_updateTransaction(@Query("RecvNo") String firmId,
-                                           @Query("CustomerCode") String customerCode,
-                                           @Query("Status") String status
+    @POST("user.php?action=newcart")
+    Call<JsonObject> API_insertCart(@Query("UserId") String UserId,
+                                           @Query("FirmId") String FirmId,
+                                           @Query("ProductId") String ProductId,
+                                           @Query("Price") String Price,
+                                           @Query("SP") String SP,
+                                           @Query("Qty") String Qty
     );
 
-    @POST("user.php?action=mystatement")
-    Call<JsonObject> API_myStatements(@Query("FirmId") String firmId,
-                                      @Query("CustomerCode") String customerCode,
-                                      @Query("FromDate") String fromDate,
-                                      @Query("ToDate") String toDate
-    );
+    @POST("user.php?action=cartlist")
+    Call<JsonObject> API_cartList(@Query("UserId") String UserId);
 
 
-    @POST("user.php?action=mycratestatement")
-    Call<JsonObject> API_myCrateStatements(@Query("FirmId") String firmId,
-                                           @Query("CustomerCode") String customerCode,
-                                           @Query("FromDate") String fromDate,
-                                           @Query("ToDate") String toDate);
+    @POST("user.php?action=removecart")
+    Call<JsonObject> API_removeCart(@Query("UserId") String UserId,
+                                           @Query("ProductId") String ProductId);
+
+
 
     @POST("user.php?action=allcratereport")
     Call<JsonObject> API_allCrateReport(@Query("FirmId") String firmId,

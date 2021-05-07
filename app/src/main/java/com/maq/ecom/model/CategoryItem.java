@@ -8,7 +8,7 @@ public class CategoryItem implements Serializable {
     private String productId, firmId, productCode, productName, categoryId, categoryName,
             price, discount, sellingPrice, shortDesc, description, status, isFeatured, isNew, isPopular,
             productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock , categoryBanner;
-    int qty = 1;
+    int qty = 0;
 
     public CategoryItem(String type, String productId, String productCode, String productName, String price, String discount, String sellingPrice, String shortDesc, String stock, String  productCover) {
         this.type = type;
