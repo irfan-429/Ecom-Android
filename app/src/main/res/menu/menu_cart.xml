@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_list"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_cat_list"
+        android:title="@string/action_cat_list"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/action_search"
         android:orderInCategory="100"
         android:icon="@drawable/ic_search"
@@ -16,7 +23,5 @@
         android:title="@string/action_cart"
         app:actionLayout="@layout/menu_action_item_badge"
         app:showAsAction="always" />
-
-
 
 </menu>

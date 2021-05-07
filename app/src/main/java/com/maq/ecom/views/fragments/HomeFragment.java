@@ -230,8 +230,15 @@ public class HomeFragment extends Fragment implements RetrofitRespondListener {
                             String shortDesc = object.getString("ShortDesc");
                             String stock = object.getString("Stock");
                             String ProductCover = object.getString("ProductCover");
+                            String description = object.getString("Description");
+                            String image1 = object.getString("Image1");
+                            String image2 = object.getString("Image2");
+                            String image3 = object.getString("Image3");
+                            String image4 = object.getString("Image4");
+                            String image5 = object.getString("Image5");
+                            String image6 = object.getString("Image6");
 
-                            arrayListTabItem.add(new CategoryItem(type, productId, productCode, productName, price, discount, sellingPrice, shortDesc, stock, ProductCover));
+                            arrayListTabItem.add(new CategoryItem(type, productId, productCode, productName, price, discount, sellingPrice, shortDesc, stock, ProductCover, description,  image1, image2, image3, image4, image5, image6));
                         }
 
                         initTabs(arrayListTabItem);

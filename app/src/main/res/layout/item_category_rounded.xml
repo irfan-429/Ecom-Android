@@ -8,7 +8,10 @@
     android:id="@+id/catItemRounded_parent"
     android:orientation="vertical"
     style="@style/RippleEffect"
-    android:padding="@dimen/_5sdp">
+    android:paddingLeft="@dimen/_5sdp"
+    android:paddingRight="@dimen/_5sdp"
+    android:paddingTop="@dimen/_5sdp"
+    >
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/catItemRounded_img"

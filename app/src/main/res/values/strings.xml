@@ -36,5 +36,6 @@
     <string name="menu_faq">FAQs</string>
     <string name="menu_terms"><![CDATA[Terms & Conditions]]></string>
     <string name="menu_privacy">Privacy Policy</string>
+    <string name="action_cat_list">Category List</string>
 
 </resources>

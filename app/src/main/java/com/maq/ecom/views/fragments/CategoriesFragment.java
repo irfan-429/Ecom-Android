@@ -119,8 +119,8 @@ public class CategoriesFragment extends Fragment implements RetrofitRespondListe
         if (responseCode == Utils.HTTP_OK) {
             JSONObject jsonObject = new JSONObject(response.body().toString());
             if (jsonObject.getString("error").equals("false")) {
-                if (jsonObject.has("allbanks")) {
-                    JSONArray jsonArray = jsonObject.getJSONObject("allbanks").getJSONArray("allcatlist");
+                if (jsonObject.has("allcategory")) {
+                    JSONArray jsonArray = jsonObject.getJSONObject("allcategory").getJSONArray("allcatlist");
                     if (jsonArray.length() > 0) {
                         arrayList.clear();
                         tv_notFound.setVisibility(View.INVISIBLE);

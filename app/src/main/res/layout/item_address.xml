@@ -3,120 +3,170 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:numberpicker="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_margin="@dimen/_2sdp"
-    app:cardCornerRadius="@dimen/_5sdp"
-    android:elevation="@dimen/elevation"
-    app:cardElevation="@dimen/elevation"
-    android:gravity="center"
     android:layout_height="wrap_content"
-    >
-
-
+    android:layout_margin="@dimen/_5sdp"
+    android:elevation="@dimen/elevation"
+    android:gravity="center"
+    app:cardCornerRadius="@dimen/_5sdp"
+    app:cardElevation="@dimen/elevation">
 
     <LinearLayout
+        android:padding="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-  <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-      <com.google.android.material.radiobutton.MaterialRadioButton
-          android:paddingTop="@dimen/_30sdp"
-          android:layout_width="wrap_content"
-          android:buttonTint="@color/colorPrimary"
-          android:layout_height="wrap_content"
-          android:id="@+id/addrItem_radio"
-          android:enabled="false"
-          />
+        android:orientation="vertical">
 
         <LinearLayout
-            android:padding="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <TextView
-                android:layout_marginTop="@dimen/_5sdp"
-                android:id="@+id/addrItem_tv_address"
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/addrItem_radio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="address"
-                android:fontFamily="@font/open_sans_bold"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/size_xMini" />
+                android:buttonTint="@color/colorPrimary"
+                android:enabled="false"
+                android:paddingTop="@dimen/_10sdp" />
 
-            <TextView
-                android:id="@+id/addrItem_tv_city"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/catItem_iv_itemImg"
-                android:text="city, state, pin"
-                android:textSize="@dimen/size_xMini" />
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/_5sdp"
+                android:paddingRight="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                >
 
-            <TextView
-                android:id="@+id/addrItem_tv_gst"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/catItem_iv_itemImg"
-                android:text="GST"
-                android:textSize="@dimen/size_xMini" />
+                <TextView
+                    android:id="@+id/addrItem_tv_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:text="address"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/size_xMini" />
 
-            <TextView
-                android:id="@+id/addrItem_tv_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/catItem_iv_itemImg"
-                android:text="phone"
-                android:textSize="@dimen/size_xMini" />
+                <TextView
+                    android:id="@+id/addrItem_tv_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/catItem_iv_itemImg"
+                    android:text="city, state, pin"
+                    android:textSize="@dimen/size_xMini" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:fontFamily="@font/open_sans_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/catItem_iv_itemImg"
+                        android:text="GST "
+                        android:textSize="@dimen/size_xMini" />
+
+                    <TextView
+                        android:id="@+id/addrItem_tv_gst"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/catItem_iv_itemImg"
+                        android:text="876543"
+                        android:textSize="@dimen/size_xMini" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:fontFamily="@font/open_sans_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/catItem_iv_itemImg"
+                        android:text="Aadhar "
+                        android:textSize="@dimen/size_xMini" />
+
+                    <TextView
+                        android:id="@+id/addrItem_tv_aadhar_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/catItem_iv_itemImg"
+                        android:text="7654"
+                        android:textSize="@dimen/size_xMini" />
+
+                </LinearLayout>
 
 
+                <TextView
+                    android:id="@+id/addrItem_tv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/catItem_iv_itemImg"
+                    android:text="phone"
+                    android:textSize="@dimen/size_xMini" />
 
+
+            </LinearLayout>
 
         </LinearLayout>
 
-  </LinearLayout>
         <View
-            android:layout_margin="@dimen/_5sdp"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/colorDefault"/>
+            android:layout_margin="@dimen/_5sdp"
+            android:background="@color/colorDefault" />
 
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <Button
+                android:layout_weight="4"
+                android:background="@color/colorGreen"
                 android:id="@+id/addrItem_btn_select"
-                android:layout_margin="@dimen/_5sdp"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/open_sans_bold"
                 android:text="Deliver this address"
-                android:textAllCaps="false"/>
-            <Button
-                android:layout_toStartOf="@+id/addrItem_btn_del"
-                android:id="@+id/addrItem_btn_edit"
-                android:layout_margin="@dimen/_5sdp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
             <Button
+                android:layout_weight="1.5"
+                android:fontFamily="@font/open_sans_bold"
+                android:background="@color/colorYellow"
+                android:id="@+id/addrItem_btn_edit"
+                android:textColor="@color/colorWhite"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_toStartOf="@+id/addrItem_btn_del"
+                android:text="Edit"
+                android:textAllCaps="false" />
+
+            <Button
+                android:layout_weight="2"
+                android:fontFamily="@font/open_sans_bold"
+                android:background="@android:color/holo_red_light"
                 android:id="@+id/addrItem_btn_del"
+                android:textColor="@color/colorWhite"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_margin="@dimen/_5sdp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Remove"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
-        </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
-
 
 
 </androidx.cardview.widget.CardView>

@@ -3,39 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:numberpicker="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_margin="@dimen/_5sdp"
+    android:layout_margin="@dimen/_2sdp"
     app:cardCornerRadius="@dimen/_5sdp"
     android:elevation="@dimen/elevation"
+    android:id="@+id/catItem_layout"
+    style="@style/RippleEffect"
     android:gravity="center"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/_90sdp"
    >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         >
 
 
     <LinearLayout
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_weight="3"
         android:layout_gravity="center"
-        android:scaleType="centerCrop"
         android:id="@+id/catItem_iv_itemImg"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_width="@dimen/_90sdp"
+        android:scaleType="centerCrop"
+        android:layout_height="@dimen/_60sdp"
         app:srcCompat="@drawable/no_image_available" />
 
 
     <LinearLayout
-        android:layout_marginStart="@dimen/_5sdp"
-        android:layout_weight="5"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_weight="2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
@@ -44,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Item Name"
+            android:fontFamily="@font/open_sans_bold"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/size_xMini" />
 
@@ -52,68 +55,81 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/catItem_iv_itemImg"
-            android:text="Product"
+            android:text="Product code"
             android:textSize="@dimen/size_xMini" />
 
 
         <TextView
+            android:id="@+id/catItem_tv_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/catItem_iv_itemImg"
+            android:text="desc"
+            android:textSize="@dimen/size_xMini" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginTop="@dimen/_5sdp"
+                android:id="@+id/catItem_tv_selling_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/catItem_iv_itemImg"
+                android:text="Price "
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/size_xMini" />
+<!--            <TextView-->
+<!--                android:layout_marginStart="@dimen/_10sdp"-->
+<!--                android:layout_marginTop="@dimen/_5sdp"-->
+<!--                android:id="@+id/catItem_tv_price"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Price "-->
+<!--                android:textSize="@dimen/size_xMini" />-->
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_alignTop="@+id/catItem_number_picker"
+            android:layout_toStartOf="@+id/catItem_number_picker"
             android:id="@+id/catItem_tv_qty"
+            android:layout_alignBottom="@+id/catItem_number_picker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/catItem_iv_itemImg"
-            android:text="Qty"
-            android:textSize="@dimen/size_xMini" />
-
-        <TextView
-            android:layout_marginTop="@dimen/_5sdp"
-            android:id="@+id/catItem_tv_selling_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/catItem_iv_itemImg"
-            android:text="Price "
+            android:text="qty "
+            android:gravity="center"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/size_xMini" />
 
-        <View
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorDefault"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_centerInParent="true"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="center"
-                android:tint="@color/colorRed"
-                android:scaleType="centerCrop"
-                android:id="@+id/catItem_iv_del"
-                android:layout_width="@dimen/_24sdp"
-                android:layout_height="@dimen/_24sdp"
-                app:srcCompat="@drawable/ic_baseline_delete" />
-
-
-            <com.travijuu.numberpicker.library.NumberPicker
-                android:layout_margin="@dimen/_5sdp"
-                android:layout_alignParentEnd="true"
-                android:id="@+id/catItem_number_picker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:custom_layout="@layout/number_picker_custom_layout"
-                numberpicker:focusable="true"
-                numberpicker:min="1"
-                numberpicker:unit="1"
-                numberpicker:value="0" />
-
-        </RelativeLayout>
-
+    </LinearLayout>
     </LinearLayout>
 
+        <com.travijuu.numberpicker.library.NumberPicker
+            android:layout_margin="@dimen/_5sdp"
+           android:layout_toStartOf="@+id/catItem_iv_del"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/catItem_number_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:custom_layout="@layout/number_picker_custom_layout"
+            numberpicker:focusable="true"
+            numberpicker:min="1"
+            numberpicker:unit="1"
+            numberpicker:value="0" />
 
-    </LinearLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_marginBottom="@dimen/_7sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:tint="@color/colorRed"
+            android:scaleType="centerCrop"
+            android:id="@+id/catItem_iv_del"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            app:srcCompat="@drawable/ic_baseline_delete" />
 
     </RelativeLayout>
 

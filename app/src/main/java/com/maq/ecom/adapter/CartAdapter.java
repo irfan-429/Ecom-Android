@@ -1,7 +1,9 @@
 package com.maq.ecom.adapter;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,8 +62,19 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         holder.tv_price.setText(context.getResources().getString(R.string.INR_symbol) + model.getSellingPrice());
 
         holder.iv_del.setOnClickListener(v -> {
-            arrayList.remove(position);
-            notifyDataSetChanged();
+
+            new AlertDialog.Builder(context)
+                    .setTitle("Confirmation")
+                    .setMessage("Are you want to delete?")
+                    .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            arrayList.remove(position);
+                            notifyDataSetChanged();
+                        }
+                    })
+                    .setNegativeButton("Cancel", null)
+                    .show();
         });
 
 

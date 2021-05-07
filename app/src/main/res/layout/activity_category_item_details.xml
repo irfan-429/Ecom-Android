@@ -33,6 +33,8 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <TextView
+                    android:padding="@dimen/_5sdp"
+                    android:gravity="center"
                     android:id="@+id/catItem_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -132,13 +134,13 @@
 
 
     <Button
-        android:enabled="false"
         android:layout_alignParentBottom="true"
         android:id="@+id/btn_addToCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Add to cart"
+        android:background="@color/colorPrimary"
+        android:text="Continue Shooping"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/size_xMini" />
 

@@ -84,7 +84,7 @@ public class CategoryItemGridAdapter extends BaseAdapter {
                 CategoryItem model = arrayList.get(position);
 
                 Utils.loadImage(context, model.getProductCover(), viewHolder.imageView);
-                viewHolder.catItem_name.setText(model.getCategoryName());
+                viewHolder.catItem_name.setText(model.getProductName());
                 viewHolder.code.setText(model.getProductCode());
                 viewHolder.desc.setText(model.getShortDesc());
                 viewHolder.qty.setText("QTY\n" +(int) Double.parseDouble(model.getStock()));

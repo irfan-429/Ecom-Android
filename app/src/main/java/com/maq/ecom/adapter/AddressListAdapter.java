@@ -61,7 +61,8 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
         //bind data
         holder.tv_name.setText(model.getAddress());
         holder.tv_city.setText(model.getCity() + ", " + model.getState() + ", " + model.getPin());
-        holder.tv_gst.setText("GST " + model.getGstNo());
+        holder.tv_gst.setText( model.getGstNo());
+        holder.tv_aadhar_no.setText(model.getAadharNo());
         holder.tv_phone.setText("Phone No: " + model.getAltMobile());
 
 
@@ -109,6 +110,8 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
         TextView tv_city;
         @BindView(R.id.addrItem_tv_gst)
         TextView tv_gst;
+        @BindView(R.id.addrItem_tv_aadhar_no)
+        TextView tv_aadhar_no;
         @BindView(R.id.addrItem_tv_phone)
         TextView tv_phone;
 

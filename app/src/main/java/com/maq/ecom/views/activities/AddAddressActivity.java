@@ -5,7 +5,9 @@ import androidx.appcompat.widget.AppCompatSpinner;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -104,6 +106,26 @@ public class AddAddressActivity extends BaseActivity implements RetrofitRespondL
     private void init() {
         loadingDialog = new LoadingDialog(context);
         sessionManager = new SessionManager(context);
+
+        et_GSTNo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable arg) {
+                String s = arg.toString();
+                if (!s.equals(s.toUpperCase())) {
+                    s = s.toUpperCase();
+                    et_GSTNo.setText(s);
+                    et_GSTNo.setSelection(et_GSTNo.getText().length());
+                }
+            }
+        });
     }
 
     private void getProductIntent() {

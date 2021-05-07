@@ -10,7 +10,7 @@ public class CategoryItem implements Serializable {
             productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock , categoryBanner;
     int qty = 0;
 
-    public CategoryItem(String type, String productId, String productCode, String productName, String price, String discount, String sellingPrice, String shortDesc, String stock, String  productCover) {
+    public CategoryItem(String type, String productId, String productCode, String productName, String price, String discount, String sellingPrice, String shortDesc, String stock, String  productCover, String description, String image1, String image2, String image3, String image4, String image5, String image6) {
         this.type = type;
         this.productId = productId;
         this.productCode = productCode;
@@ -21,6 +21,13 @@ public class CategoryItem implements Serializable {
         this.shortDesc = shortDesc;
         this.stock = stock;
         this.productCover = productCover;
+        this.description = description;
+        this.image1 = image1;
+        this.image2 = image2;
+        this.image3 = image3;
+        this.image4 = image4;
+        this.image5 = image5;
+        this.image6 = image6;
     }
 
     public CategoryItem(String productId, String firmId, String productCode, String productName, String categoryId, String categoryName, String price, String discount, String sellingPrice, String shortDesc, String description, String status, String isFeatured, String isNew, String isPopular, String productCover, String image1, String image2, String image3, String image4, String image5, String image6, String keyFeatures, String isSize, String stock, String categoryBanner) {

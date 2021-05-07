@@ -71,12 +71,6 @@ public class CategoryItemDetailsActivity extends BaseActivity {
 
     @OnClick(R.id.btn_addToCart)
     void addToCart() {
-        if (!enable)
-            return;
-
-        if (isFound) MainActivity.mCartList.set(foundIndex, categoryItem);
-        else MainActivity.mCartList.add(categoryItem);
-        Utils.showToast(context, "Added to Cart");
         finish();
     }
 
@@ -111,11 +105,14 @@ public class CategoryItemDetailsActivity extends BaseActivity {
         sliderLayout.setScrollTimeInSec(5); //set scroll delay in seconds :
 
 //        Utils.loadImage(context, categoryItem.getProductCover(), catItem_img);
-        catItem_name.setText(categoryItem.getCategoryName());
+        catItem_name.setText(categoryItem.getProductName());
         catItem_code.setText(categoryItem.getProductCode());
-        catItem_dessc.setText(categoryItem.getDescription());
         catItem_stock.setText("Available Stock " + (int) Double.parseDouble(categoryItem.getStock()));
         catItem_selling_price.setText(getResources().getString(R.string.INR_symbol) + categoryItem.getSellingPrice());
+
+        if (categoryItem.getDescription() != null && !categoryItem.getDescription().isEmpty())
+            catItem_dessc.setText(categoryItem.getDescription());
+        else catItem_dessc.setText(categoryItem.getShortDesc());
 
         if (categoryItem.getPrice() != null && !categoryItem.getPrice().isEmpty() && !categoryItem.getPrice().equals("0.00") && !categoryItem.getPrice().equals(categoryItem.getSellingPrice())) {
             catItem_cost.setText(getResources().getString(R.string.INR_symbol) + categoryItem.getPrice());
@@ -135,11 +132,11 @@ public class CategoryItemDetailsActivity extends BaseActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void valueChanged(int value, ActionEnum action) {
-                if (!enable) {
-                    enable = true;
-                    btn_addToCart.setEnabled(true);
-                    btn_addToCart.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                }
+//                if (!enable) {
+//                    enable = true;
+//                    btn_addToCart.setEnabled(true);
+//                    btn_addToCart.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+//                }
 
                 categoryItem.setQty(value);
 
@@ -151,6 +148,9 @@ public class CategoryItemDetailsActivity extends BaseActivity {
                             break;
                         } else isFound = false;
                     }
+
+                if (isFound) MainActivity.mCartList.set(foundIndex, categoryItem);
+                else MainActivity.mCartList.add(categoryItem);
             }
         });
 
@@ -168,7 +168,6 @@ public class CategoryItemDetailsActivity extends BaseActivity {
         for (String img : imges)
             if (img != null && !img.isEmpty())
                 finalList.add(Utils.IMAGE_COLLECTION + img);
-
 
 
         setSliderViews(finalList);
