@@ -14,7 +14,9 @@ import com.maq.ecom.R;
 import com.maq.ecom.adapter.CategoryItemsAdapter;
 import com.maq.ecom.database.SessionManager;
 import com.maq.ecom.helper.LoadingDialog;
+import com.maq.ecom.interfaces.ItemListener;
 import com.maq.ecom.model.CategoryItem;
+import com.maq.ecom.views.activities.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +25,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.MultipartBody;
 
-public class RecentSellingFragment extends Fragment {
+public class RecentSellingFragment extends Fragment implements ItemListener {
 
     SessionManager sessionManager;
     MultipartBody.Part imgFileSlip = null;
@@ -71,8 +73,14 @@ public class RecentSellingFragment extends Fragment {
         }
 
         if (arrayListFiltered.size() > 0) {
-            adapter = new CategoryItemsAdapter(getContext(), arrayListFiltered);
+            adapter = new CategoryItemsAdapter(getContext(), arrayListFiltered, this::onItemClick);
             recyclerView.setAdapter(adapter);
         }        else tv_notFound.setVisibility(View.VISIBLE);
     }
+
+    @Override
+    public void onItemClick() {
+        ((MainActivity)getActivity()).setCartCounter();
+    }
+
 }

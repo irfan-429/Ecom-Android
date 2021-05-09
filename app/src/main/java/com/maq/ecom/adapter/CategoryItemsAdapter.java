@@ -18,9 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.maq.ecom.R;
 import com.maq.ecom.helper.Utils;
+import com.maq.ecom.interfaces.ItemListener;
 import com.maq.ecom.model.CategoryItem;
 import com.maq.ecom.views.activities.CategoryItemDetailsActivity;
 import com.maq.ecom.views.activities.MainActivity;
+import com.maq.ecom.views.fragments.HomeFragment;
 import com.travijuu.numberpicker.library.Enums.ActionEnum;
 import com.travijuu.numberpicker.library.Interface.ValueChangedListener;
 import com.travijuu.numberpicker.library.NumberPicker;
@@ -40,12 +42,14 @@ public class CategoryItemsAdapter extends RecyclerView.Adapter<CategoryItemsAdap
     Context context;
     List<CategoryItem> arrayList;
     List<CategoryItem> arrayListFull;
+    ItemListener listener;
     boolean isFound = false;
     int foundIndex;
 
-    public CategoryItemsAdapter(Context context, List<CategoryItem> arrayList) {
+    public CategoryItemsAdapter(Context context, List<CategoryItem> arrayList, ItemListener listener) {
         this.context = context;
         this.arrayList = arrayList;
+        this.listener=listener;
         this.arrayListFull = new ArrayList<>(arrayList);
     }
 
@@ -111,6 +115,8 @@ public class CategoryItemsAdapter extends RecyclerView.Adapter<CategoryItemsAdap
                 else MainActivity.mCartList.add(model);
 
                 notifyDataSetChanged();
+
+               listener.onItemClick();
             }
         });
 

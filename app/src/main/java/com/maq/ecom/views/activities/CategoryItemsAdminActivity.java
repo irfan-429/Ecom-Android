@@ -20,6 +20,7 @@ import com.maq.ecom.database.SessionManager;
 import com.maq.ecom.helper.LoadingDialog;
 import com.maq.ecom.helper.Utils;
 import com.maq.ecom.interfaces.ApiConfig;
+import com.maq.ecom.interfaces.ItemListener;
 import com.maq.ecom.interfaces.RetrofitRespondListener;
 import com.maq.ecom.model.Category;
 import com.maq.ecom.model.CategoryItem;
@@ -38,7 +39,7 @@ import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class CategoryItemsAdminActivity extends BaseActivity implements RetrofitRespondListener {
+public class CategoryItemsAdminActivity extends BaseActivity implements RetrofitRespondListener , ItemListener {
 
     String TAG = CategoryItemsAdminActivity.class.getSimpleName();
     Context context = this;
@@ -124,7 +125,7 @@ public class CategoryItemsAdminActivity extends BaseActivity implements Retrofit
                     sortByAsc = false;
                     sortItem.setTitle(getResources().getString(R.string.action_sort_AZ));
                 }
-                adapter = new CategoryItemsAdapter(context, arrayList);
+                adapter = new CategoryItemsAdapter(context, arrayList, this::onItemClick);
                 recyclerView.setAdapter(adapter);
 //                adapter.notifyDataSetChanged();
                 break;
@@ -203,12 +204,17 @@ public class CategoryItemsAdminActivity extends BaseActivity implements Retrofit
                                     price, discount, sellingPrice, shortDesc, description, status, isFeatured, isNew, isPopular,
                                     productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock, null));
                         }
-                        adapter = new CategoryItemsAdapter(context, arrayList);
+                        adapter = new CategoryItemsAdapter(context, arrayList, this::onItemClick);
                         recyclerView.setAdapter(adapter);
                     } else tv_notFound.setVisibility(View.VISIBLE);
                 }
             }
         } else Utils.showToast(context, String.valueOf(responseCode));
+    }
+
+    @Override
+    public void onItemClick() {
+//        ((MainActivity)getActivity()).setCartCounter();
     }
 
 

@@ -72,8 +72,8 @@ public class AddressListActivity extends BaseActivity implements RetrofitRespond
     protected void onResume() {
         super.onResume();
         fetchAddress();
-        if (menu_tv_cartCount != null)
-            setCartCounter();
+//        if (menu_tv_cartCount != null)
+//            setCartCounter();
     }
 
     @Override
@@ -109,31 +109,31 @@ public class AddressListActivity extends BaseActivity implements RetrofitRespond
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_cart, menu);
-        final MenuItem menuItem = menu.findItem(R.id.action_cart);
-
-        View actionView = menuItem.getActionView();
-        menu_tv_cartCount = (TextView) actionView.findViewById(R.id.menu_tv_notiBadge);
-        actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
-        setCartCounter();
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_cart:
-                Utils.navigateTo(context, CartActivity.class);
-                break;
-
-            case R.id.action_search:
-                Utils.navigateTo(context, SearchActivity.class);
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_cart, menu);
+//        final MenuItem menuItem = menu.findItem(R.id.action_cart);
+//
+//        View actionView = menuItem.getActionView();
+//        menu_tv_cartCount = (TextView) actionView.findViewById(R.id.menu_tv_notiBadge);
+//        actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
+//        setCartCounter();
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.action_cart:
+//                Utils.navigateTo(context, CartActivity.class);
+//                break;
+//
+//            case R.id.action_search:
+//                Utils.navigateTo(context, SearchActivity.class);
+//                break;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @Override
     public void onRetrofitSuccess(Response<?> response, String requestName) {
@@ -233,11 +233,11 @@ public class AddressListActivity extends BaseActivity implements RetrofitRespond
         }
     }
 
-    void setCartCounter() {
-        if (MainActivity.mCartList.size() > 0) {
-            menu_tv_cartCount.setText(String.valueOf(MainActivity.mCartList.size()));
-            menu_tv_cartCount.setVisibility(View.VISIBLE);
-        } else menu_tv_cartCount.setVisibility(View.GONE);
-    }
+//    void setCartCounter() {
+//        if (MainActivity.mCartList.size() > 0) {
+//            menu_tv_cartCount.setText(String.valueOf(MainActivity.mCartList.size()));
+//            menu_tv_cartCount.setVisibility(View.VISIBLE);
+//        } else menu_tv_cartCount.setVisibility(View.GONE);
+//    }
 
 }

@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public MenuItem menuItemSync;
     SessionManager sessionManager = new SessionManager(this);
     NavigationView navigationView;
-    public static String visibleFragment;
     DrawerLayout drawer;
     Menu nav_Menu;
     TextView menu_tv_cartCount;
@@ -293,7 +292,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
-    void setCartCounter() {
+   public void setCartCounter() {
         if (MainActivity.mCartList.size() > 0) {
             menu_tv_cartCount.setText(String.valueOf(MainActivity.mCartList.size()));
             menu_tv_cartCount.setVisibility(View.VISIBLE);
