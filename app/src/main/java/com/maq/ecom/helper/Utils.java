@@ -770,4 +770,9 @@ public class Utils {
         return twoDForm.format(d);
     }
 
+    public static float extractFloatPart(String value) {
+        return Float.parseFloat(value.replaceAll(".*?([\\d.]+).*", "$1"));
+
+    }
+
 }

@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment implements RetrofitRespondListener {
     String TAG = HomeFragment.class.getSimpleName();
     SessionManager sessionManager;
     LoadingDialog loadingDialog;
-    List<Category> arrayList;
+   public static List<Category> arrayList;
     List<CategoryItem> arrayListTabItem;
     CategoryRoundedAdapter adapter;
     private ArrayList<Slider> bannerList;

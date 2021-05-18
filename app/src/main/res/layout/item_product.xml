@@ -1,76 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/RippleEffect"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/productItem_layout"
+    style="@style/RippleEffect"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:elevation="@dimen/elevation"
-    app:cardCornerRadius="@dimen/_2sdp"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/_4sdp"
-    android:id="@+id/productItem_layout"
-    >
+    android:elevation="@dimen/elevation"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/_2sdp">
 
     <RelativeLayout
-        android:padding="@dimen/_10sdp"
         android:id="@+id/layout_item"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="@dimen/_10sdp">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:scaleType="centerCrop"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true"
             android:id="@+id/productItem_img"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
-            app:srcCompat="@drawable/no_image_available"/>
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            app:srcCompat="@drawable/no_image_available" />
 
         <LinearLayout
-            android:layout_toStartOf="@+id/productItem_ll_updateStock"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_centerInParent="true"
-            android:layout_toEndOf="@+id/productItem_img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toStartOf="@+id/productItem_ll_updateStock"
+            android:layout_toEndOf="@+id/productItem_img"
             android:orientation="vertical">
 
 
-        <TextView
-            android:id="@+id/productItem_name"
-            android:textColor="@color/colorBlack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Item Name"
-            android:textSize="@dimen/size_xMini"
-            android:fontFamily="@font/balsamiq_sans_regular"
-            />
+<!--            <TextView-->
+<!--                android:id="@+id/productItem_name"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/balsamiq_sans_regular"-->
+<!--                android:text="Item Name"-->
+<!--                android:textColor="@color/colorBlack"-->
+<!--                android:textSize="@dimen/size_xMini" />-->
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Price: "
-                android:textSize="@dimen/size_xMini"
-                />
-        <TextView
-            android:layout_width="wrap_content"
-            android:id="@+id/productItem_cost"
-            android:layout_height="wrap_content"
-            android:text="100"
-            android:textSize="@dimen/size_xMini"
-            android:fontFamily="@font/balsamiq_sans_regular"
-            />
-
-        </LinearLayout>
             <LinearLayout
-                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/product_name"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:layout_height="wrap_content"
+                    android:text="item name "
+                    android:textSize="@dimen/size_xMini" />
+
+                <TextView
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:id="@+id/product_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/balsamiq_sans_regular"
+                    android:text="(code)"
+                    android:textSize="@dimen/size_xMini" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -78,17 +78,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Status: "
-                    android:textSize="@dimen/size_xMini"
-                    />
+                    android:text="Category: "
+                    android:textSize="@dimen/size_xMini" />
+
                 <TextView
-                    android:id="@+id/productItem_status"
+                    android:id="@+id/product_cat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Success"
-                    android:textSize="@dimen/size_xMini"
                     android:fontFamily="@font/balsamiq_sans_regular"
-                    />
+                    android:text=""
+                    android:textSize="@dimen/size_xMini" />
             </LinearLayout>
 
         </LinearLayout>
@@ -96,43 +95,32 @@
 
         <LinearLayout
             android:id="@+id/productItem_ll_updateStock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
             android:gravity="center"
-            android:layout_height="wrap_content"
             android:orientation="vertical">
 
 
+<!--            <TextView-->
+<!--                android:id="@+id/productItem_st"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/balsamiq_sans_regular"-->
+<!--                android:text="Stock"-->
+<!--                android:textColor="@color/colorBlack"-->
+<!--                android:textSize="@dimen/size_xMini" />-->
+
+
             <TextView
-                android:id="@+id/productItem_st"
-                android:textColor="@color/colorBlack"
+                android:id="@+id/product_cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Stock"
-                android:textSize="@dimen/size_xMini"
                 android:fontFamily="@font/balsamiq_sans_regular"
-                />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:id="@+id/productItem_stock"
-                android:layout_height="wrap_content"
                 android:text="100"
-                android:textSize="@dimen/size_xMini"
-                android:fontFamily="@font/balsamiq_sans_regular"
-                />
+                android:textSize="@dimen/size_xMini" />
 
-            <TextView
-                android:id="@+id/productItem_updateStock"
-                android:textColor="@color/colorPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Update Stock"
-                android:textSize="@dimen/size_xMini"
-                android:fontFamily="@font/balsamiq_sans_regular"
-                />
 
         </LinearLayout>
 

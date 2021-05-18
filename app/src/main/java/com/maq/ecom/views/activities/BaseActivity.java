@@ -1,13 +1,20 @@
 package com.maq.ecom.views.activities;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,11 +26,14 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.ui.AppBarConfiguration;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.maq.ecom.R;
+import com.maq.ecom.adapter.ProductCategoryAdapter;
 import com.maq.ecom.database.SessionManager;
 import com.maq.ecom.helper.Utils;
+import com.maq.ecom.views.fragments.HomeFragment;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -62,6 +72,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         init(view);
         setupToolbar();
         setupDrawer();
+        fetchProductItems();
     }
 
     @SuppressLint("InflateParams")
@@ -202,7 +213,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 break;
                 
                 case R.id.action_list:
-
+                    showProductCatDialog(R.layout.dialog_product_category);
                 break;
 
         }
@@ -248,28 +259,28 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 finish();
                 break;
 
-            case R.id.nav_contact_us:
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/")));
-                break;
-
-            case R.id.nav_about:
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/")));
-                break;
-
             case R.id.nav_share:
                 Utils.shareApp(context, "Check this app!!");
                 break;
 
+            case R.id.nav_contact_us:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://blue.maqsolution.com/user.php?action=content&FirmId=1&Id=1")));
+                break;
+
+            case R.id.nav_about:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://blue.maqsolution.com/user.php?action=content&FirmId=1&Id=1")));
+                break;
+
             case R.id.nav_faq:
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://blue.maqsolution.com/user.php?action=content&FirmId=1&Id=1")));
                 break;
 
             case R.id.nav_terms:
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://blue.maqsolution.com/user.php?action=content&FirmId=1&Id=1")));
                 break;
 
             case R.id.nav_privacy:
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://blue.maqsolution.com/user.php?action=content&FirmId=1&Id=1")));
                 break;
 
             case R.id.nav_logout:
@@ -285,7 +296,36 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
 
-
         return true;
     }
+
+
+    void fetchProductItems(){
+
+    }
+
+    private void showProductCatDialog(int layoutId) {
+        ViewGroup viewGroup = ((Activity) context).findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(context).inflate(layoutId, viewGroup, false);
+        //custom dialog
+        Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(dialogView);
+        dialog.setCancelable(true);
+        dialog.show();
+
+        //handle sys nav setting
+//        dialog.setOnKeyListener((arg0, keyCode, event) -> {
+//            if (keyCode == KeyEvent.KEYCODE_BACK) {
+//                //disable back press on lock screen
+//            }
+//            return true;
+//        });
+
+        RecyclerView recyclerView = dialogView.findViewById(R.id.recyclerView);
+        recyclerView.setAdapter(new ProductCategoryAdapter(context, HomeFragment.arrayList));
+
+    }
+
 }

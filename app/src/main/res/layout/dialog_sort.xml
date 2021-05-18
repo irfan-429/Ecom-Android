@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/elevation"
+        app:cardCornerRadius="@dimen/cardview_default_radius">
+
+        <LinearLayout
+            android:paddingBottom="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:padding="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sort By"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/size_large" />
+
+            <TextView
+                style="@style/RippleEffect"
+                android:padding="@dimen/_10sdp"
+                android:id="@+id/product_name_AZ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ProductName (A-->Z)"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/size_mini" />
+
+            <TextView
+                style="@style/RippleEffect"
+                android:padding="@dimen/_10sdp"
+                android:id="@+id/product_name_ZA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ProductName (Z-->A)"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/size_mini" />
+
+            <TextView
+                style="@style/RippleEffect"
+                android:padding="@dimen/_10sdp"
+                android:id="@+id/price_LH"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Price Low to High"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/size_mini" />
+
+            <TextView
+                style="@style/RippleEffect"
+                android:padding="@dimen/_10sdp"
+                android:id="@+id/price_HL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Price High to Low"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/size_mini" />
+
+            <TextView
+                style="@style/RippleEffect"
+                android:padding="@dimen/_10sdp"
+                android:id="@+id/code_asc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Code Ascending"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/size_mini" />
+
+            <TextView
+                style="@style/RippleEffect"
+                android:padding="@dimen/_10sdp"
+                android:id="@+id/code_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Code Descending"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/size_mini" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

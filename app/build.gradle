@@ -92,4 +92,6 @@ dependencies {
     /*https://github.com/excogitatr/android-image-slider*/
     implementation 'com.github.smarteist:autoimageslider:1.1.1'
 
+    /*https://github.com/Rizlee/RangeSeekBar*/
+    implementation "com.rizlee.view:rangeseekbar:1.0.0"
 }

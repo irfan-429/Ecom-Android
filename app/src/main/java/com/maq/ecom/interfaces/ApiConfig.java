@@ -226,44 +226,5 @@ public interface ApiConfig {
 
 
 
-    @POST("user.php?action=allcratereport")
-    Call<JsonObject> API_allCrateReport(@Query("FirmId") String firmId,
-                                        @Query("CustomerCode") String customerCode,
-                                        @Query("FromDate") String fromDate,
-                                        @Query("ToDate") String toDate,
-                                        @Query("Status") String status
-    );
-
-
-    @POST("user.php?action=allcustomers")
-    Call<JsonObject> API_customers(@Query("FirmId") String firmId);
-
-    @POST("user.php?action=allroute")
-    Call<JsonObject> API_allRoute(@Query("FirmId") String firmId);
-
-    @POST("user.php?action=orderexist")
-    Call<JsonObject> API_checkOrderExists(@Query("CustomerCode") String customerCode,
-                                          @Query("FirmId") String firmId,
-                                          @Query("OrderDate") String fromDate
-    );
-
-    @POST("user.php?action=receiptdetail")
-    Call<JsonObject> API_myReceiptItems(@Query("RecvId") String RecvId,
-                                        @Query("CustomerCode") String CustomerCode);
-
-    @POST("user.php?action=crtreceiptdetail")
-    Call<JsonObject> API_myReceiptCrtItems(@Query("RecvId") String RecvId,
-                                           @Query("CustomerCode") String CustomerCode);
-
-    @POST("user.php?action=ledger")
-    Call<JsonObject> API_ledger(@Query("FirmId") String FirmId,
-                                @Query("CustomerCode") String CustomerCode);
-
-    @POST("user.php?action=dashboard")
-    Call<JsonObject> API_summary(@Query("FirmId") String FirmId,
-                                 @Query("CustomerCode") String CustomerCode,
-                                 @Query("Date") String Date,
-                                 @Query("Route") String Route);
-
 
 }

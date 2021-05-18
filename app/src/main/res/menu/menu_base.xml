@@ -4,29 +4,29 @@
 
     <item
         android:id="@+id/action_list"
-        android:orderInCategory="100"
         android:icon="@drawable/ic_cat_list"
+        android:orderInCategory="100"
         android:title="@string/action_cat_list"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_search"
-        android:orderInCategory="100"
         android:icon="@drawable/ic_search"
+        android:orderInCategory="100"
         android:title="@string/action_search"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_cart"
-        android:orderInCategory="100"
-        app:actionLayout="@layout/menu_action_item_badge"
         android:icon="@drawable/ic_cart"
+        android:orderInCategory="100"
         android:title="@string/action_cart"
+        app:actionLayout="@layout/menu_action_item_badge"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_drawer"
-        android:orderInCategory="100"
         android:icon="@drawable/ic_drawer"
+        android:orderInCategory="100"
         android:title="@string/action_search"
         app:showAsAction="always" />
 

@@ -1,14 +1,18 @@
 package com.maq.ecom.views.activities;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -16,7 +20,6 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import com.google.gson.JsonObject;
 import com.maq.ecom.R;
-import com.maq.ecom.adapter.CategoryItemsAdapter;
 import com.maq.ecom.adapter.CategoryItemGridAdapter;
 import com.maq.ecom.database.SessionManager;
 import com.maq.ecom.helper.LoadingDialog;
@@ -26,12 +29,14 @@ import com.maq.ecom.interfaces.RetrofitRespondListener;
 import com.maq.ecom.model.Category;
 import com.maq.ecom.model.CategoryItem;
 import com.maq.ecom.networking.RetrofitClient;
+import com.rizlee.rangeseekbar.RangeSeekBar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -61,6 +66,11 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
     @BindView(R.id.catItemAct_top_name)
     TextView catItemAct_top_name;
 
+    @BindView(R.id.sort_tv)
+    TextView tv_sort;
+    @BindView(R.id.tv_filter)
+    TextView tv_filter;
+
     @BindView(R.id.catItemAct_top_img)
     AppCompatImageView catItemAct_top_img;
 
@@ -71,9 +81,8 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
 //        if (menu_tv_cartCount != null)
 //            setCartCounter();
 
-        if (adapter!=null) {
-            adapter =new CategoryItemGridAdapter(context, arrayList);
-            gridView.setAdapter(adapter);
+        if (adapter != null) {
+            setAdapter(arrayList);
         }
     }
 
@@ -202,8 +211,7 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
                                     productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock, categoryBanner));
                         }
 
-                        adapter =new CategoryItemGridAdapter(context, arrayList);
-                        gridView.setAdapter(adapter);
+                        setAdapter(arrayList);
 
                         if (categoryBanner != null && !categoryBanner.isEmpty()) {
                             catItemAct_top_img.setVisibility(View.VISIBLE);
@@ -220,11 +228,151 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
         } else Utils.showToast(context, String.valueOf(responseCode));
     }
 
+    private void setAdapter(List<CategoryItem> arrayList) {
+        adapter = new CategoryItemGridAdapter(context, arrayList);
+        gridView.setAdapter(adapter);
+    }
+
 //    void setCartCounter() {
 //        if (MainActivity.mCartList.size() > 0) {
 //            menu_tv_cartCount.setText(String.valueOf(MainActivity.mCartList.size()));
 //            menu_tv_cartCount.setVisibility(View.VISIBLE);
 //        } else menu_tv_cartCount.setVisibility(View.GONE);
 //    }
+
+    public void actionSort(View view) {
+        showSortDialog(R.layout.dialog_sort);
+    }
+
+    public void actionFilter(View view) {
+        showFilterDialog(R.layout.dialog_filter);
+    }
+
+    private void showSortDialog(int layoutId) {
+        ViewGroup viewGroup = ((Activity) context).findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(context).inflate(layoutId, viewGroup, false);
+        //custom dialog
+        Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(dialogView);
+        dialog.setCancelable(true);
+        dialog.show();
+
+        //handle sys nav setting
+//        dialog.setOnKeyListener((arg0, keyCode, event) -> {
+//            if (keyCode == KeyEvent.KEYCODE_BACK) {
+//                //disable back press on lock screen
+//            }
+//            return true;
+//        });
+
+        TextView product_name_AZ = dialogView.findViewById(R.id.product_name_AZ);
+        product_name_AZ.setOnClickListener(v -> {
+            Collections.sort(arrayList, (o1, o2) -> o1.getProductName().compareToIgnoreCase(o2.getProductName()));
+            setAdapter(arrayList);
+            dialog.dismiss();
+            tv_sort.setText(product_name_AZ.getText());
+
+        });
+
+        TextView product_name_ZA = dialogView.findViewById(R.id.product_name_ZA);
+        product_name_ZA.setOnClickListener(v -> {
+            Collections.sort(arrayList, (o1, o2) -> o2.getProductName().compareToIgnoreCase(o1.getProductName()));
+            setAdapter(arrayList);
+            dialog.dismiss();
+            tv_sort.setText(product_name_ZA.getText());
+        });
+
+        TextView price_LH = dialogView.findViewById(R.id.price_LH);
+        price_LH.setOnClickListener(v -> {
+            Collections.sort(arrayList, (o1, o2) -> o1.getSellingPrice().compareToIgnoreCase(o2.getSellingPrice()));
+            setAdapter(arrayList);
+            dialog.dismiss();
+            tv_sort.setText(price_LH.getText());
+        });
+
+        TextView price_HL = dialogView.findViewById(R.id.price_HL);
+        price_HL.setOnClickListener(v -> {
+            Collections.sort(arrayList, (o1, o2) -> o2.getSellingPrice().compareToIgnoreCase(o1.getSellingPrice()));
+            setAdapter(arrayList);
+            dialog.dismiss();
+            tv_sort.setText(price_HL.getText());
+        });
+
+        TextView code_asc = dialogView.findViewById(R.id.code_asc);
+        code_asc.setOnClickListener(v -> {
+            Collections.sort(arrayList, (o1, o2) -> o1.getProductCode().compareToIgnoreCase(o2.getProductCode()));
+            setAdapter(arrayList);
+            dialog.dismiss();
+            tv_sort.setText(code_asc.getText());
+        });
+
+        TextView code_desc = dialogView.findViewById(R.id.code_desc);
+        code_desc.setOnClickListener(v -> {
+            Collections.sort(arrayList, (o1, o2) -> o2.getProductCode().compareToIgnoreCase(o1.getProductCode()));
+            setAdapter(arrayList);
+            dialog.dismiss();
+            tv_sort.setText(code_desc.getText());
+        });
+
+
+    }
+
+    float minPrice = 0f;
+    float maxPrice = 0f;
+
+    @SuppressLint("SetTextI18n")
+    private void showFilterDialog(int layoutId) {
+        ViewGroup viewGroup = ((Activity) context).findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(context).inflate(layoutId, viewGroup, false);
+        //custom dialog
+        Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(dialogView);
+        dialog.setCancelable(true);
+        dialog.show();
+
+        //handle sys nav setting
+//        dialog.setOnKeyListener((arg0, keyCode, event) -> {
+//            if (keyCode == KeyEvent.KEYCODE_BACK) {
+//                //disable back press on lock screen
+//            }
+//            return true;
+//        });
+
+        RangeSeekBar sk_priceRange = dialogView.findViewById(R.id.sk_priceRange);
+
+
+        if (maxPrice != 0f)
+            sk_priceRange.setCurrentValues(minPrice, maxPrice);
+
+        dialogView.findViewById(R.id.btn_apply).setOnClickListener(v -> {
+            minPrice = sk_priceRange.getCurrentValues().component1();
+            maxPrice = sk_priceRange.getCurrentValues().component2();
+
+            String INR = context.getResources().getString(R.string.INR_symbol);
+            tv_filter.setText(INR + minPrice + " - " + INR + maxPrice);
+
+            setAdapter(multipleFilter(minPrice, maxPrice, arrayList));
+            dialog.dismiss();
+        });
+
+
+    }
+
+    public List<CategoryItem> multipleFilter(float filterMinPrice, float filterMaxPrice, List<CategoryItem> list) {
+        List<CategoryItem> listAfterFiltering = new ArrayList<>();
+        for (CategoryItem item : list) {
+            float cost = Utils.extractFloatPart(item.getSellingPrice());
+
+            if (cost > filterMinPrice && cost < filterMaxPrice) {
+                listAfterFiltering.add(item);
+            }
+        }
+
+        return listAfterFiltering;
+    }
 
 }

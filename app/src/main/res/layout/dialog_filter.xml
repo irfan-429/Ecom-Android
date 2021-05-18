@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/elevation"
+        app:cardCornerRadius="@dimen/cardview_default_radius">
+
+        <LinearLayout
+            android:paddingBottom="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:padding="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Apply Filter"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/size_large" />
+
+
+            <com.rizlee.rangeseekbar.RangeSeekBar
+                android:layout_margin="@dimen/_10sdp"
+                android:id="@+id/sk_priceRange"
+                app:thumbsNormal="@drawable/ic_point"
+                app:thumbsPressed="@drawable/ic_point"
+                app:centerText=""
+                app:minValue="1"
+                app:leftText="Min"
+                app:maxValue="1000"
+                app:rightText="Max"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:active="true"
+                app:additionalTextMargin="6dp"
+                app:enableGradient="false"
+                app:roundedCorners="true"
+                app:centerColor="@color/colorPrimary"
+                app:sideColor="@color/colorScreenBG"
+                app:showAdditionalText="none"
+                app:showThumbsText="below"
+                app:textColor="@color/colorBlack"
+                app:thumbsTextMargin="6dp" />
+
+            <Button
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_gravity="end"
+                android:id="@+id/btn_apply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apply"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/size_xMini" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

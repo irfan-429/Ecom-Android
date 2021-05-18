@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.maq.ecom.R;
 import com.maq.ecom.helper.Utils;
+import com.maq.ecom.interfaces.CartListener;
 import com.maq.ecom.model.CategoryItem;
 import com.maq.ecom.views.activities.MainActivity;
 import com.travijuu.numberpicker.library.Enums.ActionEnum;
@@ -36,10 +37,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
     List<CategoryItem> arrayList;
     boolean isFound = false;
     int foundIndex;
+    CartListener listener;
 
-    public CartAdapter(Context context, List<CategoryItem> arrayList) {
+    public CartAdapter(Context context, List<CategoryItem> arrayList, CartListener listener) {
         this.context = context;
         this.arrayList = arrayList;
+        this.listener=listener;
     }
 
     @NonNull
@@ -69,8 +72,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
                     .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            arrayList.remove(position);
-                            notifyDataSetChanged();
+                            listener.onCartDelete(arrayList.get(position), position);
                         }
                     })
                     .setNegativeButton("Cancel", null)

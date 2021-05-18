@@ -2,51 +2,158 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorWhite"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".views.activities.CategoryItemsActivity"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:id="@+id/controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/_5sdp">
+
+
+        <RelativeLayout
+            android:onClick="actionSort"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_baseline_sort" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sort By"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/size_normal" />
+
+                <TextView
+                    android:id="@+id/sort_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select"
+                    android:textSize="@dimen/size_xMini" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:background="@color/colorBlack" />
+
+        <RelativeLayout
+            android:onClick="actionFilter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_baseline_filter_list" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Filter"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/size_normal" />
+
+                <TextView
+                    android:id="@+id/tv_filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Apply Filter"
+                    android:textSize="@dimen/size_xMini" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/controls"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:background="@color/colorBlack" />
+
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="@dimen/_120sdp"
         android:id="@+id/catItemAct_top_img"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120sdp"
+        android:layout_below="@+id/view"
         android:scaleType="centerCrop"
-        android:src="@drawable/no_image_available"/>
+        android:src="@drawable/no_image_available"
+        android:visibility="gone" />
 
     <TextView
-        android:layout_margin="@dimen/_10sdp"
-        android:layout_below="@+id/catItemAct_top_img"
+        android:id="@+id/catItemAct_top_name"
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/catItemAct_top_img"
+        android:layout_margin="@dimen/_10sdp"
+        android:fontFamily="@font/open_sans_bold"
+        android:gravity="center"
         android:text=""
         android:textColor="@color/colorBlack"
-        android:fontFamily="@font/open_sans_bold"
-        android:textSize="@dimen/size_mini"
-        android:id="@+id/catItemAct_top_name"/>
+        android:textSize="@dimen/size_mini" />
 
     <GridView
-        android:layout_below="@+id/catItemAct_top_name"
-        android:padding="@dimen/_5sdp"
         android:id="@+id/catItemAct_gv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/catItemAct_top_name"
         android:columnWidth="0dp"
         android:horizontalSpacing="@dimen/_5sdp"
-        android:verticalSpacing="@dimen/_5sdp"
         android:numColumns="2"
+        android:padding="@dimen/_5sdp"
         android:stretchMode="columnWidth"
-        tools:listitem="@layout/item_grid_category_item">
-    </GridView>
+        android:verticalSpacing="@dimen/_5sdp"
+        tools:listitem="@layout/item_grid_category_item" />
 
     <TextView
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_centerInParent="true"
+        android:id="@+id/catItemAct_tv_notFound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_5sdp"
         android:text="Category has no items"
-        android:textSize="@dimen/size_xMini"
-        android:id="@+id/catItemAct_tv_notFound"/>
+        android:textSize="@dimen/size_xMini" />
 
 </RelativeLayout>

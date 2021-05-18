@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    style="@style/RippleEffect"
+    android:id="@+id/product_cat_name"
+    android:layout_width="match_parent"
+    android:textColor="@color/colorBlack"
+    android:layout_height="wrap_content"
+    android:text="cat name"
+    android:padding="@dimen/_10sdp"
+    android:textSize="@dimen/size_normal"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

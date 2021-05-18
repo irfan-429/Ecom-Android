@@ -15,7 +15,8 @@ import android.widget.TextView;
 
 import com.google.gson.JsonObject;
 import com.maq.ecom.R;
-import com.maq.ecom.adapter.ProductAdapter;
+import com.maq.ecom.adapter.ProductAdapterAdmin;
+import com.maq.ecom.adapter.SearchAdapter;
 import com.maq.ecom.database.SessionManager;
 import com.maq.ecom.helper.LoadingDialog;
 import com.maq.ecom.helper.Utils;
@@ -45,7 +46,7 @@ public class ProductsActivity extends BaseActivity implements RetrofitRespondLis
     SessionManager sessionManager;
     LoadingDialog loadingDialog;
     List<Product> arrayList = new ArrayList<>();
-    ProductAdapter adapter;
+    ProductAdapterAdmin adapter;
     MenuItem sortItem;
     boolean sortByAsc = false;
 
@@ -130,7 +131,7 @@ public class ProductsActivity extends BaseActivity implements RetrofitRespondLis
                     sortByAsc = false;
                     sortItem.setTitle(getResources().getString(R.string.action_sort_AZ));
                 }
-                adapter = new ProductAdapter(context, arrayList);
+                adapter = new ProductAdapterAdmin(context, arrayList);
                 recyclerView.setAdapter(adapter);
 //                adapter.notifyDataSetChanged();
                 break;
@@ -209,7 +210,7 @@ public class ProductsActivity extends BaseActivity implements RetrofitRespondLis
                                     discount, sellingPrice, shortDesc, description, status, isFeatured, isNew, isPopular, productCover,
                                     image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock));
                         }
-                        adapter = new ProductAdapter(context, arrayList);
+                        adapter = new ProductAdapterAdmin(context, arrayList);
                         recyclerView.setAdapter(adapter);
                     } else tv_notFound.setVisibility(View.VISIBLE);
                 }

@@ -45,7 +45,7 @@ import retrofit2.Response;
  * developed by irfan A.
  */
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder> implements Filterable, RetrofitRespondListener {
+public class ProductAdapterAdmin extends RecyclerView.Adapter<ProductAdapterAdmin.MyViewHolder> implements Filterable, RetrofitRespondListener {
 
     Context context;
     List<Product> arrayList;
@@ -56,7 +56,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     int position = -1;
     String str_stock;
 
-    public ProductAdapter(Context context, List<Product> arrayList) {
+    public ProductAdapterAdmin(Context context, List<Product> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
         this.arrayListFull = new ArrayList<>(arrayList);
