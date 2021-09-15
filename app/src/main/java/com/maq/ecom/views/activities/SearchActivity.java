@@ -38,7 +38,7 @@ import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class SearchActivity extends BaseActivity  implements RetrofitRespondListener {
+public class SearchActivity extends BaseActivity implements RetrofitRespondListener {
 
     String TAG = CategoryItemsActivity.class.getSimpleName();
     Context context = this;
@@ -71,7 +71,6 @@ public class SearchActivity extends BaseActivity  implements RetrofitRespondList
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +98,7 @@ public class SearchActivity extends BaseActivity  implements RetrofitRespondList
         inflater.inflate(R.menu.menu_search, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search_item);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.requestFocus();
         searchView.setQueryHint(getString(R.string.str_search_by_anything));
         searchView.setBackground(null);
         if (searchView != null) {
@@ -185,11 +185,12 @@ public class SearchActivity extends BaseActivity  implements RetrofitRespondList
                             String keyFeatures = object.getString("KeyFeatures");
                             String isSize = object.getString("isSize");
                             String stock = object.getString("Stock");
-                            String  categoryBanner = object.getString("CategoryBanner");
+                            String unit = object.getString("Unit");
+                            String categoryBanner = object.getString("CategoryBanner");
 
                             arrayList.add(new CategoryItem(productId, firmId, productCode, productName, categoryId, categoryName,
                                     price, discount, sellingPrice, shortDesc, description, status, isFeatured, isNew, isPopular,
-                                    productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock, categoryBanner));
+                                    productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock,unit, categoryBanner));
                         }
                         adapter = new SearchAdapter(context, arrayList);
                         recyclerView.setAdapter(adapter);

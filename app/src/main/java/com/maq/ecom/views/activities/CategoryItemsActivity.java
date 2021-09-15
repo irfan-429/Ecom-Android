@@ -204,11 +204,12 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
                             String keyFeatures = object.getString("KeyFeatures");
                             String isSize = object.getString("isSize");
                             String stock = object.getString("Stock");
+                            String unit = object.getString("Unit");
                             categoryBanner = object.getString("CategoryBanner");
 
                             arrayList.add(new CategoryItem(productId, firmId, productCode, productName, categoryId, categoryName,
                                     price, discount, sellingPrice, shortDesc, description, status, isFeatured, isNew, isPopular,
-                                    productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock, categoryBanner));
+                                    productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock, unit, categoryBanner));
                         }
 
                         setAdapter(arrayList);

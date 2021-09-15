@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    tools:context=".views.activities.SuccessActivity">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_120sdp"
+            android:layout_marginBottom="@dimen/_50sdp"
+            android:background="@drawable/img_success" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Order Placed!!!"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/size_xxLarge" />
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Your order has been successfully places"
+            android:textSize="@dimen/size_large" />
+
+
+        <Button
+            android:id="@+id/successAct_btn_continue"
+            style="@style/RippleEffect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:onClick="actionContinueShopping"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp"
+            android:text="Continue Shopping"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/size_normal" />
+
+
+        <Button
+            android:id="@+id/successAct_btn_viewOrders"
+            android:onClick="actionViewOrders"
+            style="@style/RippleEffect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp"
+            android:text="View all orders"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/size_normal" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</RelativeLayout>

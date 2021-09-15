@@ -17,7 +17,16 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".views.activities.MyOrdersActivity"></activity>
+        <activity
+            android:name=".views.activities.MyOrderDetailsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.activities.SuccessActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.activities.CheckoutActivity"
+            android:exported="true" />
+        <activity android:name=".views.activities.MyOrdersActivity" />
         <activity android:name=".views.activities.NotificationActivity" />
         <activity android:name=".views.activities.CartActivity" />
         <activity android:name=".views.activities.SearchActivity" />

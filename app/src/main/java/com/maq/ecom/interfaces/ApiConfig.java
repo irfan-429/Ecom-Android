@@ -209,11 +209,11 @@ public interface ApiConfig {
 
     @POST("user.php?action=newcart")
     Call<JsonObject> API_insertCart(@Query("UserId") String UserId,
-                                           @Query("FirmId") String FirmId,
-                                           @Query("ProductId") String ProductId,
-                                           @Query("Price") String Price,
-                                           @Query("SP") String SP,
-                                           @Query("Qty") String Qty
+                                    @Query("FirmId") String FirmId,
+                                    @Query("ProductId") String ProductId,
+                                    @Query("Price") String Price,
+                                    @Query("SP") String SP,
+                                    @Query("Qty") String Qty
     );
 
     @POST("user.php?action=cartlist")
@@ -222,9 +222,34 @@ public interface ApiConfig {
 
     @POST("user.php?action=removecart")
     Call<JsonObject> API_removeCart(@Query("UserId") String UserId,
-                                           @Query("ProductId") String ProductId);
+                                    @Query("ProductId") String ProductId);
 
 
+    @POST("user.php?action=checkoutsetting")
+    Call<JsonObject> API_checkoutSetting(@Query("FirmId") String FirmId);
+
+
+    @POST("user.php?action=neworder")
+    Call<JsonObject> API_placeNewOrder(@Query("FirmId") String FirmId,
+                                       @Query("OrderDate") String OrderDate,
+                                       @Query("UserId") String UserId,
+                                       @Query("OrderAmount") String OrderAmount,
+                                       @Query("Nag") String Nag,
+                                       @Query("DelCharge") String DelCharge,
+                                       @Query("PromoCode") String PromoCode,
+                                       @Query("Disc") String Disc,
+                                       @Query("Remarks") String Remarks,
+                                       @Query("SubTotal") String SubTotal,
+                                       @Query("Advance") String Advance,
+                                       @Query("NoOfItems") String NoOfItems,
+                                       @Query("AddressId") String AddressId,
+                                       @Body JsonObject body
+    );
+
+
+    @POST("user.php?action=orderlist")
+    Call<JsonObject> API_myOrders(@Query("FirmId") String FirmId,
+                                  @Query("UserId") String UserId);
 
 
 }

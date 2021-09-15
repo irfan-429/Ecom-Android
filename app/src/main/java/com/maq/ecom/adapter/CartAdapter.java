@@ -54,14 +54,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
     @SuppressLint({"SetTextI18n", "UseCompatLoadingForColorStateLists"})
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         CategoryItem model = arrayList.get(position);
 
         //bind data
         Utils.loadImage(context, model.getProductCover(), holder.iv_catImg);
         holder.tv_name.setText(model.getProductName());
         holder.tv_products.setText(model.getProductCode());
-        holder.tv_qty.setText("QTY " + (int) Double.parseDouble(model.getStock()));
+        holder.tv_qty.setText("QTY " + model.getQty());
         holder.tv_price.setText(context.getResources().getString(R.string.INR_symbol) + model.getSellingPrice());
 
         holder.iv_del.setOnClickListener(v -> {

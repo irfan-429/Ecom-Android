@@ -206,10 +206,11 @@ public class CategoryItemsAdminActivity extends BaseActivity implements Retrofit
                             String keyFeatures = object.getString("KeyFeatures");
                             String isSize = object.getString("isSize");
                             String stock = object.getString("Stock");
+                            String unit = object.getString("Unit");
 
                             arrayList.add(new CategoryItem(productId, firmId, productCode, productName, categoryId, categoryName,
                                     price, discount, sellingPrice, shortDesc, description, status, isFeatured, isNew, isPopular,
-                                    productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock, null));
+                                    productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock,unit,  null));
                         }
                         adapter = new CategoryItemsAdapter(context, arrayList, this::onItemClick);
                         recyclerView.setAdapter(adapter);

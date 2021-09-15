@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -42,7 +43,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * developed by irfan A.
  */
 
-public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Context context = this;
     protected Toolbar toolbar;
@@ -211,9 +212,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 Utils.navigateTo(context, SearchActivity.class);
                 finish();
                 break;
-                
-                case R.id.action_list:
-                    showProductCatDialog(R.layout.dialog_product_category);
+
+            case R.id.action_list:
+                showProductCatDialog(R.layout.dialog_product_category);
                 break;
 
         }
@@ -289,7 +290,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                         .setMessage("Are you sure you want to logout?")
                         .setPositiveButton("Logout", ((dialogInterface, i) -> {
                             sessionManager.clearSharedPref(); //del pref data
-                            setupDrawerItems();
+//                            setupDrawerItems();
+                            Utils.navigateClearTo(context, MainActivity.class);
+
                         }))
                         .setNegativeButton("No", null)
                         .show();
@@ -300,7 +303,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    void fetchProductItems(){
+    void fetchProductItems() {
 
     }
 
@@ -323,6 +326,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 //            return true;
 //        });
 
+        Log.i("TAG", "showProductCatDialog: " + HomeFragment.arrayList.toString());//TODO:
         RecyclerView recyclerView = dialogView.findViewById(R.id.recyclerView);
         recyclerView.setAdapter(new ProductCategoryAdapter(context, HomeFragment.arrayList));
 

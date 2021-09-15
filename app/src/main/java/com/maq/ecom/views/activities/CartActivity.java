@@ -69,7 +69,7 @@ public class CartActivity extends BaseActivity implements RetrofitRespondListene
                 //insert cart into DB
                 loadingDialog.show();
                 requestAddToCart(index);
-            }
+            }else startActivity(new Intent(this, LoginActivity.class));
         }
     }
 
@@ -245,6 +245,7 @@ public class CartActivity extends BaseActivity implements RetrofitRespondListene
                             String sellingPrice = object.getString("SellingPrice");
                             String shortDesc = object.getString("ShortDesc");
                             String stock = object.getString("Stock");
+                            String unit = object.getString("Unit");
                             String ProductCover = object.getString("ProductCover");
                             String description = object.getString("Description");
                             String image1 = object.getString("Image1");
@@ -254,7 +255,7 @@ public class CartActivity extends BaseActivity implements RetrofitRespondListene
                             String image5 = object.getString("Image5");
                             String image6 = object.getString("Image6");
 
-                            MainActivity.mCartList.add(new CategoryItem(null, productId, productCode, productName, price, "0", sellingPrice, shortDesc, stock, ProductCover, description, image1, image2, image3, image4, image5, image6));
+                            MainActivity.mCartList.add(new CategoryItem(null, productId, productCode, productName, price, "0", sellingPrice, shortDesc, stock,unit, ProductCover, description, image1, image2, image3, image4, image5, image6));
                         }
 
                         setAdapter();

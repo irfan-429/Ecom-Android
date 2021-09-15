@@ -20,6 +20,7 @@ import com.maq.ecom.helper.Utils;
 import com.maq.ecom.interfaces.DeleteAddress;
 import com.maq.ecom.model.Address;
 import com.maq.ecom.views.activities.AddAddressActivity;
+import com.maq.ecom.views.activities.CheckoutActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,14 +62,14 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
         //bind data
         holder.tv_name.setText(model.getAddress());
         holder.tv_city.setText(model.getCity() + ", " + model.getState() + ", " + model.getPin());
-        holder.tv_gst.setText( model.getGstNo());
+        holder.tv_gst.setText(model.getGstNo());
         holder.tv_aadhar_no.setText(model.getAadharNo());
         holder.tv_phone.setText("Phone No: " + model.getAltMobile());
 
 
         if (mCheckedPostion == -1) {
             if (model.getIsDefault().equals("1"))
-            holder.radio.setChecked(true);
+                holder.radio.setChecked(true);
         } else
             holder.radio.setChecked(position == mCheckedPostion);
 
@@ -84,9 +85,12 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
         );
 
         holder.btn_select.setOnClickListener(v -> {
-//                selectedBankId = arrayList.get(position).getBankId();
+               String addressId = arrayList.get(position).getId();
                     mCheckedPostion = position;
                     notifyDataSetChanged();
+                    context.startActivity(new Intent(context, CheckoutActivity.class)
+                    .putExtra("addressId", addressId)
+                );
                 }
         );
     }

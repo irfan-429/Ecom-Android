@@ -5,6 +5,40 @@
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/bg_btn_enabled.xml" value="0.2722222222222222" />
+        <entry key="app/src/main/res/layout/activity_add_address.xml" value="0.23148148148148148" />
+        <entry key="app/src/main/res/layout/activity_address_list.xml" value="0.23148148148148148" />
+        <entry key="app/src/main/res/layout/activity_cart.xml" value="0.23148148148148148" />
+        <entry key="app/src/main/res/layout/activity_checkout.xml" value="0.23148148148148148" />
+        <entry key="app/src/main/res/layout/activity_container.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_crate_details.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_create_banner.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_my_orders.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.30512820512820515" />
+        <entry key="app/src/main/res/layout/activity_success.xml" value="0.23148148148148148" />
+        <entry key="app/src/main/res/layout/frag_all_orders.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_categories.xml" value="0.21481481481481482" />
+        <entry key="app/src/main/res/layout/fragment_orders.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/fragments_orders.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/item_address.xml" value="0.23148148148148148" />
+        <entry key="app/src/main/res/layout/item_bank.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/item_banner.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/item_cart.xml" value="0.23148148148148148" />
+        <entry key="app/src/main/res/layout/item_category.xml" value="0.23148148148148148" />
+        <entry key="app/src/main/res/layout/item_category_item.xml" value="0.23148148148148148" />
+        <entry key="app/src/main/res/layout/item_category_rounded.xml" value="0.23148148148148148" />
+        <entry key="app/src/main/res/layout/item_checkout.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/item_crate_report.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/item_crate_statement.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/item_customer.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/item_grid_category.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/item_my_order.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

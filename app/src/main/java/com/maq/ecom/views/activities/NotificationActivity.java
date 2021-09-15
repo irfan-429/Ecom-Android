@@ -8,8 +8,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.gson.JsonObject;
 import com.maq.ecom.R;
 import com.maq.ecom.database.SessionManager;
+import com.maq.ecom.interfaces.ApiConfig;
+import com.maq.ecom.networking.RetrofitClient;
+
+import retrofit2.Call;
 
 public class NotificationActivity extends AppCompatActivity {
 
@@ -25,6 +30,8 @@ public class NotificationActivity extends AppCompatActivity {
             startActivityForResult(new Intent(context, LoginActivity.class), 200);
 
     }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
