@@ -56,7 +56,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyViewHo
 
         //bind data
         holder.tv_num.setText("Order No " + model.getOrderNo());
-        holder.tv_stats.setText(model.getNag() + " Nag / " + model.getItems() + " Item(s)");
+        holder.tv_stats.setText(model.getNag() + " / " + model.getItems());
         holder.tv_adv.setText("Advance " + context.getResources().getString(R.string.INR_symbol) + model.getAdvance());
         holder.tv_date.setText("Order placed on " + model.getOrderDate());
         holder.tv_amt.setText("For amount " + context.getResources().getString(R.string.INR_symbol) + model.getOrderAmount());
