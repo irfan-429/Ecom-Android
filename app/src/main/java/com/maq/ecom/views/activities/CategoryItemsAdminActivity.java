@@ -69,7 +69,7 @@ public class CategoryItemsAdminActivity extends BaseActivity implements Retrofit
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category_items);
+        setContentView(R.layout.activity_category_items_admin);
         super.setupToolbar("Items");
         ButterKnife.bind(this);
         init();

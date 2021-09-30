@@ -40,6 +40,7 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Response;
 
+//TODO admin
 public class BannersActivity extends BaseActivity implements RetrofitRespondListener {
 
     String TAG = BannersActivity.class.getSimpleName();

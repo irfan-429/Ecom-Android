@@ -61,8 +61,10 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyViewHo
         holder.tv_date.setText("Order placed on " + model.getOrderDate());
         holder.tv_amt.setText("For amount " + context.getResources().getString(R.string.INR_symbol) + model.getOrderAmount());
 
-        holder.btn_received.setOnClickListener(v -> {
-            context.startActivity(new Intent(context, MyOrderDetailsActivity.class));
+        holder.tv_viewDetails.setOnClickListener(v -> {
+            String orderId= arrayList.get(position).getOrderNo();
+            context.startActivity(new Intent(context, MyOrderDetailsActivity.class)
+                    .putExtra("order_id", orderId));
         });
 
 

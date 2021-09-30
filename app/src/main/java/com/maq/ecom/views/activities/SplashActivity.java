@@ -24,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
 //        sessionManager.setFirmId("1");
-//        Utils.navigateTo(this, MainActivity.class); finish();
+//        Utils.navigateTo(this, CategoryItemsAdminActivity.class); finish();
         delayScreen();
     }
 
