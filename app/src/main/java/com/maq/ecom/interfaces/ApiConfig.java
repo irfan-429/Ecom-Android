@@ -250,10 +250,13 @@ public interface ApiConfig {
     Call<JsonObject> API_myOrders(@Query("FirmId") String FirmId,
                                   @Query("UserId") String UserId);
 
+    @POST("user.php?action=adminorderlist")
+    Call<JsonObject> API_orders(@Query("FirmId") String FirmId,
+                                @Query("FromDate") String FromDate,
+                                @Query("ToDate") String ToDate);
+
     @POST("user.php?action=orderdetail")
     Call<JsonObject> API_orderDetail(@Query("OrderId") String OrderId);
-
-
 
 
 }

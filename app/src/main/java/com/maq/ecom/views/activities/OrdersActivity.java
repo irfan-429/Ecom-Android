@@ -74,7 +74,7 @@ public class OrdersActivity extends BaseActivity implements RetrofitRespondListe
     void reloadRecord() {
         fromDate = tv_fromDate.getText().toString();
         toDate = tv_toDate.getText().toString();
-//        fetchLedgerCrtOffline();
+        fetchMyOrders();
     }
 
     @Override
@@ -137,7 +137,7 @@ public class OrdersActivity extends BaseActivity implements RetrofitRespondListe
     private void fetchMyOrders() {
         loadingDialog.show();
         Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(context).create(ApiConfig.class)
-                .API_myOrders(sessionManager.getFirmId(), "0");
+                .API_orders(sessionManager.getFirmId(), fromDate, toDate);
         RetrofitClient.callRetrofit(apiCall, "ORDERS", this);
     }
 
