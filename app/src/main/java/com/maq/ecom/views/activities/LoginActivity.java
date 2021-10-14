@@ -42,8 +42,8 @@ public class LoginActivity extends AppCompatActivity implements RetrofitRespondL
     @BindView(R.id.et_password)
     EditText et_password;
 
-    @BindView(R.id.radio_grp)
-    RadioGroup radioGroup;
+//    @BindView(R.id.radio_grp)
+//    RadioGroup radioGroup;
 
     @OnClick(R.id.btn_login)
     void login() {
@@ -71,14 +71,14 @@ public class LoginActivity extends AppCompatActivity implements RetrofitRespondL
     private void init() {
         loadingDialog = new LoadingDialog(context);
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (radioGroup.getCheckedRadioButtonId() == R.id.radio_admin)
-                    isAdmin = "1";
-                else isAdmin = "0";
-            }
-        });
+//        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+//                if (radioGroup.getCheckedRadioButtonId() == R.id.radio_admin)
+//                    isAdmin = "1";
+//                else isAdmin = "0";
+//            }
+//        });
     }
 
 
@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity implements RetrofitRespondL
     private void requestSignIn(String str_username, String str_password) {
         loadingDialog.show(); //show loader
         Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(context).create(ApiConfig.class)
-                .API_requestLogin(str_username, str_password, isAdmin);
+                .API_requestLogin(str_username, str_password);
         RetrofitClient.callRetrofit(apiCall, "LOGIN", this);
     }
 
@@ -138,11 +138,13 @@ public class LoginActivity extends AppCompatActivity implements RetrofitRespondL
                 sessionManager.setProfileImg(objectUser.getString("UserImage"));
                 sessionManager.setFirmId(objectUser.getString("FirmId"));
 
-                if (isAdmin.equals("1")) sessionManager.setAdmin(true);
+                if (objectUser.getString("isAdmin").equals("1")) sessionManager.setAdmin(true);
                 sessionManager.setIsLoggedIn(true);
 
-                setResult(Activity.RESULT_OK, new Intent());
-                finish();
+                Utils.navigateClearTo(context, MainActivity.class);
+
+//                setResult(Activity.RESULT_OK, new Intent());
+//                finish();
             }
         } else Utils.showToast(context, String.valueOf(responseCode));
     }

@@ -14,33 +14,31 @@
         android:layout_height="match_parent">
 
         <include
-            android:layout_above="@+id/btm_nav_view"
-            layout="@layout/app_bar_main"
+            android:layout_above="@+id/btm_nav_view_admin"
+            layout="@layout/app_bar_main_admin"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/btm_nav_view"
+            android:id="@+id/btm_nav_view_admin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:background="@color/colorWhite"
-            app:menu="@menu/activity_main_btm_nav" />
-
+            app:menu="@menu/activity_main_btm_nav_admin" />
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
+        android:id="@+id/nav_view_admin"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
-
+        app:menu="@menu/activity_main_drawer_admin" />
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

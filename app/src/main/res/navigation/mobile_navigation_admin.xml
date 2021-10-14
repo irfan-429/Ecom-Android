@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home_admin">
+
+    <fragment
+        android:id="@+id/nav_home_admin"
+        android:name="com.maq.ecom.views.fragments.admin.HomeFragmentAdmin"
+        android:label=""
+        tools:layout="@layout/fragment_home_admin" />
+
+    <fragment
+        android:id="@+id/nav_categories_admin"
+        android:name="com.maq.ecom.views.fragments.admin.CategoriesFragmentAdmin"
+        android:label=""
+        tools:layout="@layout/fragment_categories_admin" />
+
+    <fragment
+        android:id="@+id/nav_noti"
+        android:name="com.maq.ecom.views.fragments.ItemsFragment"
+        android:label=""
+        tools:layout="@layout/fragment_items" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.maq.ecom.views.fragments.ProfileFragment"
+        android:label=""
+        tools:layout="@layout/fragment_profile" />
+</navigation>

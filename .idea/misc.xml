@@ -11,21 +11,40 @@
         <entry key="app/src/main/res/drawable/bg_btn_enabled.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/activity_add_address.xml" value="0.23148148148148148" />
         <entry key="app/src/main/res/layout/activity_address_list.xml" value="0.23148148148148148" />
+        <entry key="app/src/main/res/layout/activity_banners.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/activity_base.xml" value="0.24537037037037038" />
+        <entry key="app/src/main/res/layout/activity_base_admin.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_cart.xml" value="0.23148148148148148" />
         <entry key="app/src/main/res/layout/activity_category_items.xml" value="0.18981481481481483" />
         <entry key="app/src/main/res/layout/activity_category_items_admin.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_checkout.xml" value="0.23148148148148148" />
         <entry key="app/src/main/res/layout/activity_container.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_crate_details.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_crate_st.xml" value="0.30512820512820515" />
         <entry key="app/src/main/res/layout/activity_create_banner.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_create_category.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/activity_create_product.xml" value="0.24537037037037038" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.18981481481481483" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.24537037037037038" />
+        <entry key="app/src/main/res/layout/activity_main_admin.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_my_order_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_my_orders.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_my_transactions.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_orders.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_products.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.30512820512820515" />
         <entry key="app/src/main/res/layout/activity_success.xml" value="0.23148148148148148" />
+        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.24537037037037038" />
+        <entry key="app/src/main/res/layout/app_bar_main_admin.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/base_toolbar.xml" value="0.24537037037037038" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/content_main_admin.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/dialog_product_category.xml" value="0.24537037037037038" />
         <entry key="app/src/main/res/layout/frag_all_orders.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_categories.xml" value="0.21481481481481482" />
+        <entry key="app/src/main/res/layout/fragment_categories_admin.xml" value="0.24537037037037038" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24537037037037038" />
+        <entry key="app/src/main/res/layout/fragment_home_admin.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/fragment_orders.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/fragments_orders.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/item_address.xml" value="0.23148148148148148" />
@@ -46,6 +65,16 @@
         <entry key="app/src/main/res/layout/item_product_admin.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/item_product_cat.xml" value="0.18981481481481483" />
         <entry key="app/src/main/res/layout/item_spinner.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/menu/activity_main_btm_nav.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/menu/activity_main_btm_nav_admin.xml" value="0.2953125" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.30512820512820515" />
+        <entry key="app/src/main/res/menu/activity_main_drawer_admin.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.24537037037037038" />
+        <entry key="app/src/main/res/menu/menu_base.xml" value="0.24537037037037038" />
+        <entry key="app/src/main/res/menu/menu_base_admin.xml" value="0.2953125" />
+        <entry key="app/src/main/res/menu/menu_main.xml" value="0.24537037037037038" />
+        <entry key="app/src/main/res/menu/menu_main_admin.xml" value="0.2953125" />
+        <entry key="app/src/main/res/menu/menu_search.xml" value="0.24537037037037038" />
       </map>
     </option>
   </component>

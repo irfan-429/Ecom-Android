@@ -18,6 +18,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".views.activities.OrdersActivity"
+            android:exported="true" />
+        <activity
             android:name=".views.activities.MyOrderDetailsActivity"
             android:exported="true" />
         <activity

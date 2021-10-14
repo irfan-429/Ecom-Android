@@ -3,40 +3,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item
-        android:id="@+id/nav_home"
-        android:icon="@drawable/ic_home_clrd"
-        android:title="@string/menu_home" />
+    <group android:id="@+id/grp1">
+        <!--    <item-->
+        <!--        android:id="@+id/nav_home"-->
+        <!--        android:icon="@drawable/ic_home"-->
+        <!--        android:title="@string/menu_home" />-->
 
-    <item
-        android:id="@+id/nav_banner"
-        android:icon="@drawable/ic_banner"
-        android:title="@string/menu_banner" />
+        <item
+            android:id="@+id/nav_banners"
+            android:icon="@drawable/ic_banner"
+            android:title="@string/menu_banners" />
 
-    <item
-        android:id="@+id/nav_categories"
-        android:icon="@drawable/ic_sq_boxes_clrd"
-        android:title="@string/menu_categories" />
+        <item
+            android:id="@+id/nav_orders"
+            android:icon="@drawable/ic_order"
+            android:title="@string/menu_orders" />
 
-    <item
-        android:id="@+id/nav_noti"
-        android:icon="@drawable/ic_bags_clrd"
-        android:title="@string/menu_items" />
+        <item
+            android:id="@+id/nav_product"
+            android:icon="@drawable/ic_product"
+            android:title="@string/menu_products" />
 
-    <item
-        android:id="@+id/nav_profile"
-        android:icon="@drawable/ic_profile_clrd"
-        android:title="@string/menu_profile" />
-
-    <group
-        android:id="@+id/group1"
-        android:checkableBehavior="none">
-
-    <item
-        android:id="@+id/nav_logout"
-        android:icon="@drawable/ic_logout"
-        android:title="@string/menu_logout" />
 
     </group>
 
+    <group android:id="@+id/grp2">
+
+        <item
+            android:id="@+id/nav_notifications"
+            android:icon="@drawable/ic_notifications"
+            android:title="@string/menu_notifications" />
+
+        <item
+            android:id="@+id/nav_change_pwd"
+            android:icon="@drawable/ic_lock"
+            android:title="@string/menu_change_pwd" />
+
+    </group>
+
+    <group android:id="@+id/grp3">
+
+        <item
+            android:id="@+id/nav_contact_us"
+            android:icon="@drawable/ic_contact_us"
+            android:title="@string/menu_contact_us" />
+
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_about"
+            android:title="@string/menu_about" />
+
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_share"
+            android:title="@string/menu_share" />
+        <item
+            android:id="@+id/nav_faq"
+            android:icon="@drawable/ic_faq"
+            android:title="@string/menu_faq" />
+        <item
+            android:id="@+id/nav_terms"
+            android:icon="@drawable/ic_terms"
+            android:title="@string/menu_terms" />
+        <item
+            android:id="@+id/nav_privacy"
+            android:icon="@drawable/ic_privacy"
+            android:title="@string/menu_privacy" />
+
+    </group>
+
+    <group
+        android:id="@+id/group4"
+        android:checkableBehavior="none">
+
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/menu_logout" />
+
+    </group>
 </menu>

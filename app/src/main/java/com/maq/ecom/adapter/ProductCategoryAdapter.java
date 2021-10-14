@@ -57,7 +57,7 @@ public class ProductCategoryAdapter extends RecyclerView.Adapter<ProductCategory
         //bind data
         holder.tv_name.setText(model.getCategoryName());
 
-        holder.layout.setOnClickListener(v ->
+        holder.tv_name.setOnClickListener(v ->
                 context.startActivity(new Intent(context, CategoryItemsActivity.class)
                         .putExtra("category", arrayList.get(position))
                 )
@@ -112,14 +112,8 @@ public class ProductCategoryAdapter extends RecyclerView.Adapter<ProductCategory
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.catItemRounded_name)
+        @BindView(R.id.product_cat_name)
         TextView tv_name;
-
-        @BindView(R.id.catItemRounded_img)
-        AppCompatImageView iv_catImg;
-
-        @BindView(R.id.catItemRounded_parent)
-        LinearLayout layout;
 
         public MyViewHolder(View itemView) {
             super(itemView);

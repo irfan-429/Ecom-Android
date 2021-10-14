@@ -13,6 +13,8 @@
     <string name="menu_profile">Profile</string>
     <string name="menu_cart">My Cart</string>
     <string name="menu_banner">Banner</string>
+    <string name="menu_banners">Banners</string>
+    <string name="menu_products">Products</string>
     <string name="action_search_cat">Search Category</string>
     <string name="str_incorrect">incorrect</string>
     <string name="action_share">Share</string>
@@ -28,6 +30,7 @@
     <string name="action_cart">Cart</string>
     <string name="menu_notifications">Notifications</string>
     <string name="menu_my_orders">My Orders</string>
+    <string name="menu_orders">Orders</string>
     <string name="menu_change_pwd">Change Password</string>
     <string name="menu_manage_address">Manage Address</string>
     <string name="menu_contact_us">Contact Us</string>

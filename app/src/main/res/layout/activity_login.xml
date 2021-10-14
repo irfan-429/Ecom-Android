@@ -113,38 +113,38 @@
 <!--            android:text="Remember Me"/>-->
 
 
-        <RadioGroup
-            android:id="@+id/radio_grp"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:weightSum="2.5"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+<!--        <RadioGroup-->
+<!--            android:id="@+id/radio_grp"-->
+<!--            android:layout_marginBottom="@dimen/_10sdp"-->
+<!--            android:weightSum="2.5"-->
+<!--            android:layout_marginTop="@dimen/_5sdp"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
 
-            <RadioButton
-                android:id="@+id/radio_admin"
-                android:layout_gravity="center"
-                android:buttonTint="@color/colorPrimary"
-                android:textSize="@dimen/size_xMini"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Admin"
-                />
+<!--            <RadioButton-->
+<!--                android:id="@+id/radio_admin"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:buttonTint="@color/colorPrimary"-->
+<!--                android:textSize="@dimen/size_xMini"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Admin"-->
+<!--                />-->
 
-            <RadioButton
-                android:id="@+id/radio_customer"
-                android:checked="true"
-                android:layout_marginStart="@dimen/_50sdp"
-                android:buttonTint="@color/colorPrimary"
-                android:textSize="@dimen/size_xMini"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Customer"
-                />
+<!--            <RadioButton-->
+<!--                android:id="@+id/radio_customer"-->
+<!--                android:checked="true"-->
+<!--                android:layout_marginStart="@dimen/_50sdp"-->
+<!--                android:buttonTint="@color/colorPrimary"-->
+<!--                android:textSize="@dimen/size_xMini"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Customer"-->
+<!--                />-->
 
-        </RadioGroup>
+<!--        </RadioGroup>-->
 
         <Button
             android:layout_margin="@dimen/_20sdp"

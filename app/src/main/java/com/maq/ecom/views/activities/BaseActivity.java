@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,7 +25,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
@@ -78,7 +76,12 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     @SuppressLint("InflateParams")
     private void init(int view) {
-        DrawerLayout fullLayout = (DrawerLayout) getLayoutInflater().inflate(R.layout.activity_base, null);
+        DrawerLayout fullLayout;
+        if (sessionManager.isAdmin())
+            fullLayout = (DrawerLayout) getLayoutInflater().inflate(R.layout.activity_base_admin, null);
+        else
+            fullLayout = (DrawerLayout) getLayoutInflater().inflate(R.layout.activity_base, null);
+
         FrameLayout frameLayout = fullLayout.findViewById(R.id.baseActToolbar_frame);
         getLayoutInflater().inflate(view, frameLayout, true);
         super.setContentView(fullLayout);
@@ -139,7 +142,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     private void setupDrawer() {
         drawer = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
+        if (sessionManager.isAdmin())
+            navigationView = findViewById(R.id.nav_view_admin);
+        else
+            navigationView = findViewById(R.id.nav_view);
 
         //inflating nav header layout
         View headerView = navigationView.getHeaderView(0);
@@ -181,14 +187,20 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_base, menu);
-        final MenuItem menuItem = menu.findItem(R.id.action_cart);
+        if (sessionManager.isAdmin())
+            getMenuInflater().inflate(R.menu.menu_base_admin, menu);
+        else {
+            getMenuInflater().inflate(R.menu.menu_base, menu);
 
-        View actionView = menuItem.getActionView();
-        menu_tv_cartCount = (TextView) actionView.findViewById(R.id.menu_tv_notiBadge);
-        actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
+            final MenuItem menuItem = menu.findItem(R.id.action_cart);
+            View actionView = menuItem.getActionView();
+            menu_tv_cartCount = (TextView) actionView.findViewById(R.id.menu_tv_notiBadge);
+            actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
 
-        setCartCounter();
+            setCartCounter();
+        }
+
+
         return true;
     }
 
@@ -245,7 +257,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 finish();
                 break;
 
-            case R.id.nav_orders:
+            case R.id.nav_my_orders:
                 Utils.navigateTo(context, MyOrdersActivity.class);
                 finish();
                 break;

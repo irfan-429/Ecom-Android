@@ -18,8 +18,7 @@ public interface ApiConfig {
 
     @POST("user.php?action=login")
     Call<JsonObject> API_requestLogin(@Query("Mobile") String mobile,
-                                      @Query("Password") String password,
-                                      @Query("isAdmin") String isAdmin);
+                                      @Query("Password") String password);
 
     @POST("user.php?action=forgetpwd")
     Call<JsonObject> API_forgotPassword(@Query("Mobile") String mobile);
@@ -253,5 +252,8 @@ public interface ApiConfig {
 
     @POST("user.php?action=orderdetail")
     Call<JsonObject> API_orderDetail(@Query("OrderId") String OrderId);
+
+
+
 
 }

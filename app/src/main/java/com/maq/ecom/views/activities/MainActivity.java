@@ -53,17 +53,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onResume() {
         super.onResume();
-        if (menu_tv_cartCount != null) {
-            setCartCounter();
-            setupDrawerItems();
-        }
+        if (!sessionManager.isAdmin())
+            if (menu_tv_cartCount != null) {
+                setCartCounter();
+                setupDrawerItems();
+            }
     }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        if (sessionManager.isAdmin())
+            setContentView(R.layout.activity_main_admin);
+        else setContentView(R.layout.activity_main);
+
 
         setupToolbar();
         setupDrawer();
@@ -81,12 +86,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void setupDrawer() {
         drawer = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
+
+        if (sessionManager.isAdmin())
+            navigationView = findViewById(R.id.nav_view_admin);
+        else navigationView = findViewById(R.id.nav_view);
 
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
+        if (sessionManager.isAdmin())
+            mAppBarConfiguration = new AppBarConfiguration.Builder(
+                    R.id.nav_home_admin, R.id.nav_categories_admin, R.id.nav_noti, R.id.nav_profile)
+//                .setDrawerLayout(drawer)
+                    .build();
+        else mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_categories, R.id.nav_noti, R.id.nav_profile)
 //                .setDrawerLayout(drawer)
                 .build();
@@ -128,23 +141,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void setupBottomNavView() {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.btm_nav_view);
-        BottomNavigationView bottomNavigationViewAdmin = findViewById(R.id.btm_nav_view_admin);
+        BottomNavigationView bottomNavigationView;
+//        BottomNavigationView bottomNavigationViewAdmin = findViewById(R.id.btm_nav_view_admin);
 
         if (sessionManager.isAdmin()) {
-            bottomNavigationView.setVisibility(View.INVISIBLE);
-            bottomNavigationViewAdmin.setVisibility(View.VISIBLE);
+            bottomNavigationView = findViewById(R.id.btm_nav_view_admin);
+//            bottomNavigationView.setVisibility(View.INVISIBLE);
+//            bottomNavigationViewAdmin.setVisibility(View.VISIBLE);
         } else {
-            bottomNavigationView.setVisibility(View.VISIBLE);
-            bottomNavigationViewAdmin.setVisibility(View.INVISIBLE);
+            bottomNavigationView = findViewById(R.id.btm_nav_view);
+//            bottomNavigationView.setVisibility(View.VISIBLE);
+//            bottomNavigationViewAdmin.setVisibility(View.INVISIBLE);
         }
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        if (sessionManager.isAdmin()) {
-            NavigationUI.setupWithNavController(bottomNavigationViewAdmin, navController);
-        } else NavigationUI.setupWithNavController(bottomNavigationView, navController);
+//        if (sessionManager.isAdmin()) {
+//            NavigationUI.setupWithNavController(bottomNavigationViewAdmin, navController);
+//        } else NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
         navigationView.setNavigationItemSelectedListener(this);
 //        navigationView.setItemIconTintList(null); //to get original colors of nav icons
@@ -176,12 +193,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Utils.navigateTo(context, CartActivity.class);
                 break;
 
+            case R.id.nav_banners:
+                Utils.navigateTo(context, BannersActivity.class);
+                break;
+
+            case R.id.nav_product:
+                Utils.navigateTo(context, ProductsActivity.class);
+                break;
+
             case R.id.nav_notifications:
                 Utils.navigateTo(context, NotificationActivity.class);
                 break;
 
-            case R.id.nav_orders:
+            case R.id.nav_my_orders:
                 Utils.navigateTo(context, MyOrdersActivity.class);
+                break;
+
+            case R.id.nav_orders:
+                Utils.navigateTo(context, OrdersActivity.class);
                 break;
 
             case R.id.nav_change_pwd:
@@ -259,14 +288,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        final MenuItem menuItem = menu.findItem(R.id.action_cart);
+        if (sessionManager.isAdmin())
+            getMenuInflater().inflate(R.menu.menu_main_admin, menu);
+        else {
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+            final MenuItem menuItem = menu.findItem(R.id.action_cart);
 
-        View actionView = menuItem.getActionView();
-        menu_tv_cartCount = (TextView) actionView.findViewById(R.id.menu_tv_notiBadge);
-        actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
+            View actionView = menuItem.getActionView();
+            menu_tv_cartCount = (TextView) actionView.findViewById(R.id.menu_tv_notiBadge);
+            actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
 
-        setCartCounter();
+            setCartCounter();
+        }
+
+
         return true;
     }
 
@@ -292,7 +327,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
-   public void setCartCounter() {
+    public void setCartCounter() {
         if (MainActivity.mCartList.size() > 0) {
             menu_tv_cartCount.setText(String.valueOf(MainActivity.mCartList.size()));
             menu_tv_cartCount.setVisibility(View.VISIBLE);

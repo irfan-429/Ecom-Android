@@ -2,6 +2,7 @@ package com.maq.ecom.views.fragments.admin;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -93,55 +94,55 @@ public class CategoriesFragmentAdmin extends Fragment implements RetrofitRespond
         RetrofitClient.callRetrofit(apiCall, "CATEGORIES", this);
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu, menu);
-        sortItem = menu.findItem(R.id.action_sort_by);
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        searchView.setQueryHint(getString(R.string.str_search_by_anything));
-        searchView.setBackground(null);
-        if (searchView != null) {
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String query) {
-                    return false;
-                }
-
-                @Override
-                public boolean onQueryTextChange(String newText) {
-                    if (adapter != null) adapter.getFilter().filter(newText);
-                    return false;
-                }
-            });
-        }
-
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_sort_by:
-                if (!sortByAsc) {
-                    Collections.sort(arrayList, (o1, o2) -> o1.getCategoryName().compareToIgnoreCase(o2.getCategoryName()));
-                    sortByAsc = true;
-                    sortItem.setTitle(getResources().getString(R.string.action_sort_ZA));
-                } else {
-                    Collections.sort(arrayList, (o1, o2) -> o2.getCategoryName().compareToIgnoreCase(o2.getCategoryName()));
-                    sortByAsc = false;
-                    sortItem.setTitle(getResources().getString(R.string.action_sort_AZ));
-                }
-                adapter = new CategoryAdapter(getContext(), arrayList);
-                recyclerView.setAdapter(adapter);
-//                adapter.notifyDataSetChanged();
-                break;
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        inflater.inflate(R.menu.menu, menu);
+//        sortItem = menu.findItem(R.id.action_sort_by);
+//        MenuItem searchItem = menu.findItem(R.id.action_search);
+//        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+//        searchView.setQueryHint(getString(R.string.str_search_by_anything));
+//        searchView.setBackground(null);
+//        if (searchView != null) {
+//            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//                @Override
+//                public boolean onQueryTextSubmit(String query) {
+//                    return false;
+//                }
+//
+//                @Override
+//                public boolean onQueryTextChange(String newText) {
+//                    if (adapter != null) adapter.getFilter().filter(newText);
+//                    return false;
+//                }
+//            });
+//        }
+//
+//        super.onCreateOptionsMenu(menu, inflater);
+//    }
 
 
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.action_sort_by:
+//                if (!sortByAsc) {
+//                    Collections.sort(arrayList, (o1, o2) -> o1.getCategoryName().compareToIgnoreCase(o2.getCategoryName()));
+//                    sortByAsc = true;
+//                    sortItem.setTitle(getResources().getString(R.string.action_sort_ZA));
+//                } else {
+//                    Collections.sort(arrayList, (o1, o2) -> o2.getCategoryName().compareToIgnoreCase(o2.getCategoryName()));
+//                    sortByAsc = false;
+//                    sortItem.setTitle(getResources().getString(R.string.action_sort_AZ));
+//                }
+//                adapter = new CategoryAdapter(getContext(), arrayList);
+//                recyclerView.setAdapter(adapter);
+////                adapter.notifyDataSetChanged();
+//                break;
+//
+//
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
     @Override
@@ -176,8 +177,8 @@ public class CategoriesFragmentAdmin extends Fragment implements RetrofitRespond
         if (responseCode == Utils.HTTP_OK) {
             JSONObject jsonObject = new JSONObject(response.body().toString());
             if (jsonObject.getString("error").equals("false")) {
-                if (jsonObject.has("allbanks")) {
-                    JSONArray jsonArray = jsonObject.getJSONObject("allbanks").getJSONArray("allcatlist");
+                if (jsonObject.has("allcategory")) {
+                    JSONArray jsonArray = jsonObject.getJSONObject("allcategory").getJSONArray("allcatlist");
                     if (jsonArray.length() > 0) {
                         arrayList.clear();
                         tv_notFound.setVisibility(View.INVISIBLE);
@@ -194,6 +195,8 @@ public class CategoriesFragmentAdmin extends Fragment implements RetrofitRespond
                         }
                         adapter = new CategoryAdapter(getContext(), arrayList);
                         recyclerView.setAdapter(adapter);
+
+                        Log.d("TAG", "callback: "+ arrayList.size());
                     } else tv_notFound.setVisibility(View.VISIBLE);
                 }
             }
