@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.gson.JsonObject;
@@ -59,6 +60,8 @@ public class CartActivity extends BaseActivity implements RetrofitRespondListene
     TextView cartAct_tv_cartItems;
     @BindView(R.id.cartAct_tv_cartAmt)
     TextView cartAct_tv_cartAmt;
+
+
 
     @OnClick(R.id.cartAct_layout_confirmOrder)
     void confirmOrder() {

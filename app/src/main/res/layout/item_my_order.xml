@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/RippleEffect"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myOrderItem_layout"
+    style="@style/RippleEffect"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:elevation="@dimen/elevation"
-    app:cardCornerRadius="@dimen/_2sdp"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/_4sdp"
-    android:id="@+id/myOrderItem_layout"
-    >
+    android:elevation="@dimen/elevation"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/_2sdp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -18,9 +17,9 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:padding="@dimen/_10sdp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="@dimen/_10sdp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -30,13 +29,12 @@
 
                 <TextView
                     android:id="@+id/myOrderItem_num"
-                    android:textColor="@color/colorBlack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="order num"
-                    android:textSize="@dimen/size_xMini"
                     android:fontFamily="@font/balsamiq_sans_regular"
-                    />
+                    android:text="order num"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/size_xMini" />
 
 
                 <LinearLayout
@@ -49,14 +47,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="nag / items "
-                        android:textSize="@dimen/size_xMini"
-                        />
+                        android:textSize="@dimen/size_xMini" />
 
                 </LinearLayout>
+
                 <LinearLayout
-                    android:layout_marginTop="@dimen/_5sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -64,25 +62,64 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Advance "
-                        android:textSize="@dimen/size_xMini"
-                        />
+                        android:textSize="@dimen/size_xMini" />
                 </LinearLayout>
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/checkoutAct_btn_received"
-                style="@style/RippleEffect"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_alignParentEnd="true"
-                android:background="@drawable/bg_btn_enabled"
-                android:gravity="center"
 
-                android:text="Received"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/size_xMini" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/checkoutAct_btn_actions"
+                android:layout_width="wrap_content"
+                android:visibility="invisible"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+             >
+
+                <Button
+                    android:id="@+id/checkoutAct_btn_accept"
+                    style="@style/RippleEffect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:background="@drawable/bg_btn_enabled"
+                    android:backgroundTint="@color/colorGreen"
+                    android:gravity="center"
+                    android:text="Accept"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/size_xMini" />
+
+                <Button
+                    android:id="@+id/checkoutAct_btn_reject"
+                    style="@style/RippleEffect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/bg_btn_enabled"
+                    android:backgroundTint="@android:color/holo_red_light"
+                    android:gravity="center"
+                    android:text="Reject"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/size_xMini" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+<!--            <Button-->
+<!--                android:visibility="invisible"-->
+<!--                android:id="@+id/checkoutAct_btn_received"-->
+<!--                style="@style/RippleEffect"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="@dimen/_30sdp"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:background="@drawable/bg_btn_enabled"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Received"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="@color/colorWhite"-->
+<!--                android:textSize="@dimen/size_xMini" />-->
 
         </RelativeLayout>
 
@@ -90,19 +127,19 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/colorDefault"/>
+            android:background="@color/colorDefault" />
 
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:orientation="horizontal"
-            android:padding="@dimen/_10sdp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="@dimen/_10sdp">
 
             <LinearLayout
-                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
 
@@ -110,32 +147,29 @@
                     android:id="@+id/myOrderItem_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="place order on"
-                    android:textSize="@dimen/size_xMini"
                     android:fontFamily="@font/balsamiq_sans_regular"
-                    />
+                    android:text="place order on"
+                    android:textSize="@dimen/size_xMini" />
 
                 <TextView
                     android:id="@+id/myOrderItem_amt"
-                    android:textColor="@color/colorBlack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="For amt"
-                    android:textSize="@dimen/size_xMini"
                     android:fontFamily="@font/balsamiq_sans_regular"
-                    />
-
+                    android:text="For amt"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/size_xMini" />
 
 
             </LinearLayout>
 
             <TextView
-                android:layout_gravity="bottom"
                 android:id="@+id/checkoutAct_tv_viewDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
                 android:paddingTop="@dimen/_5sdp"
                 android:paddingBottom="@dimen/_5sdp"
                 android:text="View Details"

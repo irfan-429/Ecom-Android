@@ -18,10 +18,12 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.maq.ecom.R;
+import com.maq.ecom.database.SessionManager;
 import com.maq.ecom.helper.Utils;
 import com.maq.ecom.model.MyOrder;
 import com.maq.ecom.model.OrderDetailsItem;
 import com.maq.ecom.views.activities.MyOrderDetailsActivity;
+import com.travijuu.numberpicker.library.NumberPicker;
 
 import java.util.List;
 
@@ -34,12 +36,14 @@ import butterknife.ButterKnife;
 
 public class MyOrderDetailsAdapter extends RecyclerView.Adapter<MyOrderDetailsAdapter.MyViewHolder> {
 
+    SessionManager sessionManager;
     Context context;
     List<OrderDetailsItem> arrayList;
 
     public MyOrderDetailsAdapter(Context context, List<OrderDetailsItem> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
+        sessionManager = new SessionManager(context);
     }
 
     @NonNull
@@ -54,7 +58,7 @@ public class MyOrderDetailsAdapter extends RecyclerView.Adapter<MyOrderDetailsAd
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         OrderDetailsItem model = arrayList.get(position);
 
-        Log.i("TAG", "onBindViewHolder: "+model.getProductName());
+        Log.i("TAG", "onBindViewHolder: " + model.getProductName());
         //bind data
         Utils.loadImage(context, model.getImage(), holder.iv_itemImg);
         holder.tv_itemName.setText(model.getProductName());
@@ -68,6 +72,10 @@ public class MyOrderDetailsAdapter extends RecyclerView.Adapter<MyOrderDetailsAd
             holder.tv_price.setPaintFlags(holder.tv_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
 
+
+        if (sessionManager.isAdmin()) {
+            holder.number_picker.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -99,6 +107,9 @@ public class MyOrderDetailsAdapter extends RecyclerView.Adapter<MyOrderDetailsAd
 
         @BindView(R.id.myOrderDetailsItem_iv_itemImg)
         AppCompatImageView iv_itemImg;
+
+        @BindView(R.id.number_picker)
+        NumberPicker number_picker;
 
         public MyViewHolder(View itemView) {
             super(itemView);

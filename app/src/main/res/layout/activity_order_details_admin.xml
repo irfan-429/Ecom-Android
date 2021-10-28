@@ -5,8 +5,7 @@
     android:padding="@dimen/_5sdp"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="match_parent"
-    tools:context=".views.activities.OrderDetailsAdminActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -346,8 +345,5 @@
 
 
     </RelativeLayout>
-
-
-
 
 </LinearLayout>

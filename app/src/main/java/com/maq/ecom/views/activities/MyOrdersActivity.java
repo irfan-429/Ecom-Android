@@ -18,6 +18,7 @@ import com.maq.ecom.database.SessionManager;
 import com.maq.ecom.helper.LoadingDialog;
 import com.maq.ecom.helper.Utils;
 import com.maq.ecom.interfaces.ApiConfig;
+import com.maq.ecom.interfaces.OrderStatusListener;
 import com.maq.ecom.interfaces.RetrofitRespondListener;
 import com.maq.ecom.model.MyOrder;
 import com.maq.ecom.networking.RetrofitClient;
@@ -199,5 +200,6 @@ public class MyOrdersActivity extends BaseActivity implements RetrofitRespondLis
             initTabs();
         } else Utils.showToast(context, String.valueOf(responseCode));
     }
+
 
 }

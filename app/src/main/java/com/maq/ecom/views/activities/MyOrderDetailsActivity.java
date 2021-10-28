@@ -5,23 +5,37 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.badoualy.stepperindicator.StepperIndicator;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.maq.ecom.R;
 import com.maq.ecom.adapter.CartAdapter;
 import com.maq.ecom.adapter.MyOrderDetailsAdapter;
 import com.maq.ecom.database.SessionManager;
+import com.maq.ecom.helper.CustomDatePicker;
 import com.maq.ecom.helper.LoadingDialog;
 import com.maq.ecom.helper.Utils;
 import com.maq.ecom.interfaces.ApiConfig;
 import com.maq.ecom.interfaces.RetrofitRespondListener;
+import com.maq.ecom.model.CategoryItem;
 import com.maq.ecom.model.MyOrder;
 import com.maq.ecom.model.OrderDetailsItem;
 import com.maq.ecom.networking.RetrofitClient;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
+import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
+import com.travijuu.numberpicker.library.NumberPicker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +46,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import okhttp3.internal.Util;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -44,12 +60,17 @@ public class MyOrderDetailsActivity extends BaseActivity implements RetrofitResp
 
     List<OrderDetailsItem> orderDetailsItemList = new ArrayList<>();
 
+    String str_status;
+    String orderId = "", orderDate = "", nag = "", promoCode = "", noOfItems = "", delCharge = "", disc = "", subTotal = "", advance = "", address = "", orderAmount = "", city = "", state = "", pin = "", altMobile = "", status = "";
+
+    String str_orderAmount,  str_subTotal, str_noOfItems;
 
     @BindView(R.id.myOrderDetailsAct_rv)
     RecyclerView orderDetailsAct_rv;
 
     @BindView(R.id.indicator)
     StepperIndicator indicator;
+
 
     @BindView(R.id.myOrderDetailsAct_tv_orderId)
     TextView myOrderDetailsAct_tv_orderId;
@@ -83,6 +104,34 @@ public class MyOrderDetailsActivity extends BaseActivity implements RetrofitResp
     @BindView(R.id.myOrderDetailsAct_tv_stDelivered_time)
     TextView myOrderDetailsAct_tv_stDelivered_time;
 
+    @BindView(R.id.createProductAct_et_invNo)
+    EditText createProductAct_et_invNo;
+    @BindView(R.id.createProductAct_et_invDate)
+    EditText createProductAct_et_invDate;
+    @BindView(R.id.createProductAct_et_courierName)
+    EditText createProductAct_et_courierName;
+    @BindView(R.id.createProductAct_et_trackingNo)
+    EditText createProductAct_et_trackingNo;
+    @BindView(R.id.createProductAct_et_invRemarks)
+    EditText createProductAct_et_invRemarks;
+
+    @BindView(R.id.createProductAct_sp_status)
+    SearchableSpinner sp_status;
+
+    @BindView(R.id.myOrderDetailsAct_tv_orderStCancel)
+    LinearLayoutCompat layout_orderStCancel;
+    @BindView(R.id.myOrderDetailsAct_tv_orderSt)
+    LinearLayoutCompat layout_orderSt;
+
+    @BindView(R.id.layout_date)
+    LinearLayout layoutDate;
+
+    @OnClick(R.id.createProductAct_btn_update)
+    void update() {
+        updateOrder(makePayload());
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +145,8 @@ public class MyOrderDetailsActivity extends BaseActivity implements RetrofitResp
 
     private void init() {
         loadingDialog = new LoadingDialog(context);
+        layoutDate.setOnClickListener(v -> new CustomDatePicker(context, createProductAct_et_invDate));
+
     }
 
     private void fetchOrderDetails() {
@@ -106,12 +157,98 @@ public class MyOrderDetailsActivity extends BaseActivity implements RetrofitResp
     }
 
 
+    private void setupSpinner() {
+        List<String> statusList = new ArrayList<String>();
+        statusList.add("Pending");
+        statusList.add("Processing");
+        statusList.add("Shipped");
+        statusList.add("Delivered");
+        statusList.add("Cancelled");
+
+        sp_status.setTitle("Select One");
+        sp_status.setPositiveButton("Close");
+
+        if (status != null)
+            if (status.equals("Pending"))
+                sp_status.setSelection(0);
+            else if (status.equals("Processing"))
+                sp_status.setSelection(1);
+            else if (status.equals("Shipped"))
+                sp_status.setSelection(2);
+            else if (status.equals("Delivered"))
+                sp_status.setSelection(3);
+            else sp_status.setSelection(4);
+
+
+        sp_status.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, statusList));
+        sp_status.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                str_status = adapterView.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private void updateOrder(JsonObject jsonObject) {
+        loadingDialog.show();
+        String str_nag = String.valueOf(orderDetailsItemList.size());
+
+        Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(context).create(ApiConfig.class)
+                .API_updateOrder(sessionManager.getFirmId(), orderId, str_orderAmount, str_nag, delCharge, promoCode, disc, str_subTotal, str_noOfItems, createProductAct_et_invNo.getText().toString(), createProductAct_et_invDate.getText().toString(),
+                        createProductAct_et_courierName.getText().toString(), createProductAct_et_trackingNo.getText().toString(), createProductAct_et_invRemarks.getText().toString(), status, jsonObject);
+
+        RetrofitClient.callRetrofit(apiCall, "UPDATE_ORDER", this);
+    }
+
+    private JsonObject makePayload() {
+        double totalQty = 0.0;
+        double subTotal=0.0;
+        JsonArray items = new JsonArray();
+        for (int i = 0; i < orderDetailsItemList.size(); i++) {
+            OrderDetailsItem item = orderDetailsItemList.get(i);
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("SNo", item.getsNo());
+            jsonObject.addProperty("ProductId", item.getProductId());
+            jsonObject.addProperty("Qty", item.getQty());
+            jsonObject.addProperty("Unit", item.getUnit());
+            jsonObject.addProperty("Price", item.getPrice());
+            jsonObject.addProperty("SellingPrice", item.getSellingPrice());
+            jsonObject.addProperty("Amount", String.valueOf(Double.parseDouble(String.valueOf(item.getQty())) * Double.parseDouble(item.getSellingPrice())));
+            jsonObject.addProperty("ProductName", item.getProductName());
+
+            totalQty = totalQty + Double.parseDouble(item.getQty());
+            subTotal = subTotal + Double.parseDouble(item.getQty()) *  Double.parseDouble(item.getSellingPrice());
+            items.add(jsonObject);
+        }
+
+        str_noOfItems = String.valueOf(totalQty);
+        str_subTotal = String.valueOf(subTotal);
+        str_orderAmount= String.valueOf(subTotal+ Double.parseDouble(delCharge)- Double.parseDouble(disc));
+
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.add("items", items);
+        return jsonObject;
+    }
+
     @Override
     public void onRetrofitSuccess(Response<?> response, String requestName) {
         switch (requestName) {
             case "ORDER_DETAILS":
                 try {
                     callback(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case "UPDATE_ORDER":
+                try {
+                    callbackUpdate(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -142,19 +279,18 @@ public class MyOrderDetailsActivity extends BaseActivity implements RetrofitResp
                     if (jsonArray.length() > 0) {
                         orderDetailsItemList.clear();
 
-                        String orderId = "", orderDate = "", delCharge = "", disc = "", subTotal = "", advance = "", address = "", orderAmount = "", city = "", state = "", pin = "", altMobile = "", status = "";
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject object = jsonArray.getJSONObject(i);
                             orderId = object.getString("OrderId");
-                            String nag = object.getString("Nag");
+                            nag = object.getString("Nag");
                             orderDate = object.getString("OrderDate");
                             delCharge = object.getString("DelCharge");
-                            String promoCode = object.getString("PromoCode");
+                            promoCode = object.getString("PromoCode");
                             disc = object.getString("Disc");
                             String remarks = object.getString("Remarks");
                             subTotal = object.getString("SubTotal");
                             advance = object.getString("Advance");
-                            String noOfItems = object.getString("NoOfItems");
+                            noOfItems = object.getString("NoOfItems");
                             String addressId = object.getString("AddressId");
                             address = object.getString("Address");
                             orderAmount = object.getString("OrderAmount");
@@ -177,6 +313,8 @@ public class MyOrderDetailsActivity extends BaseActivity implements RetrofitResp
                             status = object.getString("Status");
                             String productCode = object.getString("ProductCode");
                             String description = object.getString("Description");
+
+                            this.status = status;
 
                             orderDetailsItemList.add(new OrderDetailsItem(orderId, nag, orderDate, delCharge, promoCode, disc, remarks, subTotal, advance, noOfItems,
                                     addressId, orderAmount, address, city, state, pin, addressType, altMobile, gstNo, aadharNo, image, sNo, productId, productName, qty, unit, price,
@@ -212,7 +350,7 @@ public class MyOrderDetailsActivity extends BaseActivity implements RetrofitResp
                             }
                             break;
 
-                            case "Processed": {
+                            case "Processing": {
                                 indicator.setCurrentStep(1);
                                 myOrderDetailsAct_tv_stPlaced_time.setText("");
                                 myOrderDetailsAct_tv_stProcessed_time.setText(date + "\n" + time);
@@ -240,9 +378,24 @@ public class MyOrderDetailsActivity extends BaseActivity implements RetrofitResp
                             break;
                         }
 
+                        setupSpinner();
+                        if (status.equalsIgnoreCase("Cancelled")) {
+                            layout_orderStCancel.setVisibility(View.VISIBLE);
+                            layout_orderSt.setVisibility(View.GONE);
+                        }
 
                     }
                 }
+            }
+        } else Utils.showToast(context, String.valueOf(responseCode));
+    }
+
+    private void callbackUpdate(Response<?> response) throws JSONException {
+        int responseCode = response.code();
+        if (responseCode == Utils.HTTP_OK) {
+            JSONObject jsonObject = new JSONObject(response.body().toString());
+            if (jsonObject.getString("error").equals("false")) {
+                Utils.showToast(context, "Order updated successfully!");
             }
         } else Utils.showToast(context, String.valueOf(responseCode));
     }

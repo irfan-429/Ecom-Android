@@ -15,6 +15,7 @@ import com.maq.ecom.adapter.MyOrderAdapter;
 import com.maq.ecom.database.SessionManager;
 import com.maq.ecom.helper.LoadingDialog;
 import com.maq.ecom.helper.Utils;
+import com.maq.ecom.interfaces.OrderStatusListener;
 import com.maq.ecom.interfaces.RetrofitRespondListener;
 import com.maq.ecom.model.MyOrder;
 
@@ -24,13 +25,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Response;
 
-public class MyOrdersFragment extends Fragment implements RetrofitRespondListener {
+public class MyOrdersFragment extends Fragment implements RetrofitRespondListener,  OrderStatusListener {
 
     SessionManager sessionManager;
 
     LoadingDialog loadingDialog;
     MyOrderAdapter adapter;
     List<MyOrder> myOrders;
+//    OrderStatusListener listener;
 
 
     @BindView(R.id.myOrdersAct_rv)
@@ -70,7 +72,7 @@ public class MyOrdersFragment extends Fragment implements RetrofitRespondListene
     private void setAdapter() {
         if (myOrders.size() > 0) {
             tv_notFound.setVisibility(View.GONE);
-            adapter = new MyOrderAdapter(getContext(), myOrders);
+            adapter = new MyOrderAdapter(getContext(), myOrders, this::onStatusUpdate);
             myOrdersAct_rv.setAdapter(adapter);
         } else tv_notFound.setVisibility(View.VISIBLE);
     }
@@ -101,4 +103,9 @@ public class MyOrdersFragment extends Fragment implements RetrofitRespondListene
     }
 
 
+    @Override
+    public void onStatusUpdate(String status, int position) {
+        myOrders.get(position).setStatus(status); //update status locally
+        adapter.notifyDataSetChanged();
+    }
 }

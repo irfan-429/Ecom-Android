@@ -5,6 +5,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -59,6 +60,9 @@ public class CreateBannerActivity extends BaseActivity implements RetrofitRespon
     @BindView(R.id.createBannerAct_iv_banner)
     AppCompatImageView iv_banner;
 
+//    @BindView(R.id.cropImageView)
+//    CropImageView cropImageView;
+
     @BindView(R.id.createBannerAct_sp_status)
     SearchableSpinner spinner;
 
@@ -100,7 +104,7 @@ public class CreateBannerActivity extends BaseActivity implements RetrofitRespon
             super.setupToolbar("Edit Banner");
             et_banName.setText(dataIntent.getStringExtra("ban_name"));
             et_banLink.setText(dataIntent.getStringExtra("ban_link"));
-            nameBanner= dataIntent.getStringExtra("ban_img");
+            nameBanner = dataIntent.getStringExtra("ban_img");
             Utils.loadImage(context, dataIntent.getStringExtra("ban_img"), iv_banner);
         } else super.setupToolbar("Create Banner");
 
@@ -109,6 +113,15 @@ public class CreateBannerActivity extends BaseActivity implements RetrofitRespon
     private void init() {
         loadingDialog = new LoadingDialog(context);
         sessionManager = new SessionManager(context);
+
+//        iv_banner.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final Bitmap croppedImage = cropImageView.getCroppedImage();
+//                iv_banner.setImageBitmap(croppedImage);
+//            }
+//        });
+
     }
 
     private void setupSpinner() {
@@ -161,9 +174,9 @@ public class CreateBannerActivity extends BaseActivity implements RetrofitRespon
         Call<JsonObject> apiCall;
         if (!isEditing)
             apiCall = RetrofitClient.getRetrofitInstance(context).create(ApiConfig.class)
-                    .API_addNewBanner(sessionManager.getFirmId(), bannerName,  bannerLink, nameBanner, banStatus);
+                    .API_addNewBanner(sessionManager.getFirmId(), bannerName, bannerLink, nameBanner, banStatus);
         else apiCall = RetrofitClient.getRetrofitInstance(context).create(ApiConfig.class)
-                .API_editBanner(getIntent().getStringExtra("ban_id"), sessionManager.getFirmId(), bannerName,  bannerLink,  nameBanner, banStatus);
+                .API_editBanner(getIntent().getStringExtra("ban_id"), sessionManager.getFirmId(), bannerName, bannerLink, nameBanner, banStatus);
 
         RetrofitClient.callRetrofit(apiCall, "NEW_BANNER", this);
     }

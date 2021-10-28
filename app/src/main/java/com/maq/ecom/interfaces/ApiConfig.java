@@ -258,5 +258,34 @@ public interface ApiConfig {
     @POST("user.php?action=orderdetail")
     Call<JsonObject> API_orderDetail(@Query("OrderId") String OrderId);
 
+    @POST("user.php?action=lastpcode")
+    Call<JsonObject> API_getLastCode(@Query("FirmId") String FirmId);
+
+    @POST("user.php?action=updateorderstatus")
+    Call<JsonObject> API_updateOrderStatus(@Query("FirmId") String FirmId,
+                                           @Query("OrderId") String OrderId,
+                                           @Query("Status") String Status
+    );
+
+
+    @POST("user.php?action=updateorder")
+    Call<JsonObject> API_updateOrder(@Query("FirmId") String FirmId,
+                                     @Query("OrderId") String OrderId,
+                                     @Query("OrderAmount") String OrderAmount,
+                                     @Query("Nag") String Nag,
+                                     @Query("DelCharge") String DelCharge,
+                                     @Query("PromoCode") String PromoCode,
+                                     @Query("Disc") String Disc,
+                                     @Query("SubTotal") String SubTotal,
+                                     @Query("NoOfItems") String NoOfItems,
+                                     @Query("InvoiceNo") String InvoiceNo,
+                                     @Query("InvoiceDate") String InvoiceDate,
+                                     @Query("CourierName") String CourierName,
+                                     @Query("TrackingNo") String TrackingNo,
+                                     @Query("InvRemarks") String InvRemarks,
+                                     @Query("Status") String Status,
+                                     @Body JsonObject body
+    );
+
 
 }

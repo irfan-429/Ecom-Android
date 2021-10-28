@@ -20,32 +20,510 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:gravity="center"
                 android:text="Order ID:"
                 android:textSize="@dimen/size_normal"
                 android:textStyle="bold" />
+
             <TextView
-                android:layout_marginTop="@dimen/_5sdp"
                 android:id="@+id/myOrderDetailsAct_tv_orderDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:gravity="center"
                 android:text="Order date:"
                 android:textSize="@dimen/size_normal"
                 android:textStyle="bold" />
 
 
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="Order Details"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/size_large"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:text="Name:"
+                        android:textSize="@dimen/size_normal"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/myOrderDetailsAct_tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="end"
+                        android:text="234"
+                        android:textSize="@dimen/size_normal" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:text="Mobile No:"
+                        android:textSize="@dimen/size_normal"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/myOrderDetailsAct_tv_mob"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="end"
+                        android:text="234"
+                        android:textSize="@dimen/size_normal" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:text="Address:"
+                        android:textSize="@dimen/size_normal"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/myOrderDetailsAct_tv_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="start"
+                        android:text="234"
+                        android:textSize="@dimen/size_normal" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDefault" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_5sdp"
+                    android:text="Invoice No"
+                    android:textSize="@dimen/size_xMini" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/et_border"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_5sdp">
+
+
+                    <EditText
+                        android:id="@+id/createProductAct_et_invNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/size_xMini"
+                        tools:targetApi="m" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:text="Invoice Date"
+                    android:textSize="@dimen/size_xMini" />
+
+                <LinearLayout
+                    android:id="@+id/layout_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/et_border"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_5sdp">
+
+
+                    <EditText
+                        android:enabled="false"
+                        android:id="@+id/createProductAct_et_invDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/size_xMini"
+                        tools:targetApi="m" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:text="Courier Name"
+                    android:textSize="@dimen/size_xMini" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/et_border"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_5sdp">
+
+
+                    <EditText
+                        android:id="@+id/createProductAct_et_courierName"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:imeOptions="actionNext"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/size_xMini"
+                        tools:targetApi="m" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:text="Tracking No"
+                    android:textSize="@dimen/size_xMini" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/et_border"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_5sdp">
+
+
+                    <EditText
+                        android:id="@+id/createProductAct_et_trackingNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:imeOptions="actionNext"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/size_xMini"
+                        tools:targetApi="m" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:text="Invoice Remarks"
+                    android:textSize="@dimen/size_xMini" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/et_border"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_5sdp">
+
+
+                    <EditText
+                        android:id="@+id/createProductAct_et_invRemarks"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:gravity="start|top"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:minHeight="@dimen/_80sdp"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/size_xMini"
+                        tools:targetApi="m" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:text="Status"
+                    android:textSize="@dimen/size_xMini" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/et_border"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_5sdp">
+
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/createProductAct_sp_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:backgroundTint="@color/colorPrimary" />
+                </LinearLayout>
+
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDefault" />
+
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:visibility="gone"
+                android:id="@+id/myOrderDetailsAct_tv_orderStCancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tint="@color/colorRed"
+                    android:src="@drawable/ic_close"/>
+
+                <TextView
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Order Cancelled"
+                    android:textColor="@color/colorRed"
+                    android:textSize="@dimen/size_large"
+                   />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/myOrderDetailsAct_tv_orderSt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/myOrderDetailsAct_tv_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="Order Status"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/size_large"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Order\nPlaced"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/size_mini" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Order\nProcessed"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/size_mini" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Order\nShipped"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/size_mini" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Order\nDelivered"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/size_mini" />
+
+
+                </LinearLayout>
+
+
+                <com.badoualy.stepperindicator.StepperIndicator
+                    android:id="@+id/indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    app:stpi_circleRadius="@dimen/_10sdp"
+                    app:stpi_circleStrokeWidth="@dimen/_2sdp"
+                    app:stpi_lineColor="@color/colorFade"
+                    app:stpi_showDoneIcon="true"
+                    app:stpi_stepCount="4" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/myOrderDetailsAct_tv_stPlaced_time"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="yyyy-MM\nHH:mm"
+                        android:textSize="@dimen/size_xxMini" />
+
+                    <TextView
+                        android:id="@+id/myOrderDetailsAct_tv_stProcessed_time"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text=""
+                        android:textSize="@dimen/size_xxMini" />
+
+                    <TextView
+                        android:id="@+id/myOrderDetailsAct_tv_stShipped_time"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text=""
+                        android:textSize="@dimen/size_xxMini" />
+
+                    <TextView
+                        android:id="@+id/myOrderDetailsAct_tv_stDelivered_time"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text=""
+                        android:textSize="@dimen/size_xxMini" />
+
+
+                </LinearLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDefault" />
+
+
             <androidx.recyclerview.widget.RecyclerView
-                android:nestedScrollingEnabled="false"
                 android:id="@+id/myOrderDetailsAct_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
                 android:focusableInTouchMode="true"
+                android:nestedScrollingEnabled="false"
+                android:visibility="visible"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_my_order_details" />
 
@@ -236,235 +714,19 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorDefault" />
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/_10sdp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:gravity="center"
-                    android:text="Order Details"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/size_large"
-                    android:textStyle="bold" />
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:gravity="start"
-                        android:text="Name:"
-                        android:textSize="@dimen/size_normal"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/myOrderDetailsAct_tv_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:gravity="end"
-                        android:text="234"
-                        android:textSize="@dimen/size_normal" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:gravity="start"
-                        android:text="Mobile No:"
-                        android:textSize="@dimen/size_normal"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/myOrderDetailsAct_tv_mob"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:gravity="end"
-                        android:text="234"
-                        android:textSize="@dimen/size_normal" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:gravity="start"
-                        android:text="Address:"
-                        android:textSize="@dimen/size_normal"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/myOrderDetailsAct_tv_address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:gravity="start"
-                        android:text="234"
-                        android:textSize="@dimen/size_normal" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorDefault" />
-
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <Button
+                style="@style/RippleEffect"
+                android:padding="@dimen/_15sdp"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@drawable/bg_btn_enabled"
+                android:id="@+id/createProductAct_btn_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/_10sdp">
+                android:gravity="center"
+                android:textSize="@dimen/size_xMini"
+                android:text="UPDATE"
+                android:textColor="@color/colorWhite" />
 
-                <TextView
-                    android:id="@+id/myOrderDetailsAct_tv_desc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:gravity="center"
-                    android:text="Order Status"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/size_large"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/size_mini"
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_height="wrap_content"
-                        android:text="Order\nPlaced" />
-                    <TextView
-                        android:layout_weight="1"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/size_mini"
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_height="wrap_content"
-                        android:text="Order\nProcessed" />
-                    <TextView
-                        android:layout_weight="1"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/size_mini"
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_height="wrap_content"
-                        android:text="Order\nShipped" />
-                    <TextView
-                        android:layout_weight="1"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/size_mini"
-                        android:layout_width="0dp"
-                        android:gravity="center"
-                        android:layout_height="wrap_content"
-                        android:text="Order\nDelivered" />
-
-
-
-                </LinearLayout>
-
-
-                <com.badoualy.stepperindicator.StepperIndicator
-                    app:stpi_lineColor="@color/colorFade"
-                    android:id="@+id/indicator"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_20sdp"
-                    android:layout_width="match_parent"
-                    app:stpi_circleRadius="@dimen/_10sdp"
-                    android:layout_height="wrap_content"
-                    app:stpi_showDoneIcon="true"
-                    app:stpi_circleStrokeWidth="@dimen/_2sdp"
-                    app:stpi_stepCount="4"/>
-
-
-                <LinearLayout
-                    android:layout_marginBottom="@dimen/_40sdp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/myOrderDetailsAct_tv_stPlaced_time"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:textSize="@dimen/size_xxMini"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="yyyy-MM\nHH:mm" />
-                    <TextView
-                        android:id="@+id/myOrderDetailsAct_tv_stProcessed_time"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:textSize="@dimen/size_xxMini"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/myOrderDetailsAct_tv_stShipped_time"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:textSize="@dimen/size_xxMini"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="" />
-                    <TextView
-                        android:id="@+id/myOrderDetailsAct_tv_stDelivered_time"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:textSize="@dimen/size_xxMini"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="" />
-
-
-                </LinearLayout>
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
 
 
         </LinearLayout>

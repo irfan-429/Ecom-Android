@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.SwitchCompat;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -184,6 +185,7 @@ public class CreateProductActivity extends BaseActivity implements RetrofitRespo
         setupSpinner();
         fetchCategories();
         getProductIntent();
+        fetchLastCode();
 
     }
 
@@ -191,6 +193,13 @@ public class CreateProductActivity extends BaseActivity implements RetrofitRespo
     private void init() {
         loadingDialog = new LoadingDialog(context);
         sessionManager = new SessionManager(context);
+    }
+
+    private void fetchLastCode() {
+        loadingDialog.show();
+        Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(context).create(ApiConfig.class)
+                .API_getLastCode(sessionManager.getFirmId());
+        RetrofitClient.callRetrofit(apiCall, "LAST_CODE", this);
     }
 
     private void getProductIntent() {
@@ -416,6 +425,15 @@ public class CreateProductActivity extends BaseActivity implements RetrofitRespo
                 }
                 break;
 
+            case "LAST_CODE":
+                try {
+                    callbackLastCode(response);
+                    loadingDialog.dismiss();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
+
             case "UPLOAD_IMAGES":
                 try {
                     callbackUploadImages(response);
@@ -467,6 +485,19 @@ public class CreateProductActivity extends BaseActivity implements RetrofitRespo
                         setupCatSpinner(arrayList);
                     }
                 }
+            }
+        } else Utils.showToast(context, String.valueOf(responseCode));
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void callbackLastCode(Response<?> response) throws JSONException {
+        int responseCode = response.code();
+        if (responseCode == Utils.HTTP_OK) {
+            JSONObject jsonObject = new JSONObject(response.body().toString());
+            if (jsonObject.getString("error").equals("false")) {
+
+                String lastCode = jsonObject.getJSONArray("allproducts").getJSONObject(0).getString("LastCode");
+                et_code.setText("BSC"+ (Integer.parseInt(lastCode) + 1));
             }
         } else Utils.showToast(context, String.valueOf(responseCode));
     }

@@ -62,6 +62,7 @@ dependencies {
 
     /*https://github.com/ArthurHub/Android-Image-Cropper*/
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.0'
+    implementation 'com.edmodo:cropper:1.0.1'
 
     /*https://github.com/codepath/android_guides/wiki/Displaying-Images-with-the-Glide-Library*/
     implementation 'com.github.bumptech.glide:glide:4.10.0'
