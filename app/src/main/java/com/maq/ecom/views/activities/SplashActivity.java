@@ -2,6 +2,8 @@ package com.maq.ecom.views.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -26,6 +28,7 @@ public class SplashActivity extends AppCompatActivity {
 //        sessionManager.setFirmId("1");
 //        Utils.navigateTo(this, CategoryItemsAdminActivity.class); finish();
         delayScreen();
+
     }
 
     @SuppressLint("NewApi")

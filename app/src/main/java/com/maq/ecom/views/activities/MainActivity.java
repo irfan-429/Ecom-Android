@@ -28,8 +28,8 @@ import com.maq.ecom.R;
 import com.maq.ecom.database.SessionManager;
 import com.maq.ecom.helper.Utils;
 import com.maq.ecom.model.CategoryItem;
-import com.theartofdev.edmodo.cropper.CropImage;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -266,18 +266,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //ImagePicker result
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                assert result != null;
-                Uri resultUri = result.getUri();
-                Intent intent = new Intent();
-                intent.setAction("getCroppedImgURI");
-                intent.putExtra("URI", String.valueOf(resultUri));
-                sendBroadcast(intent);
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Utils.showSnackBar(this, String.valueOf(result.getError()));
-            }
+        if (resultCode == Activity.RESULT_OK && requestCode == 100) {
+            startActivityForResult(new Intent(context, CropView.class).putExtra("uri", data.getData().toString()), 69);
+        } else if (resultCode == RESULT_OK && requestCode == 69) {
+            assert data != null;
+            Uri uri = Uri.parse(data.getExtras().getString("image"));
+            Intent intent = new Intent();
+            intent.setAction("getCroppedImgURI");
+            intent.putExtra("URI", String.valueOf(uri));
+            sendBroadcast(intent);
         } else if (requestCode == 200) {
             if (resultCode == Activity.RESULT_OK) {
                 setupDrawerItems();

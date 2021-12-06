@@ -3,6 +3,7 @@ package com.maq.ecom.views.activities;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.gson.JsonObject;
 import com.maq.ecom.R;
 import com.maq.ecom.database.SessionManager;
@@ -21,8 +23,6 @@ import com.maq.ecom.helper.Utils;
 import com.maq.ecom.interfaces.ApiConfig;
 import com.maq.ecom.interfaces.RetrofitRespondListener;
 import com.maq.ecom.networking.RetrofitClient;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 import org.json.JSONException;
@@ -67,18 +67,16 @@ public class CreateCategoryActivity extends BaseActivity implements RetrofitResp
     @OnClick(R.id.createCatAct_layout_banner)
     void uploadBanner() {
         choosedImg = "banner";
-        CropImage.activity()
-                .setGuidelines(CropImageView.Guidelines.ON)
-                .start(this);
+        ImagePicker.with(this).start(100);
+
     }
 
 
     @OnClick(R.id.createCatAct_layout_thumbnail)
     void uploadThumbnail() {
         choosedImg = "thumbnail";
-        CropImage.activity()
-                .setGuidelines(CropImageView.Guidelines.ON)
-                .start(this);
+        ImagePicker.with(this).start(100);
+
     }
 
     @OnClick(R.id.createCatAct_btn_submit)
@@ -188,26 +186,23 @@ public class CreateCategoryActivity extends BaseActivity implements RetrofitResp
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //ImagePicker result
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                assert result != null;
-                Uri resultUri = result.getUri();
-                File file = new File(resultUri.getPath());
+        if (resultCode == Activity.RESULT_OK && requestCode == 100) {
+            startActivityForResult(new Intent(context, CropView.class).putExtra("uri", data.getData().toString()), 69);
+        } else if (resultCode == RESULT_OK && requestCode == 69) {
+            Uri uri = Uri.parse(data.getExtras().getString("image"));
+            File file = new File(uri.getPath());
 
-                if (choosedImg.equals("banner")) {
-                    iv_banner.setImageURI(resultUri);
-                    imgFileBanner = Utils.ImageToMultipartBody("file", Utils.compressImage(file)); //get file to submit
-                    nameBanner = file.getName();
-                } else {
-                    iv_thumbnail.setImageURI(resultUri);
-                    imgFileThumbnail = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
-                    nameThumbnail = file.getName();
-                }
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Utils.showSnackBar(this, String.valueOf(result.getError()));
+            if (choosedImg.equals("banner")) {
+                iv_banner.setImageURI(uri);
+                imgFileBanner = Utils.ImageToMultipartBody("file", Utils.compressImage(file)); //get file to submit
+                nameBanner = file.getName();
+            } else {
+                iv_thumbnail.setImageURI(uri);
+                imgFileThumbnail = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
+                nameThumbnail = file.getName();
             }
         }
+
     }
 
 

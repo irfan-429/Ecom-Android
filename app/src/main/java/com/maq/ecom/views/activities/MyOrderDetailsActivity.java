@@ -32,8 +32,6 @@ import com.maq.ecom.model.CategoryItem;
 import com.maq.ecom.model.MyOrder;
 import com.maq.ecom.model.OrderDetailsItem;
 import com.maq.ecom.networking.RetrofitClient;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 import com.travijuu.numberpicker.library.NumberPicker;
 

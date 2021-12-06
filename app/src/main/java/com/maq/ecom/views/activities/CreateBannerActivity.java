@@ -1,21 +1,37 @@
 package com.maq.ecom.views.activities;
 
+import static android.os.Build.VERSION.SDK_INT;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.camera.core.ImageCapture;
+import androidx.core.content.FileProvider;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.canhub.cropper.CropImageView;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.gson.JsonObject;
+import com.maq.ecom.BuildConfig;
 import com.maq.ecom.R;
 import com.maq.ecom.database.SessionManager;
 import com.maq.ecom.helper.LoadingDialog;
@@ -23,16 +39,24 @@ import com.maq.ecom.helper.Utils;
 import com.maq.ecom.interfaces.ApiConfig;
 import com.maq.ecom.interfaces.RetrofitRespondListener;
 import com.maq.ecom.networking.RetrofitClient;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
+import com.vansuita.pickimage.bean.PickResult;
+import com.vansuita.pickimage.bundle.PickSetup;
+import com.vansuita.pickimage.dialog.PickImageDialog;
+import com.vansuita.pickimage.enums.EPickType;
+import com.vansuita.pickimage.listeners.IPickResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,16 +76,21 @@ public class CreateBannerActivity extends BaseActivity implements RetrofitRespon
     String nameBanner;
     boolean isEditing = false;
 
+    public static final int REQUEST_CODE_CAMERA_PICTURE = 1232;
+    public static final int REQUEST_CODE_GALLERY_PICTURE = 1233;
+    private File fileUri;
+    private ImageCapture imageCapture;
+    private boolean isDenied = false;
+    Uri photoURI = null;
+
+
     @BindView(R.id.createBannerAct_et_name)
     EditText et_banName;
     @BindView(R.id.createBannerAct_et_link)
     EditText et_banLink;
-
+    //
     @BindView(R.id.createBannerAct_iv_banner)
     AppCompatImageView iv_banner;
-
-//    @BindView(R.id.cropImageView)
-//    CropImageView cropImageView;
 
     @BindView(R.id.createBannerAct_sp_status)
     SearchableSpinner spinner;
@@ -69,9 +98,56 @@ public class CreateBannerActivity extends BaseActivity implements RetrofitRespon
 
     @OnClick(R.id.createBannerAct_layout_banner)
     void uploadBanner() {
-        CropImage.activity()
-                .setGuidelines(CropImageView.Guidelines.ON)
-                .start(this);
+        ImagePicker.with(this).start(100);
+    }
+
+
+    private void openGallery() {
+        Intent intent;
+        intent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(Intent.createChooser(intent, "Gallery"), REQUEST_CODE_GALLERY_PICTURE);
+    }
+
+    private void openCamera() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        try {
+            fileUri = createImageFile(this);
+//            photoURI = Uri.fromFile(fileUri);
+            photoURI = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", fileUri);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+        intent.putExtra("return-data", true);
+        startActivityForResult(intent, REQUEST_CODE_CAMERA_PICTURE);
+    }
+
+    public static File createImageFile(Context context) throws IOException {
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).format(new Date());
+        String imageFileName = String.valueOf(System.currentTimeMillis());
+        File image, storageDir;
+
+        if (SDK_INT < Build.VERSION_CODES.Q) {
+            storageDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "Ecom");
+            if (!storageDir.exists()) {
+                storageDir.mkdirs();
+            }
+            image = new File(storageDir, imageFileName + ".jpg");
+            image.createNewFile();
+        } else {
+            storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES + File.separator + "Ecom");
+            image = File.createTempFile(imageFileName, ".jpg", storageDir);
+            String currentPhotoPath = image.getAbsolutePath();
+        }
+
+        return image;
+    }
+
+
+    public interface ImageCapture {
+        void onImageCaptured(String path, boolean isGooglePhotoURI);
+
     }
 
     @OnClick(R.id.createBannerAct_btn_submit)
@@ -113,15 +189,6 @@ public class CreateBannerActivity extends BaseActivity implements RetrofitRespon
     private void init() {
         loadingDialog = new LoadingDialog(context);
         sessionManager = new SessionManager(context);
-
-//        iv_banner.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                final Bitmap croppedImage = cropImageView.getCroppedImage();
-//                iv_banner.setImageBitmap(croppedImage);
-//            }
-//        });
-
     }
 
     private void setupSpinner() {
@@ -185,20 +252,14 @@ public class CreateBannerActivity extends BaseActivity implements RetrofitRespon
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //ImagePicker result
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                assert result != null;
-                Uri resultUri = result.getUri();
-                File file = new File(resultUri.getPath());
-
-                iv_banner.setImageURI(resultUri);
-                imgFileBanner = Utils.ImageToMultipartBody("file", Utils.compressImage(file)); //get file to submit
-                nameBanner = file.getName();
-
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Utils.showSnackBar(this, String.valueOf(result.getError()));
-            }
+        if (resultCode == Activity.RESULT_OK && requestCode == 100) {
+            startActivityForResult(new Intent(context, CropView.class).putExtra("uri", data.getData().toString()), 69);
+        } else if (resultCode == RESULT_OK && requestCode == 69) {
+            Uri uri = Uri.parse(data.getExtras().getString("image"));
+            iv_banner.setImageURI(uri);
+            File file = new File(uri.getPath());
+            imgFileBanner = Utils.ImageToMultipartBody("file", Utils.compressImage(file)); //get file to submit
+            nameBanner = file.getName();
         }
     }
 

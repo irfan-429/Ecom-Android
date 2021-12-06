@@ -5,6 +5,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.SwitchCompat;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -15,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.gson.JsonObject;
 import com.maq.ecom.R;
 import com.maq.ecom.database.SessionManager;
@@ -25,8 +27,6 @@ import com.maq.ecom.interfaces.RetrofitRespondListener;
 import com.maq.ecom.model.Category;
 import com.maq.ecom.model.Product;
 import com.maq.ecom.networking.RetrofitClient;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 import org.json.JSONArray;
@@ -112,57 +112,43 @@ public class CreateProductActivity extends BaseActivity implements RetrofitRespo
     @OnClick(R.id.createProductAct_layout_cover)
     void cover() {
         pickedImg = "cover";
-        CropImage.activity()
-                .setGuidelines(CropImageView.Guidelines.ON)
-                .start(this);
+        ImagePicker.with(this).start(100);
     }
 
     @OnClick(R.id.createProductAct_layout_img1)
     void img1() {
         pickedImg = "img1";
-        CropImage.activity()
-                .setGuidelines(CropImageView.Guidelines.ON)
-                .start(this);
+        ImagePicker.with(this).start(100);
     }
 
     @OnClick(R.id.createProductAct_layout_img2)
     void img2() {
         pickedImg = "img2";
-        CropImage.activity()
-                .setGuidelines(CropImageView.Guidelines.ON)
-                .start(this);
+        ImagePicker.with(this).start(100);
     }
 
     @OnClick(R.id.createProductAct_layout_img3)
     void img3() {
         pickedImg = "img3";
-        CropImage.activity()
-                .setGuidelines(CropImageView.Guidelines.ON)
-                .start(this);
+        ImagePicker.with(this).start(100);
     }
 
     @OnClick(R.id.createProductAct_layout_img4)
     void img4() {
         pickedImg = "img4";
-        CropImage.activity()
-                .setGuidelines(CropImageView.Guidelines.ON)
-                .start(this);
+        ImagePicker.with(this).start(100);
     }
 
     @OnClick(R.id.createProductAct_layout_img5)
     void img5() {
         pickedImg = "img5";
-        CropImage.activity()
-                .setGuidelines(CropImageView.Guidelines.ON)
-                .start(this);
+        ImagePicker.with(this).start(100);
     }
 
     @OnClick(R.id.createProductAct_layout_img6)
     void img6() {
         pickedImg = "img6";
-        CropImage.activity()
-                .setGuidelines(CropImageView.Guidelines.ON)
-                .start(this);
+        ImagePicker.with(this).start(100);
     }
 
     @OnClick(R.id.createProductAct_btn_submit)
@@ -369,45 +355,41 @@ public class CreateProductActivity extends BaseActivity implements RetrofitRespo
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //ImagePicker result
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                assert result != null;
-                Uri resultUri = result.getUri();
-                File file = new File(resultUri.getPath());
+        if (resultCode == Activity.RESULT_OK && requestCode == 100) {
+            startActivityForResult(new Intent(context, CropView.class).putExtra("uri", data.getData().toString()), 69);
+        } else if (resultCode == RESULT_OK && requestCode == 69) {
+            assert data != null;
+            Uri uri = Uri.parse(data.getExtras().getString("image"));
+            File file = new File(uri.getPath());
 
-                if (pickedImg.equals("cover")) {
-                    iv_cover.setImageURI(resultUri);
-                    imgFileCover = Utils.ImageToMultipartBody("file", Utils.compressImage(file)); //get file to submit
-                    nameCover = file.getName();
-                } else if (pickedImg.equals("img1")) {
-                    iv_img1.setImageURI(resultUri);
-                    imgFile1 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
-                    nameImg1 = file.getName();
-                } else if (pickedImg.equals("img2")) {
-                    iv_img2.setImageURI(resultUri);
-                    imgFile2 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
-                    nameImg2 = file.getName();
-                } else if (pickedImg.equals("img3")) {
-                    iv_img3.setImageURI(resultUri);
-                    imgFile3 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
-                    nameImg3 = file.getName();
-                } else if (pickedImg.equals("img4")) {
-                    iv_img4.setImageURI(resultUri);
-                    imgFile4 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
-                    nameImg4 = file.getName();
-                } else if (pickedImg.equals("img5")) {
-                    iv_img5.setImageURI(resultUri);
-                    imgFile5 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
-                    nameImg5 = file.getName();
-                } else if (pickedImg.equals("img6")) {
-                    iv_img6.setImageURI(resultUri);
-                    imgFile6 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
-                    nameImg6 = file.getName();
-                }
-
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Utils.showSnackBar(this, String.valueOf(result.getError()));
+            if (pickedImg.equals("cover")) {
+                iv_cover.setImageURI(uri);
+                imgFileCover = Utils.ImageToMultipartBody("file", Utils.compressImage(file)); //get file to submit
+                nameCover = file.getName();
+            } else if (pickedImg.equals("img1")) {
+                iv_img1.setImageURI(uri);
+                imgFile1 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
+                nameImg1 = file.getName();
+            } else if (pickedImg.equals("img2")) {
+                iv_img2.setImageURI(uri);
+                imgFile2 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
+                nameImg2 = file.getName();
+            } else if (pickedImg.equals("img3")) {
+                iv_img3.setImageURI(uri);
+                imgFile3 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
+                nameImg3 = file.getName();
+            } else if (pickedImg.equals("img4")) {
+                iv_img4.setImageURI(uri);
+                imgFile4 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
+                nameImg4 = file.getName();
+            } else if (pickedImg.equals("img5")) {
+                iv_img5.setImageURI(uri);
+                imgFile5 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
+                nameImg5 = file.getName();
+            } else if (pickedImg.equals("img6")) {
+                iv_img6.setImageURI(uri);
+                imgFile6 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
+                nameImg6 = file.getName();
             }
         }
     }
@@ -497,7 +479,7 @@ public class CreateProductActivity extends BaseActivity implements RetrofitRespo
             if (jsonObject.getString("error").equals("false")) {
 
                 String lastCode = jsonObject.getJSONArray("allproducts").getJSONObject(0).getString("LastCode");
-                et_code.setText("BSC"+ (Integer.parseInt(lastCode) + 1));
+                et_code.setText("BSC" + (Integer.parseInt(lastCode) + 1));
             }
         } else Utils.showToast(context, String.valueOf(responseCode));
     }

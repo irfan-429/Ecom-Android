@@ -1,5 +1,6 @@
 package com.maq.ecom.views.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.gson.JsonObject;
 import com.maq.ecom.R;
 import com.maq.ecom.database.SessionManager;
@@ -16,8 +18,6 @@ import com.maq.ecom.helper.Utils;
 import com.maq.ecom.interfaces.ApiConfig;
 import com.maq.ecom.interfaces.RetrofitRespondListener;
 import com.maq.ecom.networking.RetrofitClient;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,9 +43,8 @@ public class ChangeProfileImgActivity extends AppCompatActivity implements Retro
 //        setContentView(R.layout.activity_change_profile_img);
         loadingDialog = new LoadingDialog(this);
 
-        CropImage.activity()
-                .setGuidelines(CropImageView.Guidelines.ON)
-                .start(this);
+        ImagePicker.with(this).start(100);
+
     }
 
 
@@ -68,20 +67,15 @@ public class ChangeProfileImgActivity extends AppCompatActivity implements Retro
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //ImagePicker result
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                assert result != null;
-                Uri resultUri = result.getUri();
+        if (resultCode == Activity.RESULT_OK && requestCode == 100) {
+            startActivityForResult(new Intent(context, CropView.class).putExtra("uri", data.getData().toString()), 69);
+        } else if (resultCode == RESULT_OK && requestCode == 69) {
+            Uri uri = Uri.parse(data.getExtras().getString("image"));
+            File file = new File(uri.getPath());
+            imgFileSlip = Utils.ImageToMultipartBody("file", file); //get file to submit
+            imgFileName = file.getName();
 
-                File file = new File(resultUri.getPath());
-                imgFileSlip = Utils.ImageToMultipartBody("file", file); //get file to submit
-                imgFileName = file.getName();
-
-                uploadNewImg();
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Utils.showSnackBar(context, String.valueOf(result.getError()));
-            }
+            uploadNewImg();
         }
     }
 

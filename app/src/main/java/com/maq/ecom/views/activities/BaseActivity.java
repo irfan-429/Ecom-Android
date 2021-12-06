@@ -338,7 +338,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 //            return true;
 //        });
 
-        Log.i("TAG", "showProductCatDialog: " + HomeFragment.arrayList.toString());//TODO:
+//        Log.i("TAG", "showProductCatDialog: " + HomeFragment.arrayList.toString());//TODO:
         RecyclerView recyclerView = dialogView.findViewById(R.id.recyclerView);
         recyclerView.setAdapter(new ProductCategoryAdapter(context, HomeFragment.arrayList));
 
