@@ -1,6 +1,7 @@
 package com.maq.ecom.adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -107,10 +108,18 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
                         } else isFound = false;
                     }
 
-                if (isFound) MainActivity.mCartList.set(foundIndex, model);
-                else MainActivity.mCartList.add(model);
+                if (isFound) {
+                    if (value == 0) MainActivity.mCartList.remove(foundIndex);
+                    else {
+                        if (MainActivity.mCartList.size() > 0)
+                            MainActivity.mCartList.set(foundIndex, model);
+                        else MainActivity.mCartList.add(model);
+                    }
+                } else MainActivity.mCartList.add(model);
 
                 notifyDataSetChanged();
+
+
             }
         });
 

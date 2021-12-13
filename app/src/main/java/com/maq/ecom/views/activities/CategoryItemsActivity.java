@@ -25,6 +25,7 @@ import com.maq.ecom.database.SessionManager;
 import com.maq.ecom.helper.LoadingDialog;
 import com.maq.ecom.helper.Utils;
 import com.maq.ecom.interfaces.ApiConfig;
+import com.maq.ecom.interfaces.ItemListener;
 import com.maq.ecom.interfaces.RetrofitRespondListener;
 import com.maq.ecom.model.Category;
 import com.maq.ecom.model.CategoryItem;
@@ -44,7 +45,7 @@ import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class CategoryItemsActivity extends BaseActivity implements RetrofitRespondListener {
+public class CategoryItemsActivity extends BaseActivity implements RetrofitRespondListener , ItemListener {
 
     String TAG = CategoryItemsActivity.class.getSimpleName();
     Context context = this;
@@ -230,7 +231,7 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
     }
 
     private void setAdapter(List<CategoryItem> arrayList) {
-        adapter = new CategoryItemGridAdapter(context, arrayList);
+        adapter = new CategoryItemGridAdapter(context, arrayList, this::onItemClick);
         gridView.setAdapter(adapter);
     }
 
@@ -376,4 +377,8 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
         return listAfterFiltering;
     }
 
+    @Override
+    public void onItemClick() {
+        setCartCounter();
+    }
 }

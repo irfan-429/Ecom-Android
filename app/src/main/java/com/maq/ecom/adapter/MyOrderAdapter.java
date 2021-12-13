@@ -86,7 +86,6 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyViewHo
                     .putExtra("order_id", orderId));
         });
 
-        Log.i("TAG", "onBindViewHolder: " + model.getStatus());
 
         if (sessionManager.isAdmin()) {
             if (model.getStatus().equalsIgnoreCase("Pending")) {
@@ -204,7 +203,6 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyViewHo
         TextView tv_amt;
         @BindView(R.id.checkoutAct_tv_viewDetails)
         TextView tv_viewDetails;
-        //
 //        @BindView(R.id.checkoutAct_btn_received)
 //        Button btn_received;
         @BindView(R.id.checkoutAct_btn_reject)

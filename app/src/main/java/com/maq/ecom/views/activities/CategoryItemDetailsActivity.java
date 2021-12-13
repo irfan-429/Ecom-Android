@@ -149,8 +149,16 @@ public class CategoryItemDetailsActivity extends BaseActivity {
                         } else isFound = false;
                     }
 
-                if (isFound) MainActivity.mCartList.set(foundIndex, categoryItem);
-                else MainActivity.mCartList.add(categoryItem);
+                if (isFound) {
+                    if (value == 0) MainActivity.mCartList.remove(foundIndex);
+                    else {
+                        if (MainActivity.mCartList.size() > 0)
+                            MainActivity.mCartList.set(foundIndex, categoryItem);
+                        else MainActivity.mCartList.add(categoryItem);
+                    }
+                } else MainActivity.mCartList.add(categoryItem);
+
+                setCartCounter();
             }
         });
 

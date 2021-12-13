@@ -49,7 +49,7 @@ public class CategoryItemsAdapter extends RecyclerView.Adapter<CategoryItemsAdap
     public CategoryItemsAdapter(Context context, List<CategoryItem> arrayList, ItemListener listener) {
         this.context = context;
         this.arrayList = arrayList;
-        this.listener=listener;
+        this.listener = listener;
         this.arrayListFull = new ArrayList<>(arrayList);
     }
 
@@ -99,24 +99,29 @@ public class CategoryItemsAdapter extends RecyclerView.Adapter<CategoryItemsAdap
             @SuppressLint("SetTextI18n")
             @Override
             public void valueChanged(int value, ActionEnum action) {
-
-                model.setQty(value);
+                model.setQty(value); //change qty
 
                 if (MainActivity.mCartList.size() > 0)
                     for (int i = 0; i < MainActivity.mCartList.size(); i++) {
                         if (MainActivity.mCartList.get(i).getProductId().equals(model.getProductId())) {
-                              isFound = true;
+                            isFound = true;
                             foundIndex = i;
                             break;
                         } else isFound = false;
                     }
 
-                if (isFound) MainActivity.mCartList.set(foundIndex, model);
-                else MainActivity.mCartList.add(model);
+                if (isFound) {
+                    if (value == 0) MainActivity.mCartList.remove(foundIndex);
+                    else {
+                        if (MainActivity.mCartList.size() > 0)
+                            MainActivity.mCartList.set(foundIndex, model);
+                        else MainActivity.mCartList.add(model);
+                    }
+                } else MainActivity.mCartList.add(model);
 
                 notifyDataSetChanged();
 
-               listener.onItemClick();
+                listener.onItemClick();
             }
         });
 

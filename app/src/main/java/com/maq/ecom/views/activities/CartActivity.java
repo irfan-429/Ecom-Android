@@ -276,6 +276,7 @@ public class CartActivity extends BaseActivity implements RetrofitRespondListene
         else {
             MainActivity.mCartList.remove(position);
             adapter.notifyDataSetChanged();
+            setCartCounter();
         }
     }
 
@@ -293,6 +294,7 @@ public class CartActivity extends BaseActivity implements RetrofitRespondListene
             if (jsonObject.getString("error").equals("false")) {
                 MainActivity.mCartList.remove(position);
                 adapter.notifyDataSetChanged();
+                setCartCounter();
             }
         } else Utils.showToast(context, String.valueOf(responseCode));
     }

@@ -99,6 +99,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         logo.setOnClickListener(v -> Utils.navigateClearTo(this, MainActivity.class));
     }
+    protected void hideLogo() {
+        logo.setVisibility(View.GONE);
+    }
 
     /**
      * set toolbar title

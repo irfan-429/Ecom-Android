@@ -1,5 +1,6 @@
 package com.maq.ecom.views.activities;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -51,6 +53,7 @@ public class SearchActivity extends BaseActivity implements RetrofitRespondListe
     Category category;
     int position;
     TextView menu_tv_cartCount;
+    SearchView searchView;
 
     @BindView(R.id.productAct_rv)
     RecyclerView recyclerView;
@@ -75,7 +78,7 @@ public class SearchActivity extends BaseActivity implements RetrofitRespondListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        super.setupToolbar("Search");
+        super.hideLogo();
         ButterKnife.bind(this);
         init();
         fetchProducts();
@@ -97,9 +100,9 @@ public class SearchActivity extends BaseActivity implements RetrofitRespondListe
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search_item);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        searchView.requestFocus();
+        searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setQueryHint(getString(R.string.str_search_by_anything));
+        searchView.setFocusable(true);
         searchView.setBackground(null);
         if (searchView != null) {
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -185,15 +188,18 @@ public class SearchActivity extends BaseActivity implements RetrofitRespondListe
                             String keyFeatures = object.getString("KeyFeatures");
                             String isSize = object.getString("isSize");
                             String stock = object.getString("Stock");
-                            String unit = object.getString("Unit");
+//                            String unit = object.getString("Unit");
                             String categoryBanner = object.getString("CategoryBanner");
 
                             arrayList.add(new CategoryItem(productId, firmId, productCode, productName, categoryId, categoryName,
                                     price, discount, sellingPrice, shortDesc, description, status, isFeatured, isNew, isPopular,
-                                    productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock,unit, categoryBanner));
+                                    productCover, image1, image2, image3, image4, image5, image6, keyFeatures, isSize, stock, "", categoryBanner));
                         }
                         adapter = new SearchAdapter(context, arrayList);
                         recyclerView.setAdapter(adapter);
+                        searchView.setIconified(false);
+
+
                     } else tv_notFound.setVisibility(View.VISIBLE);
                 }
             }

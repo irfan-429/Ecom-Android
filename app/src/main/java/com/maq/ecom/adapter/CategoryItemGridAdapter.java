@@ -15,6 +15,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import com.maq.ecom.R;
 import com.maq.ecom.helper.Utils;
+import com.maq.ecom.interfaces.ItemListener;
 import com.maq.ecom.model.CategoryItem;
 import com.maq.ecom.views.activities.CategoryItemDetailsActivity;
 import com.maq.ecom.views.activities.MainActivity;
@@ -33,10 +34,12 @@ public class CategoryItemGridAdapter extends BaseAdapter {
     List<CategoryItem> arrayList;
     boolean isFound = false;
     int foundIndex;
+    ItemListener listener;
 
-    public CategoryItemGridAdapter(Context c, List<CategoryItem> arrayList) {
+    public CategoryItemGridAdapter(Context c, List<CategoryItem> arrayList, ItemListener listener) {
         context = c;
         this.arrayList = arrayList;
+        this.listener = listener;
     }
 
     @Override
@@ -123,10 +126,19 @@ public class CategoryItemGridAdapter extends BaseAdapter {
                                 } else isFound = false;
                             }
 
-                        if (isFound) MainActivity.mCartList.set(foundIndex, model);
-                        else MainActivity.mCartList.add(model);
+                        if (isFound) {
+                            if (value == 0) MainActivity.mCartList.remove(foundIndex);
+                            else {
+                                if (MainActivity.mCartList.size() > 0)
+                                    MainActivity.mCartList.set(foundIndex, model);
+                                else MainActivity.mCartList.add(model);
+                            }
+                        } else MainActivity.mCartList.add(model);
 
                         notifyDataSetChanged();
+
+                        listener.onItemClick();
+
                     }
                 });
 
