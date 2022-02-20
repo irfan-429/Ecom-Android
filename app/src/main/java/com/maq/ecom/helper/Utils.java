@@ -36,6 +36,7 @@ import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.developers.imagezipper.ImageZipper;
 import com.google.android.material.snackbar.Snackbar;
 import com.maq.ecom.R;
 import com.maq.ecom.views.activities.LoginActivity;
@@ -553,7 +554,8 @@ public class Utils {
             // If selected date is after the current date.
             if (dateFormatter.parse(selectedDate).before(dateFormatter.parse(currentDate)))
                 dateFlag = false;  // If selected date is before current date.
-            else dateFlag = dateFormatter.parse(selectedDate).equals(dateFormatter.parse(currentDate));  // If two dates are equal.
+            else
+                dateFlag = dateFormatter.parse(selectedDate).equals(dateFormatter.parse(currentDate));  // If two dates are equal.
 
         } catch (ParseException e) {
             e.printStackTrace();
@@ -666,47 +668,63 @@ public class Utils {
     }
 
 
-    public static File compressImage(File file) {
-        //it reduces the image size to nearly 200 KB
+    public static File compressImage(Activity activity, File mFile) {
+        File imageZipperFile = null;
+
         try {
-            // BitmapFactory options to downsize the image
-            BitmapFactory.Options o = new BitmapFactory.Options();
-            o.inJustDecodeBounds = true;
-            o.inSampleSize = 6;
-            // factor of downsizing the image
-
-            FileInputStream inputStream = new FileInputStream(file);
-            //Bitmap selectedBitmap = null;
-            BitmapFactory.decodeStream(inputStream, null, o);
-            inputStream.close();
-
-            // The new size we want to scale to
-            final int REQUIRED_SIZE = 75;
-
-            // Find the correct scale value. It should be the power of 2.
-            int scale = 1;
-            while (o.outWidth / scale / 2 >= REQUIRED_SIZE &&
-                    o.outHeight / scale / 2 >= REQUIRED_SIZE) {
-                scale *= 2;
-            }
-
-            BitmapFactory.Options o2 = new BitmapFactory.Options();
-            o2.inSampleSize = scale;
-            inputStream = new FileInputStream(file);
-
-            Bitmap selectedBitmap = BitmapFactory.decodeStream(inputStream, null, o2);
-            inputStream.close();
-
-            // here i override the original image file
-            file.createNewFile();
-            FileOutputStream outputStream = new FileOutputStream(file);
-
-            selectedBitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
-
-            return file;
-        } catch (Exception e) {
-            return null;
+            imageZipperFile = new ImageZipper(activity)
+                    .setQuality(10)
+                    //                .setMaxWidth(200)
+                    //                .setMaxHeight(200)
+                    .compressToFile(mFile);
+        } catch (IOException e) {
+            imageZipperFile = mFile;
+            e.printStackTrace();
         }
+
+
+        return imageZipperFile;
+//        return  newImage;
+        //it reduces the image size to nearly 200 KB
+//        try {
+//            // BitmapFactory options to downsize the image
+//            BitmapFactory.Options o = new BitmapFactory.Options();
+//            o.inJustDecodeBounds = true;
+//            o.inSampleSize = 6;
+//            // factor of downsizing the image
+//
+//            FileInputStream inputStream = new FileInputStream(file);
+//            //Bitmap selectedBitmap = null;
+//            BitmapFactory.decodeStream(inputStream, null, o);
+//            inputStream.close();
+//
+//            // The new size we want to scale to
+//            final int REQUIRED_SIZE = 75;
+//
+//            // Find the correct scale value. It should be the power of 2.
+//            int scale = 1;
+//            while (o.outWidth / scale / 2 >= REQUIRED_SIZE &&
+//                    o.outHeight / scale / 2 >= REQUIRED_SIZE) {
+//                scale *= 2;
+//            }
+//
+//            BitmapFactory.Options o2 = new BitmapFactory.Options();
+//            o2.inSampleSize = scale;
+//            inputStream = new FileInputStream(file);
+//
+//            Bitmap selectedBitmap = BitmapFactory.decodeStream(inputStream, null, o2);
+//            inputStream.close();
+//
+//            // here i override the original image file
+//            file.createNewFile();
+//            FileOutputStream outputStream = new FileOutputStream(file);
+//
+//            selectedBitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
+//
+//            return file;
+//        } catch (Exception e) {
+//            return null;
+//        }
     }
 
 

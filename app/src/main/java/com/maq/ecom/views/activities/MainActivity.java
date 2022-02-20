@@ -252,6 +252,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         .setPositiveButton("Logout", ((dialogInterface, i) -> {
                             sessionManager.clearSharedPref(); //del pref data
                             setupDrawerItems();
+                            drawer.closeDrawer(Gravity.RIGHT);
                         }))
                         .setNegativeButton("No", null)
                         .show();

@@ -253,7 +253,7 @@ public class CreateBannerActivity extends BaseActivity implements RetrofitRespon
             Uri uri = Uri.parse(data.getExtras().getString("image"));
             iv_banner.setImageURI(uri);
             File file = new File(uri.getPath());
-            imgFileBanner = Utils.ImageToMultipartBody("file", Utils.compressImage(file)); //get file to submit
+            imgFileBanner = Utils.ImageToMultipartBody("file", Utils.compressImage(this,file)); //get file to submit
             nameBanner = file.getName();
         }
     }

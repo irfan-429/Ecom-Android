@@ -172,7 +172,7 @@ public class CheckoutActivity extends BaseActivity implements RetrofitRespondLis
             checkoutAct_rv.setAdapter(adapter);
 
             for (CategoryItem item : MainActivity.mCartList) {
-                subTotal = subTotal + Double.parseDouble(item.getSellingPrice());
+                subTotal = subTotal + Double.parseDouble(item.getSellingPrice()) * item.getQty();
                 qty = qty + item.getQty();
             }
 

@@ -364,31 +364,31 @@ public class CreateProductActivity extends BaseActivity implements RetrofitRespo
 
             if (pickedImg.equals("cover")) {
                 iv_cover.setImageURI(uri);
-                imgFileCover = Utils.ImageToMultipartBody("file", Utils.compressImage(file)); //get file to submit
+                imgFileCover = Utils.ImageToMultipartBody("file", Utils.compressImage( this, file)); //get file to submit
                 nameCover = file.getName();
             } else if (pickedImg.equals("img1")) {
                 iv_img1.setImageURI(uri);
-                imgFile1 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
+                imgFile1 = Utils.ImageToMultipartBody("file", Utils.compressImage(this,file));
                 nameImg1 = file.getName();
             } else if (pickedImg.equals("img2")) {
                 iv_img2.setImageURI(uri);
-                imgFile2 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
+                imgFile2 = Utils.ImageToMultipartBody("file", Utils.compressImage(this,file));
                 nameImg2 = file.getName();
             } else if (pickedImg.equals("img3")) {
                 iv_img3.setImageURI(uri);
-                imgFile3 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
+                imgFile3 = Utils.ImageToMultipartBody("file", Utils.compressImage(this,file));
                 nameImg3 = file.getName();
             } else if (pickedImg.equals("img4")) {
                 iv_img4.setImageURI(uri);
-                imgFile4 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
+                imgFile4 = Utils.ImageToMultipartBody("file", Utils.compressImage(this,file));
                 nameImg4 = file.getName();
             } else if (pickedImg.equals("img5")) {
                 iv_img5.setImageURI(uri);
-                imgFile5 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
+                imgFile5 = Utils.ImageToMultipartBody("file", Utils.compressImage(this,file));
                 nameImg5 = file.getName();
             } else if (pickedImg.equals("img6")) {
                 iv_img6.setImageURI(uri);
-                imgFile6 = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
+                imgFile6 = Utils.ImageToMultipartBody("file", Utils.compressImage(this,file));
                 nameImg6 = file.getName();
             }
         }

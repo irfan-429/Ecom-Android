@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -190,15 +191,17 @@ public class CreateCategoryActivity extends BaseActivity implements RetrofitResp
             startActivityForResult(new Intent(context, CropView.class).putExtra("uri", data.getData().toString()), 69);
         } else if (resultCode == RESULT_OK && requestCode == 69) {
             Uri uri = Uri.parse(data.getExtras().getString("image"));
+            Log.i(TAG, "onActivityResult: "+uri.toString());
             File file = new File(uri.getPath());
 
             if (choosedImg.equals("banner")) {
                 iv_banner.setImageURI(uri);
-                imgFileBanner = Utils.ImageToMultipartBody("file", Utils.compressImage(file)); //get file to submit
-                nameBanner = file.getName();
+
+                imgFileBanner = Utils.ImageToMultipartBody("file",Utils.compressImage(this,file)); //get file to submit
+//                nameBanner = file.getName();
             } else {
                 iv_thumbnail.setImageURI(uri);
-                imgFileThumbnail = Utils.ImageToMultipartBody("file", Utils.compressImage(file));
+                imgFileThumbnail = Utils.ImageToMultipartBody("file", Utils.compressImage(this,file));
                 nameThumbnail = file.getName();
             }
         }

@@ -108,6 +108,7 @@ public class CategoryItemsActivity extends BaseActivity implements RetrofitRespo
 
     private void fetchCatItems() {
         loadingDialog.show();
+        Log.i(TAG, "fetchCatItems: "+category.getCategoryId());
         Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(context).create(ApiConfig.class)
                 .API_getCategoryItems(sessionManager.getFirmId(), category.getCategoryId());
         RetrofitClient.callRetrofit(apiCall, "ITEMS", this);

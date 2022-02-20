@@ -52,37 +52,32 @@ public class CategoryGridAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View gridView;
         ViewHolderItem viewHolder;
 
         if (convertView == null) {
             viewHolder = new ViewHolderItem();
 
-//            gridView = new View(context);
-            // get layout from mobile.xml
-            gridView = inflater.inflate(R.layout.item_grid_category, null);
-            viewHolder.imageView = gridView.findViewById(R.id.catItem_img);
-            viewHolder.catItem_name = gridView.findViewById(R.id.catItem_name);
+            convertView = inflater.inflate(R.layout.item_grid_category, parent, false);
+            viewHolder.imageView = convertView.findViewById(R.id.catItem_img);
+            viewHolder.catItem_name = convertView.findViewById(R.id.catItem_name);
 
-            // store the holder with the view.
-//            convertView.setTag(viewHolder);
+            convertView.setTag(viewHolder);
 
-            if (arrayList != null && arrayList.size() > 0) {
-                Utils.loadImage(context, arrayList.get(position).getCategoryImage(), viewHolder.imageView);
-                viewHolder.catItem_name.setText(arrayList.get(position).getCategoryName());
-            }
+        } else viewHolder = (ViewHolderItem) convertView.getTag();
 
 
-            gridView.setOnClickListener(v -> {
-                context.startActivity(new Intent(context, CategoryItemsActivity.class)
-                        .putExtra("category", arrayList.get(position))
-                );
+        if (arrayList != null && arrayList.size() > 0) {
+            Utils.loadImage(context, arrayList.get(position).getCategoryImage(), viewHolder.imageView);
+            viewHolder.catItem_name.setText(arrayList.get(position).getCategoryName());
+        }
+        convertView.setOnClickListener(v -> {
+            context.startActivity(new Intent(context, CategoryItemsActivity.class)
+                    .putExtra("category", arrayList.get(position))
+            );
 
-            });
+        });
 
-        } else gridView = convertView;
-
-        return gridView;
+        return convertView;
     }
 
     public static class ViewHolderItem {

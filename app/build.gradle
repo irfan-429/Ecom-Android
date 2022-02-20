@@ -106,4 +106,8 @@ dependencies {
 
     /*https://github.com/badoualy/stepper-indicator*/
     implementation 'com.github.badoualy:stepper-indicator:1.0.7'
+
+    implementation 'com.github.amanjeetsingh150:ImageZipper:1.3'
+
+
 }
