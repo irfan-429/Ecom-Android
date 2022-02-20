@@ -186,6 +186,8 @@ public class ProductAdapterAdmin extends RecyclerView.Adapter<ProductAdapterAdmi
                 String filterPattern = constraint.toString().toLowerCase().trim();
                 for (Product item : arrayListFull) {
                     if (item.getProductName().toLowerCase().contains(filterPattern) ||
+                            item.getProductCode().toLowerCase().contains(filterPattern)||
+                            item.getCategoryName().toLowerCase().contains(filterPattern)||
                             item.getStatus().toLowerCase().contains(filterPattern)
                     ) {
                         filteredList.add(item);

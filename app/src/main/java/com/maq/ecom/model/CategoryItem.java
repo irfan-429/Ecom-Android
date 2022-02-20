@@ -2,7 +2,7 @@ package com.maq.ecom.model;
 
 import java.io.Serializable;
 
-public class CategoryItem implements Serializable {
+public class CategoryItem implements Serializable, Comparable<CategoryItem> {
 
     private String type;
     private String productId, firmId, productCode, productName, categoryId, categoryName,
@@ -285,5 +285,45 @@ public class CategoryItem implements Serializable {
 
     public void setQty(int qty) {
         this.qty = qty;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoryItem{" +
+                "type='" + type + '\'' +
+                ", productId='" + productId + '\'' +
+                ", firmId='" + firmId + '\'' +
+                ", productCode='" + productCode + '\'' +
+                ", productName='" + productName + '\'' +
+                ", categoryId='" + categoryId + '\'' +
+                ", categoryName='" + categoryName + '\'' +
+                ", price='" + price + '\'' +
+                ", discount='" + discount + '\'' +
+                ", sellingPrice='" + sellingPrice + '\'' +
+                ", shortDesc='" + shortDesc + '\'' +
+                ", description='" + description + '\'' +
+                ", status='" + status + '\'' +
+                ", isFeatured='" + isFeatured + '\'' +
+                ", isNew='" + isNew + '\'' +
+                ", isPopular='" + isPopular + '\'' +
+                ", productCover='" + productCover + '\'' +
+                ", image1='" + image1 + '\'' +
+                ", image2='" + image2 + '\'' +
+                ", image3='" + image3 + '\'' +
+                ", image4='" + image4 + '\'' +
+                ", image5='" + image5 + '\'' +
+                ", image6='" + image6 + '\'' +
+                ", keyFeatures='" + keyFeatures + '\'' +
+                ", isSize='" + isSize + '\'' +
+                ", stock='" + stock + '\'' +
+                ", unit='" + unit + '\'' +
+                ", categoryBanner='" + categoryBanner + '\'' +
+                ", qty=" + qty +
+                '}';
+    }
+
+    @Override
+    public int compareTo(CategoryItem categoryItem) {
+        return 0;
     }
 }

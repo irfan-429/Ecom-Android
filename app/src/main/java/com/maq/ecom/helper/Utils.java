@@ -669,21 +669,29 @@ public class Utils {
 
 
     public static File compressImage(Activity activity, File mFile) {
-        File imageZipperFile = null;
+        return  mFile;
+//
+//        File imageZipperFile = null;
+//
+//
+//
+//
+//        try {
+//            imageZipperFile = new ImageZipper(activity)
+//                    .setQuality(10)
+//                    //                .setMaxWidth(200)
+//                    //                .setMaxHeight(200)
+//                    .compressToFile(mFile);
+//        } catch (IOException e) {
+//            imageZipperFile = mFile;
+//            e.printStackTrace();
+//        }
+//
+//
+//        return imageZipperFile;
 
-        try {
-            imageZipperFile = new ImageZipper(activity)
-                    .setQuality(10)
-                    //                .setMaxWidth(200)
-                    //                .setMaxHeight(200)
-                    .compressToFile(mFile);
-        } catch (IOException e) {
-            imageZipperFile = mFile;
-            e.printStackTrace();
-        }
 
 
-        return imageZipperFile;
 //        return  newImage;
         //it reduces the image size to nearly 200 KB
 //        try {

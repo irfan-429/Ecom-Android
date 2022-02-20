@@ -46,39 +46,33 @@
         android:orientation="horizontal">
 
 
-        <LinearLayout
-            android:visibility="gone"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/_10sdp">
+
 
             <TextView
-                android:id="@+id/cartAct_tv_cartItems"
+                android:id="@+id/checkoutAct_tv_stats"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:text="0 Item(s)"
-                android:textColor="@color/colorWhite"
+                android:layout_centerInParent="true"
+                android:gravity="end"
                 android:textSize="@dimen/size_xMini" />
-
-            <View
-                android:layout_width="@dimen/_1sdp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:background="@color/colorWhite" />
 
             <TextView
-                android:id="@+id/cartAct_tv_cartAmt"
+                android:id="@+id/checkoutAct_tv_pay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:text="₹0"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/size_xMini" />
-
-        </LinearLayout>
+                android:layout_centerInParent="true"
+                android:gravity="start"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/size_normal"
+                android:textStyle="bold" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
 
         <LinearLayout

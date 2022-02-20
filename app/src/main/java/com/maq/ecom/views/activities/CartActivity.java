@@ -15,6 +15,7 @@ import com.google.gson.JsonObject;
 import com.maq.ecom.R;
 import com.maq.ecom.adapter.CartAdapter;
 import com.maq.ecom.adapter.CategoryItemsAdapter;
+import com.maq.ecom.adapter.CheckoutAdapter;
 import com.maq.ecom.database.SessionManager;
 import com.maq.ecom.helper.LoadingDialog;
 import com.maq.ecom.helper.Utils;
@@ -30,6 +31,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,17 +58,22 @@ public class CartActivity extends BaseActivity implements RetrofitRespondListene
     TextView menu_tv_cartCount;
     int index = 0;
     int position;
+    List<CategoryItem> cartList = new ArrayList<>();
 
     @BindView(R.id.cartAct_rv)
     RecyclerView cartAct_rv;
 
     @BindView(R.id.cartAct_tv_noCart)
     TextView tv_notFound;
-    @BindView(R.id.cartAct_tv_cartItems)
-    TextView cartAct_tv_cartItems;
-    @BindView(R.id.cartAct_tv_cartAmt)
-    TextView cartAct_tv_cartAmt;
+//    @BindView(R.id.cartAct_tv_cartItems)
+//    TextView cartAct_tv_cartItems;
+//    @BindView(R.id.cartAct_tv_cartAmt)
+//    TextView cartAct_tv_cartAmt;
 
+    @BindView(R.id.checkoutAct_tv_pay)
+    TextView checkoutAct_tv_pay;
+    @BindView(R.id.checkoutAct_tv_stats)
+    TextView checkoutAct_tv_stats;
 
     @OnClick(R.id.cartAct_layout_confirmOrder)
     void confirmOrder() {
@@ -90,11 +103,11 @@ public class CartActivity extends BaseActivity implements RetrofitRespondListene
         super.setupToolbar("Your Cart");
         ButterKnife.bind(this);
         init();
-        getCatItems();
 
         if (sessionManager.getIsLoggedIn()) {
             fetchCatItems();
-        }
+        } else getCatItems();
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -108,13 +121,44 @@ public class CartActivity extends BaseActivity implements RetrofitRespondListene
     }
 
     private void setAdapter() {
+        //check if not exist
+        for (CategoryItem item : cartList) {
+            boolean isFound = false;
+            for (CategoryItem itemCart : MainActivity.mCartList) {
+                if (itemCart.getProductId().equals(item.getProductId()))
+                    isFound = true;
+            }
+
+            if(!isFound)
+                MainActivity.mCartList.add(item);
+        }
+
+
         if (MainActivity.mCartList.size() > 0) {
             tv_notFound.setVisibility(View.GONE);
             adapter = new CartAdapter(context, MainActivity.mCartList, this::onCartDelete);
             cartAct_rv.setAdapter(adapter);
+            setCartCounter();
+            setStats();
         } else tv_notFound.setVisibility(View.VISIBLE);
     }
 
+    public ArrayList<CategoryItem> removeDuplicates(List<CategoryItem> list) {
+        Set<CategoryItem> set = new TreeSet(new Comparator<CategoryItem>() {
+
+            @Override
+            public int compare(CategoryItem o1, CategoryItem o2) {
+                if (o1.getProductId().equalsIgnoreCase(o2.getProductId())) {
+                    return 0;
+                }
+                return 1;
+            }
+        });
+        set.addAll(list);
+
+        final ArrayList newList = new ArrayList(set);
+        return newList;
+    }
 
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
@@ -163,6 +207,28 @@ public class CartActivity extends BaseActivity implements RetrofitRespondListene
         RetrofitClient.callRetrofit(apiCall, "CART_LIST", this);
     }
 
+
+    private void setStats() {
+        if (MainActivity.mCartList.size() > 0) {
+            double subTotal = 0;
+            double advPayment = 1;
+            double fullPayment = 0;
+            int qty = 0;
+            double percentage = 0;
+
+            for (CategoryItem item : MainActivity.mCartList) {
+                subTotal = subTotal + Double.parseDouble(item.getSellingPrice()) * item.getQty();
+                qty = qty + item.getQty();
+            }
+
+            advPayment = subTotal * (percentage / 100);
+            fullPayment = subTotal - advPayment;
+
+            checkoutAct_tv_pay.setText("Order Amount: " + getResources().getString(R.string.INR_symbol) + fullPayment);
+            checkoutAct_tv_stats.setText(MainActivity.mCartList.size() + " Nag / " + qty + " Item(s)");
+
+        } else tv_notFound.setVisibility(View.VISIBLE);
+    }
 
     @Override
     public void onRetrofitSuccess(Response<?> response, String requestName) {
@@ -235,7 +301,7 @@ public class CartActivity extends BaseActivity implements RetrofitRespondListene
                 if (jsonObject.has("allcartlist")) {
                     JSONArray jsonArray = jsonObject.getJSONObject("allcartlist").getJSONArray("allcartlist");
                     if (jsonArray.length() > 0) {
-                        MainActivity.mCartList.clear();
+                        cartList.clear();
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject object = jsonArray.getJSONObject(i);
 //                            String type = object.getString("Type");
@@ -256,9 +322,9 @@ public class CartActivity extends BaseActivity implements RetrofitRespondListene
                             String image4 = object.getString("Image4");
                             String image5 = object.getString("Image5");
                             String image6 = object.getString("Image6");
-                            int qty =(int) Double.parseDouble(object.getString("Qty"));
+                            int qty = (int) Double.parseDouble(object.getString("Qty"));
 
-                            MainActivity.mCartList.add(new CategoryItem(null, productId, productCode, productName, price, "0", sellingPrice, shortDesc, stock, unit, ProductCover, description, image1, image2, image3, image4, image5, image6, qty));
+                            cartList.add(new CategoryItem(null, productId, productCode, productName, price, "0", sellingPrice, shortDesc, stock, unit, ProductCover, description, image1, image2, image3, image4, image5, image6, qty));
                         }
 
                         setAdapter();
