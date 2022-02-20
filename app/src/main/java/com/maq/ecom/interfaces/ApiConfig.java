@@ -41,6 +41,9 @@ public interface ApiConfig {
 
 
     @POST("user.php?action=usercategorylist")
+    Call<JsonObject> API_getUserCategoryList(@Query("FirmId") String firmId);
+
+    @POST("user.php?action=categorylist")
     Call<JsonObject> API_getCategoryList(@Query("FirmId") String firmId);
 
     @POST("user.php?action=newcategory")

@@ -3,23 +3,16 @@ package com.maq.ecom.views.fragments;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.SearchView;
-import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.JsonObject;
 import com.maq.ecom.R;
-import com.maq.ecom.adapter.CategoryAdapter;
 import com.maq.ecom.adapter.CategoryGridAdapter;
 import com.maq.ecom.database.SessionManager;
 import com.maq.ecom.helper.LoadingDialog;
@@ -28,19 +21,16 @@ import com.maq.ecom.interfaces.ApiConfig;
 import com.maq.ecom.interfaces.RetrofitRespondListener;
 import com.maq.ecom.model.Category;
 import com.maq.ecom.networking.RetrofitClient;
-import com.maq.ecom.views.activities.CreateCategoryActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -81,7 +71,7 @@ public class CategoriesFragment extends Fragment implements RetrofitRespondListe
     private void fetchCategories() {
         loadingDialog.show();
         Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(getActivity()).create(ApiConfig.class)
-                .API_getCategoryList(sessionManager.getFirmId());
+                .API_getUserCategoryList(sessionManager.getFirmId());
         RetrofitClient.callRetrofit(apiCall, "CATEGORIES", this);
     }
 

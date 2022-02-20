@@ -3,9 +3,6 @@ package com.maq.ecom.views.fragments;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -30,7 +27,6 @@ import com.maq.ecom.model.Category;
 import com.maq.ecom.model.CategoryItem;
 import com.maq.ecom.model.Slider;
 import com.maq.ecom.networking.RetrofitClient;
-import com.maq.ecom.views.activities.AddressListActivity;
 import com.smarteist.autoimageslider.SliderLayout;
 import com.smarteist.autoimageslider.SliderView;
 
@@ -114,7 +110,7 @@ public class HomeFragment extends Fragment implements RetrofitRespondListener {
     private void fetchCategories() {
         loadingDialog.show();
         Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(getContext()).create(ApiConfig.class)
-                .API_getCategoryList(sessionManager.getFirmId());
+                .API_getUserCategoryList(sessionManager.getFirmId());
         RetrofitClient.callRetrofit(apiCall, "CATEGORIES", this);
     }
 

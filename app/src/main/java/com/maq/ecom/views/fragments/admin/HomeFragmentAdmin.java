@@ -6,14 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.tabs.TabLayout;
 import com.google.gson.JsonObject;
 import com.maq.ecom.R;
 import com.maq.ecom.adapter.CategoryRoundedAdapter;
@@ -30,7 +26,6 @@ import com.maq.ecom.networking.RetrofitClient;
 import com.maq.ecom.views.fragments.RecentSellingFragment;
 import com.maq.ecom.views.fragments.TopSellingFragment;
 import com.maq.ecom.views.fragments.WhatsNewFragment;
-import com.smarteist.autoimageslider.SliderLayout;
 import com.smarteist.autoimageslider.SliderView;
 
 import org.json.JSONArray;
@@ -40,7 +35,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -113,7 +107,7 @@ public class HomeFragmentAdmin extends Fragment implements RetrofitRespondListen
     private void fetchCategories() {
         loadingDialog.show();
         Call<JsonObject> apiCall = RetrofitClient.getRetrofitInstance(getContext()).create(ApiConfig.class)
-                .API_getCategoryList(sessionManager.getFirmId());
+                .API_getUserCategoryList(sessionManager.getFirmId());
         RetrofitClient.callRetrofit(apiCall, "CATEGORIES", this);
     }
 

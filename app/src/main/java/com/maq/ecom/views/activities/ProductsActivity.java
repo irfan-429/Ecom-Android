@@ -53,6 +53,9 @@ public class ProductsActivity extends BaseActivity implements RetrofitRespondLis
     @BindView(R.id.productAct_rv)
     RecyclerView recyclerView;
 
+    @BindView(R.id.searchView)
+    SearchView searchView;
+
     @BindView(R.id.productAct_tv_notFound)
     TextView tv_notFound;
 
@@ -81,6 +84,20 @@ public class ProductsActivity extends BaseActivity implements RetrofitRespondLis
     private void init() {
         loadingDialog = new LoadingDialog(context);
         sessionManager = new SessionManager(context);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (adapter != null) adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
     }
 
     private void fetchProducts() {

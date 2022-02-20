@@ -265,7 +265,7 @@ public class CreateProductActivity extends BaseActivity implements RetrofitRespo
             for (int i = 0; i < arrayList.size(); i++) {
                 Category category = arrayList.get(i);
                 if (product.getCategoryId().equals(category.getCategoryId()))
-                    sp_status.setSelection(i);
+                    sp_cat.setSelection(i);
             }
 
         ArrayAdapter<Category> adapter = new ArrayAdapter<Category>(this, android.R.layout.simple_spinner_item, arrayList);
